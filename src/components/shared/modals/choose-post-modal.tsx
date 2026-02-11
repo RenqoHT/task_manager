@@ -34,7 +34,7 @@ export const ChoosePostModal: React.FC<Props> = ({ className, post, /*onClose*/ 
         <Dialog open={Boolean(post)} onOpenChange={() => router.back()}>
             <DialogContent
                 className={cn(
-                    'p-0 gap-0 max-w-[1060px] min-w-[340] min-h-[500px] bg-white overflow-y-auto',
+                    'p-0 gap-0 max-w-[1060px] bg-white overflow-y-auto',
                     className,
                 )}>
                 <DialogHeader className="p-6 pb-0">

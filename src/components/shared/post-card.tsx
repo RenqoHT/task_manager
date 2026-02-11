@@ -28,8 +28,6 @@ interface Props {
     post_type: string;
     post_status: string | null;
 
-    // User: User | null;
-
     className?: string;
 }
 
@@ -40,6 +38,7 @@ export const PostCard: React.FC<Props> = ({
     desc, 
     post_type, 
     post_date,
+    post_deadline,
     post_needs_video_smm,
     post_needs_text,
     post_needs_photogallery,
@@ -53,15 +52,36 @@ export const PostCard: React.FC<Props> = ({
     post_done_link_cover_photo,
     post_done_link_photo_cards
 }) => {
+    const getPostStatus = () => {
+        const requiredWorks = [
+            { needs: post_needs_video_smm, done: post_done_link_video_smm },
+            { needs: post_needs_video_maker, done: post_done_link_video_maker },
+            { needs: post_needs_text, done: post_done_link_text },
+            { needs: post_needs_photogallery, done: post_done_link_photogallery },
+            { needs: post_needs_cover_photo, done: post_done_link_cover_photo },
+            { needs: post_needs_photo_cards, done: post_done_link_photo_cards }
+        ];
+
+        const hasUnfinishedWork = requiredWorks.some(work =>
+            work.needs && !work.done
+        );
+
+        return hasUnfinishedWork ? "В работе" : "Готово";
+    };
+
+    const getStatusColor = () => {
+        return getPostStatus() === "Готово" ? "text-green-500" : "text-red-500";
+    };
+
     return (
         <div className={className}>
             <Link href={`/post/${id}`}>
-                <div className="bg-[#cecff1] text-white rounded-2xl overflow-hidden">
+                <div className="bg-[#bfbec7] text-white rounded-2xl overflow-hidden">
                     {/* Верхняя строка: галочка + дата + метки */}
                     <div className="flex items-center justify-between px-4 pt-3 pb-1 text-xs text-gray-400">
                         <div className="flex items-center gap-2">
-                            <span className="text-green-500 font-bold">✓</span>
-                            <span className="text-gray-50 font-bold">{post_date ? post_date.toLocaleDateString() : 'Нет даты'}</span>
+                            <span className={`${getStatusColor()} font-bold`}>{getPostStatus()}</span>
+                            <span className="text-gray-50 font-bold">{post_deadline ? post_deadline.toLocaleDateString() : 'Нет даты'}</span>
                         </div>
 
                         <div className="flex items-center gap-1.5">

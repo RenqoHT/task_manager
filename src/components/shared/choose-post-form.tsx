@@ -47,9 +47,7 @@ export const ChoosePostForm: React.FC<Props> = ({ post, className }) => {
         );
     };
 
-    // Функция для определения статуса выполнения всех работ
     const getAllWorksStatus = () => {
-        // Проверяем, все ли требуемые работы выполнены
         const requiredWorks = [
             { needs: post.post_needs_video_smm, done: post.post_done_link_video_smm },
             { needs: post.post_needs_video_maker, done: post.post_done_link_video_maker },
@@ -59,21 +57,17 @@ export const ChoosePostForm: React.FC<Props> = ({ post, className }) => {
             { needs: post.post_needs_photo_cards, done: post.post_done_link_photo_cards }
         ];
 
-        // Проверяем, есть ли хотя бы одна требуемая работа, которая не выполнена
         const hasUnfinishedWork = requiredWorks.some(work => 
             work.needs && !work.done
         );
 
-        // Если есть незавершенная работа, возвращаем false
         if (hasUnfinishedWork) {
             return false;
         }
 
-        // Если все требуемые работы выполнены, возвращаем true
         return true;
     };
 
-    // Определяем финальный статус поста
     const finalPostStatus = getAllWorksStatus() ? 'Выполнено' : (post.post_status || 'Не указан');
 
     return (
