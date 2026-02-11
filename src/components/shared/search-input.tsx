@@ -3,7 +3,6 @@
 import { Post } from '@/generated/prisma/client';
 import { cn } from '@/lib/utils';
 import { Search } from 'lucide-react';
-import Link from 'next/link';
 import React from 'react';
 import { useClickAway, useDebounce } from 'react-use';
 import { Api } from './services/api-client';
@@ -35,10 +34,14 @@ export const SearchInput: React.FC<Props> = ({ className }) => {
         [searchQuery],
     );
 
-    const onClickItem = () => {
+    const onClickItem = (postId: number) => {
         setFocused(false);
         setSearchQuery('');
         setPosts([]);
+        
+        // Прямой переход на страницу поста, минуя модальное окно
+        // window.location для избежания активации параллельного маршрута
+        window.location.href = `/post/${postId}`;
     };
 
     return (
@@ -66,13 +69,12 @@ export const SearchInput: React.FC<Props> = ({ className }) => {
                         )}>
                         {
                         posts.map((post) => (
-                            <Link
-                                onClick={onClickItem}
+                            <div
                                 key={post.post_id}
-                                className="flex items-center gap-3 w-full px-3 py-2 hover:bg-primary/10"
-                                href={`/post/${post.post_id}`}>
+                                className="flex items-center gap-3 w-full px-3 py-2 hover:bg-primary/10 cursor-pointer"
+                                onClick={() => onClickItem(post.post_id)}>
                                 <span>{post.post_title}</span>
-                            </Link>
+                            </div>
                         ))}
                     </div>
                 )}

@@ -1,23 +1,20 @@
-import { Categories, Container, PostCard, PostGroupList, SortPopup, Title, TopBar } from "@/components/shared";
+import { Container, PostGroupList, TopBar, AddPostButton } from "@/components/shared";
 import { prisma } from "@/lib/prisma";
 
 export default async function Home() {
     const posts = await prisma.post.findMany({});
-    
+
     return (
         <>
-        
-            <Container>
-                
-            </Container>
             <TopBar/>
 
-            <Container className="mt-5">
+            <Container className="mt-5 mb-5">
                 {/* Посты */}
                 <PostGroupList items={posts}/>
+                <AddPostButton />
             </Container>
 
-            <div style={{height: 3000}}/>
+            {/* <div style={{height: 3000}}/> */}
         </>
     );
 }

@@ -1,26 +1,48 @@
 'use client';
 
-import { Dialog, DialogContent, DialogTitle } from '@/components/ui';
-import { DialogDescription, DialogHeader, DialogTrigger } from '@/components/ui/dialog';
-import { Post } from '@/generated/prisma/client';
+import { Button, Dialog, DialogContent } from '@/components/ui';
+import { DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
+import { Post, User } from '@/generated/prisma/client';
 import { cn } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
 import React from 'react';
+import { ChoosePostForm } from '../choose-post-form';
 
-interface Props {
-    post: Post;
-    className?: string;
+interface ExtendedPost extends Post {
+    user?: User | null;
 }
 
-export const ChoosePostModal: React.FC<Props> = ({ className, post }) => {
+interface Props {
+    post: ExtendedPost;
+    className?: string;
+    // onClose?: () => void;
+}
+
+export const ChoosePostModal: React.FC<Props> = ({ className, post, /*onClose*/ }) => {
     const router = useRouter();
 
+    // Обработчик закрытия модального окна
+    // const handleClose = () => {
+    //     if (onClose) {
+    //         onClose();
+    //     } else {
+    //         router.back();
+    //     }
+    // };
+
     return (
-        <Dialog open={Boolean(post)} onOpenChange={() => router.back()}> 
-        <DialogTrigger>Open</DialogTrigger>
+        <Dialog open={Boolean(post)} onOpenChange={() => router.back()}>
             <DialogContent
-                className={cn('w-[265px] max-w-[1000px] min-h-[1000px] bg-white overflow-hidden', className,)}>
-                <p>asdfjjjk</p>
+                className={cn(
+                    'p-0 gap-0 max-w-[1060px] min-w-[340] min-h-[500px] bg-white overflow-y-auto',
+                    className,
+                )}>
+                <DialogHeader className="p-6 pb-0">
+                    <DialogTitle className="text-2xl font-bold text-gray-800 break-words">
+                        {post.post_title || 'Без заголовка'}
+                    </DialogTitle>
+                </DialogHeader>
+                <ChoosePostForm post={post} />
             </DialogContent>
         </Dialog>
     );

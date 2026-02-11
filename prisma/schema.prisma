@@ -46,5 +46,5 @@ model Post {
   post_date          DateTime? @default(now())
   post_deadline      DateTime
   post_type          String
-  post_status        String?   @default("Ожидает начала")
+  post_status        String?   @default("В работе")
 }

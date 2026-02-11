@@ -1,11 +1,16 @@
-import { Container } from "@/components/shared";
+import { ChoosePostForm, Container } from "@/components/shared";
 import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
 
 export default async function PostPage({ params }: { params: { id: string } }) {
 
     const { id } = await params;
-    const post = await prisma.post.findFirst({ where: { post_id: Number(id) } });
+    const post = await prisma.post.findFirst({ 
+        where: { post_id: Number(id) },
+        include: {
+            user: true
+        }
+    });
 
     if (!post) {
         return notFound();
@@ -13,7 +18,7 @@ export default async function PostPage({ params }: { params: { id: string } }) {
 
     return (
         <Container className="flex flex-col my-10">
-            <p>{post.post_description}</p>
+            <ChoosePostForm post={post}/>
         </Container>
     );
 }

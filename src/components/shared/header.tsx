@@ -7,6 +7,7 @@ import { User } from 'lucide-react';
 import { SortPopup } from './sort-popup';
 import { Categories } from './categories';
 import { SearchInput } from './search-input';
+import Link from 'next/link';
 
 interface Props {
     className?: string;
@@ -18,13 +19,14 @@ export const Header: React.FC<Props> = ({ className }) => {
             <Container className='flex items-center justify-between py-8'>
 
                 {/* Левая часть */}
-                <div className='flex items-center gap-4'>
-                    <Image src="/logo.png" alt="Logo" width={35} height={32}/>
-                    <div>
-                        <h1 className='text-2xl uppercase font-black'>TaskMan</h1>
+                <Link href={'/'} >
+                    <div className='flex items-center gap-4'>
+                        <Image src="/logo.png" alt="Logo" width={35} height={32}/>
+                        <div>
+                            <h1 className='text-2xl uppercase font-black'>TaskMan</h1>
+                        </div>
                     </div>
-                </div>
-
+                </Link>
                 <div className='mx-10 flex-1'>
                     <SearchInput/>
                 </div>

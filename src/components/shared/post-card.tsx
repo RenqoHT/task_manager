@@ -14,6 +14,7 @@ interface Props {
     post_needs_photogallery: Boolean;
     post_needs_cover_photo: Boolean;
     post_needs_photo_cards: Boolean;
+    post_needs_video_maker: Boolean;
 
     post_done_link_video_smm: string | null;
     post_done_link_video_maker: string | null;
@@ -32,7 +33,26 @@ interface Props {
     className?: string;
 }
 
-export const PostCard: React.FC<Props> = ({ className, title, id, desc, post_type, post_date }) => {
+export const PostCard: React.FC<Props> = ({ 
+    className, 
+    title, 
+    id, 
+    desc, 
+    post_type, 
+    post_date,
+    post_needs_video_smm,
+    post_needs_text,
+    post_needs_photogallery,
+    post_needs_cover_photo,
+    post_needs_photo_cards,
+    post_needs_video_maker,
+    post_done_link_video_smm,
+    post_done_link_video_maker,
+    post_done_link_text,
+    post_done_link_photogallery,
+    post_done_link_cover_photo,
+    post_done_link_photo_cards
+}) => {
     return (
         <div className={className}>
             <Link href={`/post/${id}`}>
@@ -45,12 +65,24 @@ export const PostCard: React.FC<Props> = ({ className, title, id, desc, post_typ
                         </div>
 
                         <div className="flex items-center gap-1.5">
-                            {(
-                                <>
-                                    <span className="text-white font-bold text-2xl">{post_type}</span>
-                                    <span>📸</span>
-                                    <span>🖼️</span>
-                                </>
+                            <span className="text-white font-bold text-2xl">{post_type}</span>
+                            {post_needs_video_smm && (
+                                <span className={`${post_done_link_video_smm ? '' : 'opacity-50'}`}>🎬</span>
+                            )}
+                            {post_needs_video_maker && (
+                                <span className={`${post_done_link_video_maker ? '' : 'opacity-50'}`}>📹</span>
+                            )}
+                            {post_needs_text && (
+                                <span className={`${post_done_link_text ? '' : 'opacity-50'}`}>📝</span>
+                            )}
+                            {post_needs_photogallery && (
+                                <span className={`${post_done_link_photogallery ? '' : 'opacity-50'}`}>📸</span>
+                            )}
+                            {post_needs_cover_photo && (
+                                <span className={`${post_done_link_cover_photo ? '' : 'opacity-50'}`}>🖼️</span>
+                            )}
+                            {post_needs_photo_cards && (
+                                <span className={`${post_done_link_photo_cards ? '' : 'opacity-50'}`}>📷</span>
                             )}
                         </div>
                     </div>
