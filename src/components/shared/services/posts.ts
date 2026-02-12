@@ -23,6 +23,15 @@ export type PostCreationData = Omit<Post,
   'post_done_link_photo_cards'
 >;
 
+export type PostUpdateData = Partial<Omit<Post, 
+  'post_id' | 
+  'post_date'
+>>;
+
 export const create = async (postData: PostCreationData): Promise<Post> => {
   return (await axiosInstance.post<Post>(ApiRoutes.CREATE_POST, postData)).data;
+};
+
+export const update = async (id: number, postData: PostUpdateData): Promise<Post> => {
+  return (await axiosInstance.put<Post>(`${ApiRoutes.UPDATE_POST}/${id}`, postData)).data;
 };

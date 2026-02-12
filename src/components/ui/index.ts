@@ -14,3 +14,5 @@ export {
   ComboboxItem,
   ComboboxList,
 } from "./combobox"
+
+export { UserSelect } from './user-select'

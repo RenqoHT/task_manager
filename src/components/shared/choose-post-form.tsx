@@ -70,8 +70,25 @@ export const ChoosePostForm: React.FC<Props> = ({ post, className }) => {
 
     const finalPostStatus = getAllWorksStatus() ? 'Выполнено' : (post.post_status || 'Не указан');
 
+    // Обработчик для открытия модалки редактирования
+    const handleEdit = () => {
+        // Создаем глобальное событие для открытия модалки редактирования
+        window.dispatchEvent(new CustomEvent('openEditPostModal', { detail: post }));
+    };
+
     return (
         <div className={cn("p-6 space-y-6", className)}>
+            {/* Кнопка редактирования */}
+            <div className="flex justify-end">
+                <Button 
+                    variant="outline" 
+                    onClick={handleEdit}
+                    className="mb-4"
+                >
+                    Редактировать
+                </Button>
+            </div>
+
             {/* Блок основной информации */}
             <div className="space-y-4">
                 <h3 className="text-lg font-semibold text-gray-800 border-b pb-2">Основная информация</h3>
