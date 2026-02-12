@@ -3,7 +3,9 @@
 import { Button } from '@/components/ui/button';
 import { Post, User } from '@/generated/prisma/client';
 import { cn } from '@/lib/utils';
-import React from 'react';
+import { useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
+import { PostEditModal } from './modals';
 
 interface ExtendedPost extends Post {
     user?: User | null;
@@ -70,10 +72,35 @@ export const ChoosePostForm: React.FC<Props> = ({ post, className }) => {
 
     const finalPostStatus = getAllWorksStatus() ? 'Выполнено' : (post.post_status || 'Не указан');
 
+    const router = useRouter();
     // Обработчик для открытия модалки редактирования
     const handleEdit = () => {
         // Создаем глобальное событие для открытия модалки редактирования
         window.dispatchEvent(new CustomEvent('openEditPostModal', { detail: post }));
+    };
+
+    const [showEditModal, setShowEditModal] = useState(false);
+    const [postForEdit, setPostForEdit] = useState<ExtendedPost | null>(null);
+
+    useEffect(() => {
+        const handleOpenEditModal = (event: Event) => {
+            const customEvent = event as CustomEvent<ExtendedPost>;
+            setPostForEdit(customEvent.detail);
+            setShowEditModal(true);
+        };
+
+        window.addEventListener('openEditPostModal', handleOpenEditModal);
+
+        return () => {
+            window.removeEventListener('openEditPostModal', handleOpenEditModal);
+        };
+    }, []);
+
+    // Обработчик сохранения изменений
+    const handleSave = (updatedPost: ExtendedPost) => {
+        // Можно обновить состояние поста в родительском компоненте
+        // или обновить страницу для отражения изменений
+        router.refresh(); // Обновляем страницу для отображения изменений
     };
 
     return (
@@ -88,6 +115,15 @@ export const ChoosePostForm: React.FC<Props> = ({ post, className }) => {
                     Редактировать
                 </Button>
             </div>
+
+            {postForEdit && (
+                <PostEditModal
+                    post={postForEdit}
+                    open={showEditModal}
+                    onOpenChange={setShowEditModal}
+                    onSave={handleSave}
+                />
+            )}
 
             {/* Блок основной информации */}
             <div className="space-y-4">

@@ -50,9 +50,10 @@ export const PostEditModal: React.FC<Props> = ({
                     </DialogTitle>
                 </DialogHeader>
                 <PostEditForm 
-                    post={post} 
+                    post={post}
                     onSave={handleSave}
                     onCancel={handleCancel}
+                    open={false}
                 />
             </DialogContent>
         </Dialog>

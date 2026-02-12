@@ -18,7 +18,7 @@ export default async function PostPage({ params }: { params: { id: string } }) {
 
     return (
         <Container className="flex flex-col my-10">
-            <ChoosePostForm post={post}/>
+            <ChoosePostForm post={post} />
         </Container>
     );
 }

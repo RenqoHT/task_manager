@@ -35,7 +35,6 @@ interface Props {
 export const PostAdd: React.FC<Props> = ({ className, open, onOpenChange }) => {
     const router = useRouter();
 
-    // Состояния для полей формы
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [needsVideoSmm, setNeedsVideoSmm] = useState(false);

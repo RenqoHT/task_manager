@@ -16,44 +16,10 @@ interface ExtendedPost extends Post {
 interface Props {
     post: ExtendedPost;
     className?: string;
-    // onClose?: () => void;
 }
 
-export const ChoosePostModal: React.FC<Props> = ({ className, post, /*onClose*/ }) => {
+export const ChoosePostModal: React.FC<Props> = ({ className, post }) => {
     const router = useRouter();
-    const [showEditModal, setShowEditModal] = useState(false);
-    const [postForEdit, setPostForEdit] = useState<ExtendedPost | null>(null);
-
-    // Обработчик закрытия модального окна
-    // const handleClose = () => {
-    //     if (onClose) {
-    //         onClose();
-    //     } else {
-    //         router.back();
-    //     }
-    // };
-
-    // Обработчик события открытия модалки редактирования
-    useEffect(() => {
-        const handleOpenEditModal = (event: Event) => {
-            const customEvent = event as CustomEvent<ExtendedPost>;
-            setPostForEdit(customEvent.detail);
-            setShowEditModal(true);
-        };
-
-        window.addEventListener('openEditPostModal', handleOpenEditModal);
-
-        return () => {
-            window.removeEventListener('openEditPostModal', handleOpenEditModal);
-        };
-    }, []);
-
-    // Обработчик сохранения изменений
-    const handleSave = (updatedPost: ExtendedPost) => {
-        // Можно обновить состояние поста в родительском компоненте
-        // или обновить страницу для отражения изменений
-        router.refresh(); // Обновляем страницу для отображения изменений
-    };
 
     return (
         <>
@@ -71,15 +37,6 @@ export const ChoosePostModal: React.FC<Props> = ({ className, post, /*onClose*/ 
                     <ChoosePostForm post={post} />
                 </DialogContent>
             </Dialog>
-
-            {postForEdit && (
-                <PostEditModal
-                    post={postForEdit}
-                    open={showEditModal}
-                    onOpenChange={setShowEditModal}
-                    onSave={handleSave}
-                />
-            )}
         </>
     );
 };
