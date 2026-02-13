@@ -47,7 +47,6 @@ export const PostEditForm: React.FC<Props> = ({ post, className, onSave, onCance
         return '';
     });
     const [type, setType] = useState(post.post_type);
-    const [status, setStatus] = useState(post.post_status || '');
 
     // Загрузка пользователей при монтировании
     useEffect(() => {
@@ -112,7 +111,6 @@ export const PostEditForm: React.FC<Props> = ({ post, className, onSave, onCance
                 responsible_person_id: responsiblePersonId,
                 post_deadline: new Date(deadline),
                 post_type: type,
-                post_status: status,
             };
 
             // Отправляем запрос на обновление поста
@@ -177,17 +175,6 @@ export const PostEditForm: React.FC<Props> = ({ post, className, onSave, onCance
                 </div>
 
                 <div>
-                    <label htmlFor="status" className="block text-sm font-medium text-gray-700 mb-1">
-                        Статус
-                    </label>
-                    <Input
-                        id="status"
-                        value={status}
-                        onChange={(e) => setStatus(e.target.value)}
-                    />
-                </div>
-
-                <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                         Ответственный
                     </label>
@@ -198,28 +185,6 @@ export const PostEditForm: React.FC<Props> = ({ post, className, onSave, onCance
                         placeholder="Поиск пользователя..."
                     />
                 </div>
-
-                {/* <div>
-                    <label htmlFor="responsiblePersonId" className="block text-sm font-medium text-gray-700 mb-1">
-                        Ответственный
-                    </label>
-                    <select
-                        id="responsiblePersonId"
-                        value={responsiblePersonId || ''}
-                        onChange={(e) => {
-                            const value = e.target.value;
-                            setResponsiblePersonId(value ? parseInt(value, 10) : null);
-                        }}
-                        className="w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-xs transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
-                    >
-                        <option value="">Выберите пользователя</option>
-                        {users.map(user => (
-                            <option key={user.user_id} value={user.user_id}>
-                                {user.user_login}
-                            </option>
-                        ))}
-                    </select>
-                </div> */}
             </div>
 
             <div>

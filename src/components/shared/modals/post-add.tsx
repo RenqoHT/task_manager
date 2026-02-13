@@ -124,7 +124,6 @@ export const PostAdd: React.FC<Props> = ({ className, open, onOpenChange }) => {
 
     const handleClose = () => {
         onOpenChange(false);
-        // Сброс состояний при закрытии
         setTitle('');
         setDescription('');
         setNeedsVideoSmm(false);

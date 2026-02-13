@@ -38,7 +38,6 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
                 responsible_person_id: body.responsible_person_id,
                 post_deadline: body.post_deadline ? new Date(String(body.post_deadline)) : undefined,
                 post_type: body.post_type,
-                post_status: body.post_status,
             },
         });
 

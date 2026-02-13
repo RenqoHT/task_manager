@@ -70,7 +70,7 @@ export const ChoosePostForm: React.FC<Props> = ({ post, className }) => {
         return true;
     };
 
-    const finalPostStatus = getAllWorksStatus() ? 'Выполнено' : (post.post_status || 'Не указан');
+    const finalPostStatus = getAllWorksStatus() ? 'Выполнено' : 'В работе';
 
     const router = useRouter();
     // Обработчик для открытия модалки редактирования

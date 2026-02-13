@@ -84,7 +84,6 @@ async function up() {
                 post_deadline: new Date("2026-02-16"), 
                 post_date: new Date("2026-01-01"),
                 post_type: "Видео",
-                post_status: "В работе"
             },
             {
                 post_title: "Рекламный баннер для сайта",
@@ -98,7 +97,6 @@ async function up() {
                 post_deadline: new Date("2026-02-20"),
                 post_date: new Date("2026-01-02"),
                 post_type: "Фото",
-                post_status: "Готово"
             },
             {
                 post_title: "SMM посты на неделю",
@@ -112,7 +110,6 @@ async function up() {
                 post_deadline: new Date("2026-02-18"),
                 post_date: new Date("2026-01-03"),
                 post_type: "SMM",
-                post_status: "В работе"
             },
             {
                 post_title: "Корпоративный ролик",
@@ -126,7 +123,6 @@ async function up() {
                 post_deadline: new Date("2026-02-25"),
                 post_date: new Date("2026-01-04"),
                 post_type: "Видео",
-                post_status: "В работе"
             },
             {
                 post_title: "Фото для каталога",
@@ -140,7 +136,6 @@ async function up() {
                 post_deadline: new Date("2026-02-14"),
                 post_date: new Date("2026-01-05"),
                 post_type: "Фото",
-                post_status: "Готово"
             },
             {
                 post_title: "14 февраля - акция",
@@ -154,7 +149,6 @@ async function up() {
                 post_deadline: new Date("2026-02-13"),
                 post_date: new Date("2026-01-06"),
                 post_type: "Афиша",
-                post_status: "В работе"
             },
             {
                 post_title: "Текст для лендинга",
@@ -168,7 +162,6 @@ async function up() {
                 post_deadline: new Date("2026-02-17"),
                 post_date: new Date("2026-01-07"),
                 post_type: "Текст",
-                post_status: "Готово"
             },
             {
                 post_title: "Обложка для YouTube",
@@ -182,7 +175,6 @@ async function up() {
                 post_deadline: new Date("2026-02-19"),
                 post_date: new Date("2026-01-08"),
                 post_type: "Дизайн",
-                post_status: "В работе"
             },
             {
                 post_title: "Галерея для сайта",
@@ -196,7 +188,6 @@ async function up() {
                 post_deadline: new Date("2026-02-15"),
                 post_date: new Date("2026-01-09"),
                 post_type: "Фото",
-                post_status: "Готово"
             },
             {
                 post_title: "Промо сторис",
@@ -210,7 +201,6 @@ async function up() {
                 post_deadline: new Date("2026-02-22"),
                 post_date: new Date("2026-01-10"),
                 post_type: "SMM",
-                post_status: "В работе"
             }
         ]
     });

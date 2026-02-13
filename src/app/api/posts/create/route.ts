@@ -6,7 +6,6 @@ export async function POST(req: NextRequest) {
     try {
         const body = await req.json();
 
-        // Валидация входных данных
         if (!body.post_title || !body.post_type || !body.post_deadline) {
             return NextResponse.json(
                 { error: "Название поста, тип и крайний срок обязательны" },
@@ -14,7 +13,6 @@ export async function POST(req: NextRequest) {
             );
         }
 
-        // Создание нового поста
         const newPost = await prisma.post.create({
             data: {
                 post_title: body.post_title,
@@ -28,7 +26,6 @@ export async function POST(req: NextRequest) {
                 responsible_person_id: body.responsible_person_id || null,
                 post_deadline: new Date(body.post_deadline),
                 post_type: body.post_type,
-                post_status: "В работе", // Установим статус по умолчанию
             },
         });
 

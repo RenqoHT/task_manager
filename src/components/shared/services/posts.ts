@@ -14,7 +14,6 @@ export const getUsers = async (): Promise<User[]> => {
 export type PostCreationData = Omit<Post, 
   'post_id' | 
   'post_date' | 
-  'post_status' |
   'post_done_link_video_smm' |
   'post_done_link_video_maker' |
   'post_done_link_text' |

@@ -26,7 +26,6 @@ interface Props {
     post_date: Date | null;
     post_deadline: Date;
     post_type: string;
-    post_status: string | null;
 
     className?: string;
 }
@@ -37,7 +36,6 @@ export const PostCard: React.FC<Props> = ({
     id, 
     desc, 
     post_type, 
-    post_date,
     post_deadline,
     post_needs_video_smm,
     post_needs_text,
