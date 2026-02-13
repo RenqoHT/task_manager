@@ -1,19 +1,30 @@
+'use client';
+
 import { cn } from '@/lib/utils';
 import { Container } from './container';
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '../ui';
 import { User } from 'lucide-react';
 import { SortPopup } from './sort-popup';
 import { Categories } from './categories';
 import { SearchInput } from './search-input';
 import Link from 'next/link';
+import { useSession, signIn, signOut } from 'next-auth/react';
+import { AuthModal } from './modals';
 
 interface Props {
     className?: string;
 }
 
 export const Header: React.FC<Props> = ({ className }) => {
+    const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+    const { data: session } = useSession();
+
+    const handleLogout = async () => {
+        await signOut({ redirect: false });
+    };
+
     return (
         <header className={cn('border border-b', className)}>
             <Container className='flex items-center justify-between py-8'>
@@ -33,13 +44,38 @@ export const Header: React.FC<Props> = ({ className }) => {
 
                 {/* Правая часть */}
                 <div className='flex items-center gap-3'>
-                    <Button variant='outline' className='flex items-center gap-1'>
-                        <User size={16}/>
-                        Профиль
-                    </Button>
+                    {session ? (
+                        <>
+                            <span className="text-sm font-medium">Привет, {session.user?.name}!</span>
+                            <Button
+                                variant='outline'
+                                className='flex items-center gap-1'
+                                onClick={handleLogout}
+                            >
+                                <User size={16}/>
+                                Выйти
+                            </Button>
+                        </>
+                    ) : (
+                        <Button
+                            variant='outline'
+                            className='flex items-center gap-1'
+                            onClick={() => setIsAuthModalOpen(true)}
+                        >
+                            <User size={16}/>
+                            Профиль
+                        </Button>
+                    )}
                 </div>
 
             </Container>
+            
+            {isAuthModalOpen && (
+                <AuthModal 
+                    isOpen={isAuthModalOpen} 
+                    onClose={() => setIsAuthModalOpen(false)} 
+                />
+            )}
         </header>
     );
 };

@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import "../globals.css";
 import { Header } from "@/components/shared";
+import { NextAuthProvider } from "@/providers/next-auth-provider";
 
 const nunito = Nunito({
   subsets: ['cyrillic'],
-  variable: '--font-nunito', 
+  variable: '--font-nunito',
   weight: ['400', '500', '600', '700', '800', '900']
 });
 
@@ -24,11 +25,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={nunito.className}>
-        <main className="min-h-screen">
-          <Header />
-          {modal}
-          {children}
-        </main>
+        <NextAuthProvider>
+          <main className="min-h-screen">
+            <Header />
+            {modal}
+            {children}
+          </main>
+        </NextAuthProvider>
       </body>
     </html>
   );
