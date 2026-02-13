@@ -69,6 +69,30 @@ export const PostEditForm: React.FC<Props> = ({ post, className, onSave, onCance
         setError('');
 
         try {
+            // Проверим, что выбран ответственный пользователь
+            if (responsiblePersonId === null || responsiblePersonId === undefined) {
+                setError('Пожалуйста, выберите ответственного пользователя');
+                setLoading(false);
+                return;
+            }
+
+            // // Проверим, существует ли такой пользователь
+            // try {
+            //     const users = await Api.users.getUsers();
+            //     const userExists = users.some(user => user.user_id === responsiblePersonId);
+                
+            //     if (!userExists) {
+            //         setError('Выбранный ответственный не существует в системе');
+            //         setLoading(false);
+            //         return;
+            //     }
+            // } catch (err) {
+            //     console.error('Ошибка при проверке существования пользователя:', err);
+            //     setError('Ошибка при проверке ответственного лица');
+            //     setLoading(false);
+            //     return;
+            // }
+
             // Подготовим данные для обновления
             const updatedPost: PostUpdateData = {
                 post_title: title,

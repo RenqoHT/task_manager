@@ -5,7 +5,7 @@ import { Post, User } from '@/generated/prisma/client';
 import { cn } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
-import { PostEditModal } from './modals';
+import { AttachLinksModal, PostEditModal } from './modals';
 
 interface ExtendedPost extends Post {
     user?: User | null;
@@ -81,6 +81,7 @@ export const ChoosePostForm: React.FC<Props> = ({ post, className }) => {
 
     const [showEditModal, setShowEditModal] = useState(false);
     const [postForEdit, setPostForEdit] = useState<ExtendedPost | null>(null);
+    const [showAttachLinksModal, setShowAttachLinksModal] = useState(false);
 
     useEffect(() => {
         const handleOpenEditModal = (event: Event) => {
@@ -96,6 +97,15 @@ export const ChoosePostForm: React.FC<Props> = ({ post, className }) => {
         };
     }, []);
 
+    const handleAttachLinks = () => {
+        setShowAttachLinksModal(true);
+    };
+
+    const handleLinksUpdate = (updatedPost: Post) => {
+        // Обновляем страницу для отражения изменений
+        router.refresh();
+    };
+
     // Обработчик сохранения изменений
     const handleSave = (updatedPost: ExtendedPost) => {
         // Можно обновить состояние поста в родительском компоненте
@@ -105,10 +115,17 @@ export const ChoosePostForm: React.FC<Props> = ({ post, className }) => {
 
     return (
         <div className={cn("p-6 space-y-6", className)}>
-            {/* Кнопка редактирования */}
-            <div className="flex justify-end">
-                <Button 
-                    variant="outline" 
+            {/* Кнопки действий */}
+            <div className="flex justify-end space-x-3">
+                <Button
+                    variant="outline"
+                    onClick={handleAttachLinks}
+                    className="mb-4"
+                >
+                    Прикрепить ссылки
+                </Button>
+                <Button
+                    variant="outline"
                     onClick={handleEdit}
                     className="mb-4"
                 >
@@ -125,6 +142,13 @@ export const ChoosePostForm: React.FC<Props> = ({ post, className }) => {
                 />
             )}
 
+            <AttachLinksModal
+                post={post}
+                open={showAttachLinksModal}
+                onOpenChange={setShowAttachLinksModal}
+                onLinksUpdated={handleLinksUpdate}
+            />
+
             {/* Блок основной информации */}
             <div className="space-y-4">
                 <h3 className="text-lg font-semibold text-gray-800 border-b pb-2">Основная информация</h3>
@@ -139,7 +163,7 @@ export const ChoosePostForm: React.FC<Props> = ({ post, className }) => {
                         <p className="text-sm text-gray-500">Статус</p>
                         <p className={`font-medium ${
                             finalPostStatus === 'Выполнено' ? 'text-green-600' :
-                            finalPostStatus === 'Ожидает начала' ? 'text-blue-600' :
+                            finalPostStatus === 'В работе' ? 'text-red-600' :
                             'text-gray-600'
                         }`}>
                             {finalPostStatus}

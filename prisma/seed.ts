@@ -1,43 +1,71 @@
 import { prisma } from "@/lib/prisma";
-// import { hashSync } from "bcrypt";
 
 async function up() {
+    // 1. Создание пользователей с новой структурой ролей
     await prisma.user.createMany({
         data: [
             {
                 user_login: "Artem69",
                 user_password: '676767',
-                user_role: "smm"
+                admin_role: false,
+                SMM_role: true,
+                designer_role: false,
+                videomaker_role: false,
+                coordinator_role: false,
             },
             {
                 user_login: "DimaDev",
                 user_password: 'pussy69',
-                user_role: "admin"
+                admin_role: true,
+                SMM_role: false,
+                designer_role: false,
+                videomaker_role: false,
+                coordinator_role: false,
             },
             {
                 user_login: "AnnaWeb",
                 user_password: 'anna2026',
-                user_role: "moderator"
+                admin_role: false,
+                SMM_role: false,
+                designer_role: false,
+                videomaker_role: false,
+                coordinator_role: true,
             },
             {
                 user_login: "IvanSQL",
                 user_password: 'sqlpro1',
-                user_role: "developer"
+                admin_role: false,
+                SMM_role: false,
+                designer_role: false,
+                videomaker_role: true,
+                coordinator_role: false,
             },
             {
                 user_login: "MariaDesign",
                 user_password: 'design88',
-                user_role: "designer"
+                admin_role: false,
+                SMM_role: false,
+                designer_role: true, 
+                videomaker_role: false,
+                coordinator_role: false,
             },
             {
                 user_login: "AlexContent",
                 user_password: 'content99',
-                user_role: "content_manager"
+                admin_role: false,
+                SMM_role: true, 
+                designer_role: false,
+                videomaker_role: false,
+                coordinator_role: false,
             },
             {
                 user_login: "KateSupport",
                 user_password: 'support24',
-                user_role: "support"
+                admin_role: false,
+                SMM_role: false,
+                designer_role: false,
+                videomaker_role: false,
+                coordinator_role: true, 
             }
         ]
     });
@@ -53,7 +81,8 @@ async function up() {
                 post_needs_photogallery: false,
                 post_needs_cover_photo: true,
                 post_needs_photo_cards: false,
-                post_deadline: "16.02.2026",
+                post_deadline: new Date("2026-02-16"), 
+                post_date: new Date("2026-01-01"),
                 post_type: "Видео",
                 post_status: "В работе"
             },
@@ -66,7 +95,8 @@ async function up() {
                 post_needs_photogallery: true,
                 post_needs_cover_photo: true,
                 post_needs_photo_cards: true,
-                post_deadline: "20.02.2026",
+                post_deadline: new Date("2026-02-20"),
+                post_date: new Date("2026-01-02"),
                 post_type: "Фото",
                 post_status: "Готово"
             },
@@ -79,7 +109,8 @@ async function up() {
                 post_needs_photogallery: false,
                 post_needs_cover_photo: false,
                 post_needs_photo_cards: true,
-                post_deadline: "18.02.2026",
+                post_deadline: new Date("2026-02-18"),
+                post_date: new Date("2026-01-03"),
                 post_type: "SMM",
                 post_status: "В работе"
             },
@@ -92,7 +123,8 @@ async function up() {
                 post_needs_photogallery: true,
                 post_needs_cover_photo: true,
                 post_needs_photo_cards: false,
-                post_deadline: "25.02.2026",
+                post_deadline: new Date("2026-02-25"),
+                post_date: new Date("2026-01-04"),
                 post_type: "Видео",
                 post_status: "В работе"
             },
@@ -105,7 +137,8 @@ async function up() {
                 post_needs_photogallery: true,
                 post_needs_cover_photo: true,
                 post_needs_photo_cards: false,
-                post_deadline: "14.02.2026",
+                post_deadline: new Date("2026-02-14"),
+                post_date: new Date("2026-01-05"),
                 post_type: "Фото",
                 post_status: "Готово"
             },
@@ -118,7 +151,8 @@ async function up() {
                 post_needs_photogallery: false,
                 post_needs_cover_photo: true,
                 post_needs_photo_cards: true,
-                post_deadline: "13.02.2026",
+                post_deadline: new Date("2026-02-13"),
+                post_date: new Date("2026-01-06"),
                 post_type: "Афиша",
                 post_status: "В работе"
             },
@@ -131,7 +165,8 @@ async function up() {
                 post_needs_photogallery: false,
                 post_needs_cover_photo: false,
                 post_needs_photo_cards: false,
-                post_deadline: "17.02.2026",
+                post_deadline: new Date("2026-02-17"),
+                post_date: new Date("2026-01-07"),
                 post_type: "Текст",
                 post_status: "Готово"
             },
@@ -144,7 +179,8 @@ async function up() {
                 post_needs_photogallery: false,
                 post_needs_cover_photo: true,
                 post_needs_photo_cards: true,
-                post_deadline: "19.02.2026",
+                post_deadline: new Date("2026-02-19"),
+                post_date: new Date("2026-01-08"),
                 post_type: "Дизайн",
                 post_status: "В работе"
             },
@@ -157,7 +193,8 @@ async function up() {
                 post_needs_photogallery: true,
                 post_needs_cover_photo: true,
                 post_needs_photo_cards: true,
-                post_deadline: "15.02.2026",
+                post_deadline: new Date("2026-02-15"),
+                post_date: new Date("2026-01-09"),
                 post_type: "Фото",
                 post_status: "Готово"
             },
@@ -170,13 +207,13 @@ async function up() {
                 post_needs_photogallery: false,
                 post_needs_cover_photo: false,
                 post_needs_photo_cards: false,
-                post_deadline: "22.02.2026",
+                post_deadline: new Date("2026-02-22"),
+                post_date: new Date("2026-01-10"),
                 post_type: "SMM",
                 post_status: "В работе"
             }
         ]
-
-    })
+    });
 }
 
 async function down() {
@@ -188,6 +225,7 @@ async function main() {
     try {
         await down();
         await up();
+        console.log('Seeding completed successfully');
     } catch (e) {
         console.error(e);
     }

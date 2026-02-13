@@ -15,9 +15,13 @@ datasource db {
 
 model User {
   user_id    Int      @id @default(autoincrement())
-  user_login      String @unique
+  user_login      String  @unique
   user_password   String
-  user_role  String
+  admin_role Boolean
+  SMM_role Boolean
+  designer_role Boolean
+  videomaker_role Boolean
+  coordinator_role Boolean
   
   posts      Post[]
 }

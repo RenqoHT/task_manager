@@ -64,6 +64,30 @@ export const PostAdd: React.FC<Props> = ({ className, open, onOpenChange }) => {
                 return;
             }
 
+            // Проверим, что выбран ответственный пользователь
+            if (responsiblePersonId === null || responsiblePersonId === undefined) {
+                setError('Пожалуйста, выберите ответственного пользователя');
+                setLoading(false);
+                return;
+            }
+
+            // // Проверим, существует ли такой пользователь
+            // try {
+            //     const users = await Api.users.getUsers();
+            //     const userExists = users.some(user => user.user_id === responsiblePersonId);
+                
+            //     if (!userExists) {
+            //         setError('Выбранный ответственный не существует в системе');
+            //         setLoading(false);
+            //         return;
+            //     }
+            // } catch (err) {
+            //     console.error('Ошибка при проверке существования пользователя:', err);
+            //     setError('Ошибка при проверке ответственного лица');
+            //     setLoading(false);
+            //     return;
+            // }
+
             // Преобразуем строку дедлайна в объект Date
             const deadlineDate = new Date(deadline);
 

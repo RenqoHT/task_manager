@@ -3,7 +3,7 @@
 import { Input } from '@/components/ui/input';
 import { User } from '@/generated/prisma/client';
 import { cn } from '@/lib/utils';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Api } from '@/components/shared/services/api-client';
 import { useClickAway } from 'react-use';
 
@@ -12,100 +12,90 @@ interface UserSelectProps {
     onChange?: (userId: number | null) => void;
     placeholder?: string;
     className?: string;
-    resetTrigger?: any; // Используется для сброса состояния при изменении
 }
 
 export const UserSelect: React.FC<UserSelectProps> = ({
     value,
     onChange,
     placeholder = 'Поиск пользователя...',
-    className,
-    resetTrigger
+    className
 }) => {
-    const dropdownRef = useRef<HTMLDivElement>(null);
-    
+    const containerRef = useRef<HTMLDivElement>(null);
     const [users, setUsers] = useState<User[]>([]);
-    const [searchTerm, setSearchTerm] = useState('');
-    const [showUserDropdown, setShowUserDropdown] = useState(false);
-    
-    // Загрузка пользователей при монтировании компонента
+    const [inputValue, setInputValue] = useState('');
+    const [isOpen, setIsOpen] = useState(false);
+
+    // Загрузка данных один раз
     useEffect(() => {
-        const fetchUsers = async () => {
-            try {
-                const userData = await Api.users.getUsers();
-                setUsers(userData);
-            } catch (err) {
-                console.error('Ошибка при загрузке пользователей:', err);
-            }
-        };
-        
-        fetchUsers();
+        Api.users.getUsers().then(setUsers).catch(console.error);
     }, []);
-    
-    // Закрытие выпадающего списка при клике вне его области
-    useClickAway(dropdownRef, () => {
-        setShowUserDropdown(false);
-    });
-    
-    // Если значение передано, но не совпадает с текущим термином поиска, установим его
+
+    // Синхронизация инпута с внешним value (например, при сбросе формы)
     useEffect(() => {
-        if (value !== undefined && value !== null) {
+        if (value === null || value === undefined) {
+            setInputValue('');
+        } else {
             const user = users.find(u => u.user_id === value);
-            if (user && user.user_login !== searchTerm) {
-                setSearchTerm(user.user_login);
-            }
-        } else if (value === null) {
-            setSearchTerm('');
+            if (user) setInputValue(user.user_login);
         }
     }, [value, users]);
 
-    // Сброс состояния при изменении resetTrigger
-    useEffect(() => {
-        if (value === null) {
-            setSearchTerm('');
-        }
-    }, [resetTrigger, value]);
-    
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const newValue = e.target.value;
-        setSearchTerm(newValue);
-        setShowUserDropdown(true);
+    useClickAway(containerRef, () => setIsOpen(false));
+
+    // Мемоизированная фильтрация
+    const filteredUsers = useMemo(() => {
+        if (!inputValue) return [];
+        const lowerQuery = inputValue.toLowerCase();
+        return users.filter(u => u.user_login.toLowerCase().includes(lowerQuery));
+    }, [users, inputValue]);
+
+    const handleSelect = (user: User) => {
+        setInputValue(user.user_login);
+        onChange?.(user.user_id);
+        setIsOpen(false);
+    };
+
+    const handleBlur = () => {
+        // Проверяем, есть ли точное совпадение введенного текста
+        const matchedUser = users.find(u => u.user_login.toLowerCase() === inputValue.toLowerCase());
         
-        // Если поле очищено, сбрасываем выбранного пользователя
-        if (!newValue) {
+        if (matchedUser) {
+            // Если совпадение есть, фиксируем его (нормализация регистра)
+            if (matchedUser.user_login !== inputValue) setInputValue(matchedUser.user_login);
+            if (matchedUser.user_id !== value) onChange?.(matchedUser.user_id);
+        } else {
+            // Если совпадения нет, сбрасываем
+            setInputValue('');
             onChange?.(null);
         }
     };
-    
-    const handleUserSelect = (user: User) => {
-        onChange?.(user.user_id);
-        setSearchTerm(user.user_login);
-        setShowUserDropdown(false);
-    };
-    
-    const filteredUsers = users.filter(user =>
-        user.user_login.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    
+
     return (
-        <div className="relative" ref={dropdownRef}>
+        <div ref={containerRef} className="relative">
             <Input
-                type="text"
+                value={inputValue}
+                onChange={(e) => {
+                    setInputValue(e.target.value);
+                    setIsOpen(true);
+                }}
+                onFocus={() => setIsOpen(true)}
+                onBlur={handleBlur}
                 placeholder={placeholder}
-                value={searchTerm}
-                onChange={handleInputChange}
-                onFocus={() => setShowUserDropdown(true)}
-                className={cn('pr-10', className)}
+                className={className}
             />
-            {filteredUsers.length > 0 && searchTerm && showUserDropdown && (
+
+            {isOpen && inputValue && filteredUsers.length > 0 && (
                 <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-auto">
                     {filteredUsers.map(user => (
                         <div
                             key={user.user_id}
-                            className={`px-4 py-2 cursor-pointer hover:bg-gray-100 ${
-                                value === user.user_id ? 'bg-gray-100' : ''
-                            }`}
-                            onClick={() => handleUserSelect(user)}
+                            className={cn(
+                                "px-4 py-2 cursor-pointer hover:bg-gray-100",
+                                value === user.user_id && "bg-blue-50 font-medium"
+                            )}
+                            // Предотвращаем blur инпута при клике на пункт списка
+                            onMouseDown={(e) => e.preventDefault()}
+                            onClick={() => handleSelect(user)}
                         >
                             {user.user_login}
                         </div>

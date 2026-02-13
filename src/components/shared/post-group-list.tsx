@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { PostCard } from './post-card';
 
 interface Props {
@@ -6,36 +6,32 @@ interface Props {
     items: any[];
 }
 
-
 export const PostGroupList: React.FC<Props> = ({ className, items }) => {
+    // Сортируем массив по дате (новые сверху) и кешируем результат
+    const sortedItems = useMemo(() => {
+        // Создаем копию через [...items], чтобы не мутировать пропсы
+        return [...items].sort((a, b) => {
+            const dateA = a.post_date ? new Date(a.post_date).getTime() : 0;
+            const dateB = b.post_date ? new Date(b.post_date).getTime() : 0;
+            // Вычитаем B - A для сортировки по убыванию (новые в начале)
+            return dateB - dateA;
+        });
+    }, [items]);
+
     return (
         <div className={className}>
             <div className='flex flex-col gap-5'>
-                {
-                items.map((post, i) => (
+                {sortedItems.map((post) => (
                     <PostCard
                         key={post.post_id}
+                        // Передаем явные пропсы для несовпадающих имен полей
                         id={post.post_id}
                         title={post.post_title}
                         desc={post.post_description}
-                        post_needs_video_smm={post.post_needs_video_smm}
-                        post_needs_video_maker={post.post_needs_video_maker}
-                        post_needs_text={post.post_needs_text}
-                        post_needs_photogallery={post.post_needs_photogallery}
-                        post_needs_cover_photo={post.post_needs_cover_photo}
-                        post_needs_photo_cards={post.post_needs_photo_cards}
-                        post_done_link_video_smm={post.post_done_link_video_smm}
-                        post_done_link_video_maker={post.post_done_link_video_maker}
-                        post_done_link_text={post.post_done_link_text}
-                        post_done_link_photogallery={post.post_done_link_photogallery}
-                        post_done_link_cover_photo={post.post_done_link_cover_photo}
-                        post_done_link_photo_cards={post.post_done_link_photo_cards}
-                        post_date={post.post_date}
-                        post_deadline={post.post_deadline}
-                        post_type={post.post_type}
-                        post_status={post.post_status}                    />
-                ))
-                }
+                        // Остальные поля совпадают по названию, используем спред
+                        {...post}
+                    />
+                ))}
             </div>
         </div>
     );
