@@ -68,31 +68,12 @@ export const PostEditForm: React.FC<Props> = ({ post, className, onSave, onCance
         setError('');
 
         try {
-            // Проверим, что выбран ответственный пользователь
             if (responsiblePersonId === null || responsiblePersonId === undefined) {
                 setError('Пожалуйста, выберите ответственного пользователя');
                 setLoading(false);
                 return;
             }
 
-            // // Проверим, существует ли такой пользователь
-            // try {
-            //     const users = await Api.users.getUsers();
-            //     const userExists = users.some(user => user.user_id === responsiblePersonId);
-                
-            //     if (!userExists) {
-            //         setError('Выбранный ответственный не существует в системе');
-            //         setLoading(false);
-            //         return;
-            //     }
-            // } catch (err) {
-            //     console.error('Ошибка при проверке существования пользователя:', err);
-            //     setError('Ошибка при проверке ответственного лица');
-            //     setLoading(false);
-            //     return;
-            // }
-
-            // Подготовим данные для обновления
             const updatedPost: PostUpdateData = {
                 post_title: title,
                 post_description: description,
@@ -282,100 +263,6 @@ export const PostEditForm: React.FC<Props> = ({ post, className, onSave, onCance
                     </div>
                 </div>
             </div>
-
-            {/* <div className="space-y-4">
-                <h3 className="text-lg font-semibold text-gray-800">Ссылки выполненных работ:</h3>
-
-                {needsVideoSmm && (
-                    <div>
-                        <label htmlFor="doneLinkVideoSmm" className="block text-sm font-medium text-gray-700 mb-1">
-                            Ссылка на видео SMM
-                        </label>
-                        <Input
-                            id="doneLinkVideoSmm"
-                            type="url"
-                            value={doneLinkVideoSmm}
-                            onChange={(e) => setDoneLinkVideoSmm(e.target.value)}
-                            placeholder="https://"
-                        />
-                    </div>
-                )}
-
-                {needsVideoMaker && (
-                    <div>
-                        <label htmlFor="doneLinkVideoMaker" className="block text-sm font-medium text-gray-700 mb-1">
-                            Ссылка на видео-мейкер
-                        </label>
-                        <Input
-                            id="doneLinkVideoMaker"
-                            type="url"
-                            value={doneLinkVideoMaker}
-                            onChange={(e) => setDoneLinkVideoMaker(e.target.value)}
-                            placeholder="https://"
-                        />
-                    </div>
-                )}
-
-                {needsText && (
-                    <div>
-                        <label htmlFor="doneLinkText" className="block text-sm font-medium text-gray-700 mb-1">
-                            Ссылка на текст
-                        </label>
-                        <Input
-                            id="doneLinkText"
-                            type="url"
-                            value={doneLinkText}
-                            onChange={(e) => setDoneLinkText(e.target.value)}
-                            placeholder="https://"
-                        />
-                    </div>
-                )}
-
-                {needsPhotogallery && (
-                    <div>
-                        <label htmlFor="doneLinkPhotogallery" className="block text-sm font-medium text-gray-700 mb-1">
-                            Ссылка на фотогалерею
-                        </label>
-                        <Input
-                            id="doneLinkPhotogallery"
-                            type="url"
-                            value={doneLinkPhotogallery}
-                            onChange={(e) => setDoneLinkPhotogallery(e.target.value)}
-                            placeholder="https://"
-                        />
-                    </div>
-                )}
-
-                {needsCoverPhoto && (
-                    <div>
-                        <label htmlFor="doneLinkCoverPhoto" className="block text-sm font-medium text-gray-700 mb-1">
-                            Ссылка на обложку
-                        </label>
-                        <Input
-                            id="doneLinkCoverPhoto"
-                            type="url"
-                            value={doneLinkCoverPhoto}
-                            onChange={(e) => setDoneLinkCoverPhoto(e.target.value)}
-                            placeholder="https://"
-                        />
-                    </div>
-                )}
-
-                {needsPhotoCards && (
-                    <div>
-                        <label htmlFor="doneLinkPhotoCards" className="block text-sm font-medium text-gray-700 mb-1">
-                            Ссылка на фотокарточки
-                        </label>
-                        <Input
-                            id="doneLinkPhotoCards"
-                            type="url"
-                            value={doneLinkPhotoCards}
-                            onChange={(e) => setDoneLinkPhotoCards(e.target.value)}
-                            placeholder="https://"
-                        />
-                    </div>
-                )}
-            </div> */}
 
             <div className="flex justify-end space-x-3 pt-4">
                 <Button

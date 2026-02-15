@@ -21,6 +21,7 @@ model User {
   SMM_role Boolean
   designer_role Boolean
   videomaker_role Boolean
+  photographer_role Boolean
   coordinator_role Boolean
   
   posts      Post[]

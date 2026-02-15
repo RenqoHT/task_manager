@@ -71,27 +71,8 @@ export const PostAdd: React.FC<Props> = ({ className, open, onOpenChange }) => {
                 return;
             }
 
-            // // Проверим, существует ли такой пользователь
-            // try {
-            //     const users = await Api.users.getUsers();
-            //     const userExists = users.some(user => user.user_id === responsiblePersonId);
-                
-            //     if (!userExists) {
-            //         setError('Выбранный ответственный не существует в системе');
-            //         setLoading(false);
-            //         return;
-            //     }
-            // } catch (err) {
-            //     console.error('Ошибка при проверке существования пользователя:', err);
-            //     setError('Ошибка при проверке ответственного лица');
-            //     setLoading(false);
-            //     return;
-            // }
-
-            // Преобразуем строку дедлайна в объект Date
             const deadlineDate = new Date(deadline);
 
-            // Подготовим данные для отправки
             const postData: PostCreationData = {
                 post_title: title,
                 post_description: description || null,
@@ -106,7 +87,6 @@ export const PostAdd: React.FC<Props> = ({ className, open, onOpenChange }) => {
                 post_type: type,
             };
 
-            // Отправляем запрос на создание поста
             await Api.posts.create(postData);
 
             // Закрываем модалку и обновляем страницу

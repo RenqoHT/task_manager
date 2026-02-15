@@ -12,6 +12,7 @@ async function up() {
                 designer_role: false,
                 videomaker_role: false,
                 coordinator_role: false,
+                photographer_role: false,
             },
             {
                 user_login: "DimaDev",
@@ -21,6 +22,7 @@ async function up() {
                 designer_role: false,
                 videomaker_role: false,
                 coordinator_role: false,
+                photographer_role: false,
             },
             {
                 user_login: "AnnaWeb",
@@ -30,6 +32,7 @@ async function up() {
                 designer_role: false,
                 videomaker_role: false,
                 coordinator_role: true,
+                photographer_role: false,
             },
             {
                 user_login: "IvanSQL",
@@ -39,6 +42,7 @@ async function up() {
                 designer_role: false,
                 videomaker_role: true,
                 coordinator_role: false,
+                photographer_role: false,
             },
             {
                 user_login: "MariaDesign",
@@ -48,6 +52,7 @@ async function up() {
                 designer_role: true, 
                 videomaker_role: false,
                 coordinator_role: false,
+                photographer_role: false,
             },
             {
                 user_login: "AlexContent",
@@ -57,6 +62,7 @@ async function up() {
                 designer_role: false,
                 videomaker_role: false,
                 coordinator_role: false,
+                photographer_role: false,
             },
             {
                 user_login: "KateSupport",
@@ -66,6 +72,7 @@ async function up() {
                 designer_role: false,
                 videomaker_role: false,
                 coordinator_role: true, 
+                photographer_role: false,
             }
         ]
     });
