@@ -29,77 +29,115 @@ export type AggregatePost = {
 export type PostAvgAggregateOutputType = {
   post_id: number | null
   responsible_person_id: number | null
+  approved_by_id: number | null
 }
 
 export type PostSumAggregateOutputType = {
   post_id: number | null
   responsible_person_id: number | null
+  approved_by_id: number | null
 }
 
 export type PostMinAggregateOutputType = {
   post_id: number | null
   post_title: string | null
   post_description: string | null
-  post_needs_video_smm: boolean | null
-  post_needs_video_maker: boolean | null
-  post_needs_text: boolean | null
-  post_needs_photogallery: boolean | null
+  post_status: string | null
+  tz_link: string | null
+  is_published: boolean | null
+  post_needs_mini_video_smm: boolean | null
+  post_needs_video: boolean | null
   post_needs_cover_photo: boolean | null
   post_needs_photo_cards: boolean | null
-  post_done_link_video_smm: string | null
-  post_done_link_video_maker: string | null
-  post_done_link_text: string | null
-  post_done_link_photogallery: string | null
+  post_needs_photogallery: boolean | null
+  post_needs_mini_gallery: boolean | null
+  post_needs_text: boolean | null
+  post_done_link_mini_video_smm: string | null
+  post_done_link_video: string | null
   post_done_link_cover_photo: string | null
   post_done_link_photo_cards: string | null
+  post_done_link_photogallery: string | null
+  post_done_link_mini_gallery: string | null
+  post_done_link_text: string | null
+  post_feedback_mini_video_smm: string | null
+  post_feedback_video: string | null
+  post_feedback_cover_photo: string | null
+  post_feedback_photo_cards: string | null
+  post_feedback_photogallery: string | null
+  post_feedback_mini_gallery: string | null
+  post_feedback_text: string | null
   responsible_person_id: number | null
+  approved_by_id: number | null
   post_date: Date | null
   post_deadline: Date | null
-  post_type: string | null
 }
 
 export type PostMaxAggregateOutputType = {
   post_id: number | null
   post_title: string | null
   post_description: string | null
-  post_needs_video_smm: boolean | null
-  post_needs_video_maker: boolean | null
-  post_needs_text: boolean | null
-  post_needs_photogallery: boolean | null
+  post_status: string | null
+  tz_link: string | null
+  is_published: boolean | null
+  post_needs_mini_video_smm: boolean | null
+  post_needs_video: boolean | null
   post_needs_cover_photo: boolean | null
   post_needs_photo_cards: boolean | null
-  post_done_link_video_smm: string | null
-  post_done_link_video_maker: string | null
-  post_done_link_text: string | null
-  post_done_link_photogallery: string | null
+  post_needs_photogallery: boolean | null
+  post_needs_mini_gallery: boolean | null
+  post_needs_text: boolean | null
+  post_done_link_mini_video_smm: string | null
+  post_done_link_video: string | null
   post_done_link_cover_photo: string | null
   post_done_link_photo_cards: string | null
+  post_done_link_photogallery: string | null
+  post_done_link_mini_gallery: string | null
+  post_done_link_text: string | null
+  post_feedback_mini_video_smm: string | null
+  post_feedback_video: string | null
+  post_feedback_cover_photo: string | null
+  post_feedback_photo_cards: string | null
+  post_feedback_photogallery: string | null
+  post_feedback_mini_gallery: string | null
+  post_feedback_text: string | null
   responsible_person_id: number | null
+  approved_by_id: number | null
   post_date: Date | null
   post_deadline: Date | null
-  post_type: string | null
 }
 
 export type PostCountAggregateOutputType = {
   post_id: number
   post_title: number
   post_description: number
-  post_needs_video_smm: number
-  post_needs_video_maker: number
-  post_needs_text: number
-  post_needs_photogallery: number
+  post_status: number
+  tz_link: number
+  is_published: number
+  post_needs_mini_video_smm: number
+  post_needs_video: number
   post_needs_cover_photo: number
   post_needs_photo_cards: number
-  post_done_link_video_smm: number
-  post_done_link_video_maker: number
-  post_done_link_text: number
-  post_done_link_photogallery: number
+  post_needs_photogallery: number
+  post_needs_mini_gallery: number
+  post_needs_text: number
+  post_done_link_mini_video_smm: number
+  post_done_link_video: number
   post_done_link_cover_photo: number
   post_done_link_photo_cards: number
+  post_done_link_photogallery: number
+  post_done_link_mini_gallery: number
+  post_done_link_text: number
+  post_feedback_mini_video_smm: number
+  post_feedback_video: number
+  post_feedback_cover_photo: number
+  post_feedback_photo_cards: number
+  post_feedback_photogallery: number
+  post_feedback_mini_gallery: number
+  post_feedback_text: number
   responsible_person_id: number
+  approved_by_id: number
   post_date: number
   post_deadline: number
-  post_type: number
   _all: number
 }
 
@@ -107,77 +145,115 @@ export type PostCountAggregateOutputType = {
 export type PostAvgAggregateInputType = {
   post_id?: true
   responsible_person_id?: true
+  approved_by_id?: true
 }
 
 export type PostSumAggregateInputType = {
   post_id?: true
   responsible_person_id?: true
+  approved_by_id?: true
 }
 
 export type PostMinAggregateInputType = {
   post_id?: true
   post_title?: true
   post_description?: true
-  post_needs_video_smm?: true
-  post_needs_video_maker?: true
-  post_needs_text?: true
-  post_needs_photogallery?: true
+  post_status?: true
+  tz_link?: true
+  is_published?: true
+  post_needs_mini_video_smm?: true
+  post_needs_video?: true
   post_needs_cover_photo?: true
   post_needs_photo_cards?: true
-  post_done_link_video_smm?: true
-  post_done_link_video_maker?: true
-  post_done_link_text?: true
-  post_done_link_photogallery?: true
+  post_needs_photogallery?: true
+  post_needs_mini_gallery?: true
+  post_needs_text?: true
+  post_done_link_mini_video_smm?: true
+  post_done_link_video?: true
   post_done_link_cover_photo?: true
   post_done_link_photo_cards?: true
+  post_done_link_photogallery?: true
+  post_done_link_mini_gallery?: true
+  post_done_link_text?: true
+  post_feedback_mini_video_smm?: true
+  post_feedback_video?: true
+  post_feedback_cover_photo?: true
+  post_feedback_photo_cards?: true
+  post_feedback_photogallery?: true
+  post_feedback_mini_gallery?: true
+  post_feedback_text?: true
   responsible_person_id?: true
+  approved_by_id?: true
   post_date?: true
   post_deadline?: true
-  post_type?: true
 }
 
 export type PostMaxAggregateInputType = {
   post_id?: true
   post_title?: true
   post_description?: true
-  post_needs_video_smm?: true
-  post_needs_video_maker?: true
-  post_needs_text?: true
-  post_needs_photogallery?: true
+  post_status?: true
+  tz_link?: true
+  is_published?: true
+  post_needs_mini_video_smm?: true
+  post_needs_video?: true
   post_needs_cover_photo?: true
   post_needs_photo_cards?: true
-  post_done_link_video_smm?: true
-  post_done_link_video_maker?: true
-  post_done_link_text?: true
-  post_done_link_photogallery?: true
+  post_needs_photogallery?: true
+  post_needs_mini_gallery?: true
+  post_needs_text?: true
+  post_done_link_mini_video_smm?: true
+  post_done_link_video?: true
   post_done_link_cover_photo?: true
   post_done_link_photo_cards?: true
+  post_done_link_photogallery?: true
+  post_done_link_mini_gallery?: true
+  post_done_link_text?: true
+  post_feedback_mini_video_smm?: true
+  post_feedback_video?: true
+  post_feedback_cover_photo?: true
+  post_feedback_photo_cards?: true
+  post_feedback_photogallery?: true
+  post_feedback_mini_gallery?: true
+  post_feedback_text?: true
   responsible_person_id?: true
+  approved_by_id?: true
   post_date?: true
   post_deadline?: true
-  post_type?: true
 }
 
 export type PostCountAggregateInputType = {
   post_id?: true
   post_title?: true
   post_description?: true
-  post_needs_video_smm?: true
-  post_needs_video_maker?: true
-  post_needs_text?: true
-  post_needs_photogallery?: true
+  post_status?: true
+  tz_link?: true
+  is_published?: true
+  post_needs_mini_video_smm?: true
+  post_needs_video?: true
   post_needs_cover_photo?: true
   post_needs_photo_cards?: true
-  post_done_link_video_smm?: true
-  post_done_link_video_maker?: true
-  post_done_link_text?: true
-  post_done_link_photogallery?: true
+  post_needs_photogallery?: true
+  post_needs_mini_gallery?: true
+  post_needs_text?: true
+  post_done_link_mini_video_smm?: true
+  post_done_link_video?: true
   post_done_link_cover_photo?: true
   post_done_link_photo_cards?: true
+  post_done_link_photogallery?: true
+  post_done_link_mini_gallery?: true
+  post_done_link_text?: true
+  post_feedback_mini_video_smm?: true
+  post_feedback_video?: true
+  post_feedback_cover_photo?: true
+  post_feedback_photo_cards?: true
+  post_feedback_photogallery?: true
+  post_feedback_mini_gallery?: true
+  post_feedback_text?: true
   responsible_person_id?: true
+  approved_by_id?: true
   post_date?: true
   post_deadline?: true
-  post_type?: true
   _all?: true
 }
 
@@ -271,22 +347,34 @@ export type PostGroupByOutputType = {
   post_id: number
   post_title: string
   post_description: string | null
-  post_needs_video_smm: boolean
-  post_needs_video_maker: boolean
-  post_needs_text: boolean
-  post_needs_photogallery: boolean
+  post_status: string
+  tz_link: string | null
+  is_published: boolean
+  post_needs_mini_video_smm: boolean
+  post_needs_video: boolean
   post_needs_cover_photo: boolean
   post_needs_photo_cards: boolean
-  post_done_link_video_smm: string | null
-  post_done_link_video_maker: string | null
-  post_done_link_text: string | null
-  post_done_link_photogallery: string | null
+  post_needs_photogallery: boolean
+  post_needs_mini_gallery: boolean
+  post_needs_text: boolean
+  post_done_link_mini_video_smm: string | null
+  post_done_link_video: string | null
   post_done_link_cover_photo: string | null
   post_done_link_photo_cards: string | null
+  post_done_link_photogallery: string | null
+  post_done_link_mini_gallery: string | null
+  post_done_link_text: string | null
+  post_feedback_mini_video_smm: string | null
+  post_feedback_video: string | null
+  post_feedback_cover_photo: string | null
+  post_feedback_photo_cards: string | null
+  post_feedback_photogallery: string | null
+  post_feedback_mini_gallery: string | null
+  post_feedback_text: string | null
   responsible_person_id: number | null
+  approved_by_id: number | null
   post_date: Date | null
   post_deadline: Date
-  post_type: string
   _count: PostCountAggregateOutputType | null
   _avg: PostAvgAggregateOutputType | null
   _sum: PostSumAggregateOutputType | null
@@ -316,46 +404,74 @@ export type PostWhereInput = {
   post_id?: Prisma.IntFilter<"Post"> | number
   post_title?: Prisma.StringFilter<"Post"> | string
   post_description?: Prisma.StringNullableFilter<"Post"> | string | null
-  post_needs_video_smm?: Prisma.BoolFilter<"Post"> | boolean
-  post_needs_video_maker?: Prisma.BoolFilter<"Post"> | boolean
-  post_needs_text?: Prisma.BoolFilter<"Post"> | boolean
-  post_needs_photogallery?: Prisma.BoolFilter<"Post"> | boolean
+  post_status?: Prisma.StringFilter<"Post"> | string
+  tz_link?: Prisma.StringNullableFilter<"Post"> | string | null
+  is_published?: Prisma.BoolFilter<"Post"> | boolean
+  post_needs_mini_video_smm?: Prisma.BoolFilter<"Post"> | boolean
+  post_needs_video?: Prisma.BoolFilter<"Post"> | boolean
   post_needs_cover_photo?: Prisma.BoolFilter<"Post"> | boolean
   post_needs_photo_cards?: Prisma.BoolFilter<"Post"> | boolean
-  post_done_link_video_smm?: Prisma.StringNullableFilter<"Post"> | string | null
-  post_done_link_video_maker?: Prisma.StringNullableFilter<"Post"> | string | null
-  post_done_link_text?: Prisma.StringNullableFilter<"Post"> | string | null
-  post_done_link_photogallery?: Prisma.StringNullableFilter<"Post"> | string | null
+  post_needs_photogallery?: Prisma.BoolFilter<"Post"> | boolean
+  post_needs_mini_gallery?: Prisma.BoolFilter<"Post"> | boolean
+  post_needs_text?: Prisma.BoolFilter<"Post"> | boolean
+  post_done_link_mini_video_smm?: Prisma.StringNullableFilter<"Post"> | string | null
+  post_done_link_video?: Prisma.StringNullableFilter<"Post"> | string | null
   post_done_link_cover_photo?: Prisma.StringNullableFilter<"Post"> | string | null
   post_done_link_photo_cards?: Prisma.StringNullableFilter<"Post"> | string | null
+  post_done_link_photogallery?: Prisma.StringNullableFilter<"Post"> | string | null
+  post_done_link_mini_gallery?: Prisma.StringNullableFilter<"Post"> | string | null
+  post_done_link_text?: Prisma.StringNullableFilter<"Post"> | string | null
+  post_feedback_mini_video_smm?: Prisma.StringNullableFilter<"Post"> | string | null
+  post_feedback_video?: Prisma.StringNullableFilter<"Post"> | string | null
+  post_feedback_cover_photo?: Prisma.StringNullableFilter<"Post"> | string | null
+  post_feedback_photo_cards?: Prisma.StringNullableFilter<"Post"> | string | null
+  post_feedback_photogallery?: Prisma.StringNullableFilter<"Post"> | string | null
+  post_feedback_mini_gallery?: Prisma.StringNullableFilter<"Post"> | string | null
+  post_feedback_text?: Prisma.StringNullableFilter<"Post"> | string | null
   responsible_person_id?: Prisma.IntNullableFilter<"Post"> | number | null
+  approved_by_id?: Prisma.IntNullableFilter<"Post"> | number | null
   post_date?: Prisma.DateTimeNullableFilter<"Post"> | Date | string | null
   post_deadline?: Prisma.DateTimeFilter<"Post"> | Date | string
-  post_type?: Prisma.StringFilter<"Post"> | string
   user?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
+  approved_by?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
+  tags?: Prisma.PostTagListRelationFilter
 }
 
 export type PostOrderByWithRelationInput = {
   post_id?: Prisma.SortOrder
   post_title?: Prisma.SortOrder
   post_description?: Prisma.SortOrderInput | Prisma.SortOrder
-  post_needs_video_smm?: Prisma.SortOrder
-  post_needs_video_maker?: Prisma.SortOrder
-  post_needs_text?: Prisma.SortOrder
-  post_needs_photogallery?: Prisma.SortOrder
+  post_status?: Prisma.SortOrder
+  tz_link?: Prisma.SortOrderInput | Prisma.SortOrder
+  is_published?: Prisma.SortOrder
+  post_needs_mini_video_smm?: Prisma.SortOrder
+  post_needs_video?: Prisma.SortOrder
   post_needs_cover_photo?: Prisma.SortOrder
   post_needs_photo_cards?: Prisma.SortOrder
-  post_done_link_video_smm?: Prisma.SortOrderInput | Prisma.SortOrder
-  post_done_link_video_maker?: Prisma.SortOrderInput | Prisma.SortOrder
-  post_done_link_text?: Prisma.SortOrderInput | Prisma.SortOrder
-  post_done_link_photogallery?: Prisma.SortOrderInput | Prisma.SortOrder
+  post_needs_photogallery?: Prisma.SortOrder
+  post_needs_mini_gallery?: Prisma.SortOrder
+  post_needs_text?: Prisma.SortOrder
+  post_done_link_mini_video_smm?: Prisma.SortOrderInput | Prisma.SortOrder
+  post_done_link_video?: Prisma.SortOrderInput | Prisma.SortOrder
   post_done_link_cover_photo?: Prisma.SortOrderInput | Prisma.SortOrder
   post_done_link_photo_cards?: Prisma.SortOrderInput | Prisma.SortOrder
+  post_done_link_photogallery?: Prisma.SortOrderInput | Prisma.SortOrder
+  post_done_link_mini_gallery?: Prisma.SortOrderInput | Prisma.SortOrder
+  post_done_link_text?: Prisma.SortOrderInput | Prisma.SortOrder
+  post_feedback_mini_video_smm?: Prisma.SortOrderInput | Prisma.SortOrder
+  post_feedback_video?: Prisma.SortOrderInput | Prisma.SortOrder
+  post_feedback_cover_photo?: Prisma.SortOrderInput | Prisma.SortOrder
+  post_feedback_photo_cards?: Prisma.SortOrderInput | Prisma.SortOrder
+  post_feedback_photogallery?: Prisma.SortOrderInput | Prisma.SortOrder
+  post_feedback_mini_gallery?: Prisma.SortOrderInput | Prisma.SortOrder
+  post_feedback_text?: Prisma.SortOrderInput | Prisma.SortOrder
   responsible_person_id?: Prisma.SortOrderInput | Prisma.SortOrder
+  approved_by_id?: Prisma.SortOrderInput | Prisma.SortOrder
   post_date?: Prisma.SortOrderInput | Prisma.SortOrder
   post_deadline?: Prisma.SortOrder
-  post_type?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
+  approved_by?: Prisma.UserOrderByWithRelationInput
+  tags?: Prisma.PostTagOrderByRelationAggregateInput
 }
 
 export type PostWhereUniqueInput = Prisma.AtLeast<{
@@ -365,45 +481,71 @@ export type PostWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.PostWhereInput | Prisma.PostWhereInput[]
   post_title?: Prisma.StringFilter<"Post"> | string
   post_description?: Prisma.StringNullableFilter<"Post"> | string | null
-  post_needs_video_smm?: Prisma.BoolFilter<"Post"> | boolean
-  post_needs_video_maker?: Prisma.BoolFilter<"Post"> | boolean
-  post_needs_text?: Prisma.BoolFilter<"Post"> | boolean
-  post_needs_photogallery?: Prisma.BoolFilter<"Post"> | boolean
+  post_status?: Prisma.StringFilter<"Post"> | string
+  tz_link?: Prisma.StringNullableFilter<"Post"> | string | null
+  is_published?: Prisma.BoolFilter<"Post"> | boolean
+  post_needs_mini_video_smm?: Prisma.BoolFilter<"Post"> | boolean
+  post_needs_video?: Prisma.BoolFilter<"Post"> | boolean
   post_needs_cover_photo?: Prisma.BoolFilter<"Post"> | boolean
   post_needs_photo_cards?: Prisma.BoolFilter<"Post"> | boolean
-  post_done_link_video_smm?: Prisma.StringNullableFilter<"Post"> | string | null
-  post_done_link_video_maker?: Prisma.StringNullableFilter<"Post"> | string | null
-  post_done_link_text?: Prisma.StringNullableFilter<"Post"> | string | null
-  post_done_link_photogallery?: Prisma.StringNullableFilter<"Post"> | string | null
+  post_needs_photogallery?: Prisma.BoolFilter<"Post"> | boolean
+  post_needs_mini_gallery?: Prisma.BoolFilter<"Post"> | boolean
+  post_needs_text?: Prisma.BoolFilter<"Post"> | boolean
+  post_done_link_mini_video_smm?: Prisma.StringNullableFilter<"Post"> | string | null
+  post_done_link_video?: Prisma.StringNullableFilter<"Post"> | string | null
   post_done_link_cover_photo?: Prisma.StringNullableFilter<"Post"> | string | null
   post_done_link_photo_cards?: Prisma.StringNullableFilter<"Post"> | string | null
+  post_done_link_photogallery?: Prisma.StringNullableFilter<"Post"> | string | null
+  post_done_link_mini_gallery?: Prisma.StringNullableFilter<"Post"> | string | null
+  post_done_link_text?: Prisma.StringNullableFilter<"Post"> | string | null
+  post_feedback_mini_video_smm?: Prisma.StringNullableFilter<"Post"> | string | null
+  post_feedback_video?: Prisma.StringNullableFilter<"Post"> | string | null
+  post_feedback_cover_photo?: Prisma.StringNullableFilter<"Post"> | string | null
+  post_feedback_photo_cards?: Prisma.StringNullableFilter<"Post"> | string | null
+  post_feedback_photogallery?: Prisma.StringNullableFilter<"Post"> | string | null
+  post_feedback_mini_gallery?: Prisma.StringNullableFilter<"Post"> | string | null
+  post_feedback_text?: Prisma.StringNullableFilter<"Post"> | string | null
   responsible_person_id?: Prisma.IntNullableFilter<"Post"> | number | null
+  approved_by_id?: Prisma.IntNullableFilter<"Post"> | number | null
   post_date?: Prisma.DateTimeNullableFilter<"Post"> | Date | string | null
   post_deadline?: Prisma.DateTimeFilter<"Post"> | Date | string
-  post_type?: Prisma.StringFilter<"Post"> | string
   user?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
+  approved_by?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
+  tags?: Prisma.PostTagListRelationFilter
 }, "post_id">
 
 export type PostOrderByWithAggregationInput = {
   post_id?: Prisma.SortOrder
   post_title?: Prisma.SortOrder
   post_description?: Prisma.SortOrderInput | Prisma.SortOrder
-  post_needs_video_smm?: Prisma.SortOrder
-  post_needs_video_maker?: Prisma.SortOrder
-  post_needs_text?: Prisma.SortOrder
-  post_needs_photogallery?: Prisma.SortOrder
+  post_status?: Prisma.SortOrder
+  tz_link?: Prisma.SortOrderInput | Prisma.SortOrder
+  is_published?: Prisma.SortOrder
+  post_needs_mini_video_smm?: Prisma.SortOrder
+  post_needs_video?: Prisma.SortOrder
   post_needs_cover_photo?: Prisma.SortOrder
   post_needs_photo_cards?: Prisma.SortOrder
-  post_done_link_video_smm?: Prisma.SortOrderInput | Prisma.SortOrder
-  post_done_link_video_maker?: Prisma.SortOrderInput | Prisma.SortOrder
-  post_done_link_text?: Prisma.SortOrderInput | Prisma.SortOrder
-  post_done_link_photogallery?: Prisma.SortOrderInput | Prisma.SortOrder
+  post_needs_photogallery?: Prisma.SortOrder
+  post_needs_mini_gallery?: Prisma.SortOrder
+  post_needs_text?: Prisma.SortOrder
+  post_done_link_mini_video_smm?: Prisma.SortOrderInput | Prisma.SortOrder
+  post_done_link_video?: Prisma.SortOrderInput | Prisma.SortOrder
   post_done_link_cover_photo?: Prisma.SortOrderInput | Prisma.SortOrder
   post_done_link_photo_cards?: Prisma.SortOrderInput | Prisma.SortOrder
+  post_done_link_photogallery?: Prisma.SortOrderInput | Prisma.SortOrder
+  post_done_link_mini_gallery?: Prisma.SortOrderInput | Prisma.SortOrder
+  post_done_link_text?: Prisma.SortOrderInput | Prisma.SortOrder
+  post_feedback_mini_video_smm?: Prisma.SortOrderInput | Prisma.SortOrder
+  post_feedback_video?: Prisma.SortOrderInput | Prisma.SortOrder
+  post_feedback_cover_photo?: Prisma.SortOrderInput | Prisma.SortOrder
+  post_feedback_photo_cards?: Prisma.SortOrderInput | Prisma.SortOrder
+  post_feedback_photogallery?: Prisma.SortOrderInput | Prisma.SortOrder
+  post_feedback_mini_gallery?: Prisma.SortOrderInput | Prisma.SortOrder
+  post_feedback_text?: Prisma.SortOrderInput | Prisma.SortOrder
   responsible_person_id?: Prisma.SortOrderInput | Prisma.SortOrder
+  approved_by_id?: Prisma.SortOrderInput | Prisma.SortOrder
   post_date?: Prisma.SortOrderInput | Prisma.SortOrder
   post_deadline?: Prisma.SortOrder
-  post_type?: Prisma.SortOrder
   _count?: Prisma.PostCountOrderByAggregateInput
   _avg?: Prisma.PostAvgOrderByAggregateInput
   _max?: Prisma.PostMaxOrderByAggregateInput
@@ -418,172 +560,271 @@ export type PostScalarWhereWithAggregatesInput = {
   post_id?: Prisma.IntWithAggregatesFilter<"Post"> | number
   post_title?: Prisma.StringWithAggregatesFilter<"Post"> | string
   post_description?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
-  post_needs_video_smm?: Prisma.BoolWithAggregatesFilter<"Post"> | boolean
-  post_needs_video_maker?: Prisma.BoolWithAggregatesFilter<"Post"> | boolean
-  post_needs_text?: Prisma.BoolWithAggregatesFilter<"Post"> | boolean
-  post_needs_photogallery?: Prisma.BoolWithAggregatesFilter<"Post"> | boolean
+  post_status?: Prisma.StringWithAggregatesFilter<"Post"> | string
+  tz_link?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
+  is_published?: Prisma.BoolWithAggregatesFilter<"Post"> | boolean
+  post_needs_mini_video_smm?: Prisma.BoolWithAggregatesFilter<"Post"> | boolean
+  post_needs_video?: Prisma.BoolWithAggregatesFilter<"Post"> | boolean
   post_needs_cover_photo?: Prisma.BoolWithAggregatesFilter<"Post"> | boolean
   post_needs_photo_cards?: Prisma.BoolWithAggregatesFilter<"Post"> | boolean
-  post_done_link_video_smm?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
-  post_done_link_video_maker?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
-  post_done_link_text?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
-  post_done_link_photogallery?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
+  post_needs_photogallery?: Prisma.BoolWithAggregatesFilter<"Post"> | boolean
+  post_needs_mini_gallery?: Prisma.BoolWithAggregatesFilter<"Post"> | boolean
+  post_needs_text?: Prisma.BoolWithAggregatesFilter<"Post"> | boolean
+  post_done_link_mini_video_smm?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
+  post_done_link_video?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
   post_done_link_cover_photo?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
   post_done_link_photo_cards?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
+  post_done_link_photogallery?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
+  post_done_link_mini_gallery?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
+  post_done_link_text?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
+  post_feedback_mini_video_smm?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
+  post_feedback_video?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
+  post_feedback_cover_photo?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
+  post_feedback_photo_cards?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
+  post_feedback_photogallery?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
+  post_feedback_mini_gallery?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
+  post_feedback_text?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
   responsible_person_id?: Prisma.IntNullableWithAggregatesFilter<"Post"> | number | null
+  approved_by_id?: Prisma.IntNullableWithAggregatesFilter<"Post"> | number | null
   post_date?: Prisma.DateTimeNullableWithAggregatesFilter<"Post"> | Date | string | null
   post_deadline?: Prisma.DateTimeWithAggregatesFilter<"Post"> | Date | string
-  post_type?: Prisma.StringWithAggregatesFilter<"Post"> | string
 }
 
 export type PostCreateInput = {
   post_title: string
   post_description?: string | null
-  post_needs_video_smm: boolean
-  post_needs_video_maker: boolean
-  post_needs_text: boolean
-  post_needs_photogallery: boolean
-  post_needs_cover_photo: boolean
-  post_needs_photo_cards: boolean
-  post_done_link_video_smm?: string | null
-  post_done_link_video_maker?: string | null
-  post_done_link_text?: string | null
-  post_done_link_photogallery?: string | null
+  post_status?: string
+  tz_link?: string | null
+  is_published?: boolean
+  post_needs_mini_video_smm?: boolean
+  post_needs_video?: boolean
+  post_needs_cover_photo?: boolean
+  post_needs_photo_cards?: boolean
+  post_needs_photogallery?: boolean
+  post_needs_mini_gallery?: boolean
+  post_needs_text?: boolean
+  post_done_link_mini_video_smm?: string | null
+  post_done_link_video?: string | null
   post_done_link_cover_photo?: string | null
   post_done_link_photo_cards?: string | null
+  post_done_link_photogallery?: string | null
+  post_done_link_mini_gallery?: string | null
+  post_done_link_text?: string | null
+  post_feedback_mini_video_smm?: string | null
+  post_feedback_video?: string | null
+  post_feedback_cover_photo?: string | null
+  post_feedback_photo_cards?: string | null
+  post_feedback_photogallery?: string | null
+  post_feedback_mini_gallery?: string | null
+  post_feedback_text?: string | null
   post_date?: Date | string | null
   post_deadline: Date | string
-  post_type: string
   user?: Prisma.UserCreateNestedOneWithoutPostsInput
+  approved_by?: Prisma.UserCreateNestedOneWithoutApproved_postsInput
+  tags?: Prisma.PostTagCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateInput = {
   post_id?: number
   post_title: string
   post_description?: string | null
-  post_needs_video_smm: boolean
-  post_needs_video_maker: boolean
-  post_needs_text: boolean
-  post_needs_photogallery: boolean
-  post_needs_cover_photo: boolean
-  post_needs_photo_cards: boolean
-  post_done_link_video_smm?: string | null
-  post_done_link_video_maker?: string | null
-  post_done_link_text?: string | null
-  post_done_link_photogallery?: string | null
+  post_status?: string
+  tz_link?: string | null
+  is_published?: boolean
+  post_needs_mini_video_smm?: boolean
+  post_needs_video?: boolean
+  post_needs_cover_photo?: boolean
+  post_needs_photo_cards?: boolean
+  post_needs_photogallery?: boolean
+  post_needs_mini_gallery?: boolean
+  post_needs_text?: boolean
+  post_done_link_mini_video_smm?: string | null
+  post_done_link_video?: string | null
   post_done_link_cover_photo?: string | null
   post_done_link_photo_cards?: string | null
+  post_done_link_photogallery?: string | null
+  post_done_link_mini_gallery?: string | null
+  post_done_link_text?: string | null
+  post_feedback_mini_video_smm?: string | null
+  post_feedback_video?: string | null
+  post_feedback_cover_photo?: string | null
+  post_feedback_photo_cards?: string | null
+  post_feedback_photogallery?: string | null
+  post_feedback_mini_gallery?: string | null
+  post_feedback_text?: string | null
   responsible_person_id?: number | null
+  approved_by_id?: number | null
   post_date?: Date | string | null
   post_deadline: Date | string
-  post_type: string
+  tags?: Prisma.PostTagUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostUpdateInput = {
   post_title?: Prisma.StringFieldUpdateOperationsInput | string
   post_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  post_needs_video_smm?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_needs_video_maker?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_needs_text?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_needs_photogallery?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_status?: Prisma.StringFieldUpdateOperationsInput | string
+  tz_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  is_published?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_mini_video_smm?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_video?: Prisma.BoolFieldUpdateOperationsInput | boolean
   post_needs_cover_photo?: Prisma.BoolFieldUpdateOperationsInput | boolean
   post_needs_photo_cards?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_done_link_video_smm?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  post_done_link_video_maker?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  post_done_link_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  post_done_link_photogallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_needs_photogallery?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_mini_gallery?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_text?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_done_link_mini_video_smm?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_video?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   post_done_link_cover_photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   post_done_link_photo_cards?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_photogallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_mini_gallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_mini_video_smm?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_video?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_cover_photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_photo_cards?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_photogallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_mini_gallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   post_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   post_deadline?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  post_type?: Prisma.StringFieldUpdateOperationsInput | string
   user?: Prisma.UserUpdateOneWithoutPostsNestedInput
+  approved_by?: Prisma.UserUpdateOneWithoutApproved_postsNestedInput
+  tags?: Prisma.PostTagUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateInput = {
   post_id?: Prisma.IntFieldUpdateOperationsInput | number
   post_title?: Prisma.StringFieldUpdateOperationsInput | string
   post_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  post_needs_video_smm?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_needs_video_maker?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_needs_text?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_needs_photogallery?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_status?: Prisma.StringFieldUpdateOperationsInput | string
+  tz_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  is_published?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_mini_video_smm?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_video?: Prisma.BoolFieldUpdateOperationsInput | boolean
   post_needs_cover_photo?: Prisma.BoolFieldUpdateOperationsInput | boolean
   post_needs_photo_cards?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_done_link_video_smm?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  post_done_link_video_maker?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  post_done_link_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  post_done_link_photogallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_needs_photogallery?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_mini_gallery?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_text?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_done_link_mini_video_smm?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_video?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   post_done_link_cover_photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   post_done_link_photo_cards?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_photogallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_mini_gallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_mini_video_smm?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_video?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_cover_photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_photo_cards?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_photogallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_mini_gallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   responsible_person_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  approved_by_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   post_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   post_deadline?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  post_type?: Prisma.StringFieldUpdateOperationsInput | string
+  tags?: Prisma.PostTagUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostCreateManyInput = {
   post_id?: number
   post_title: string
   post_description?: string | null
-  post_needs_video_smm: boolean
-  post_needs_video_maker: boolean
-  post_needs_text: boolean
-  post_needs_photogallery: boolean
-  post_needs_cover_photo: boolean
-  post_needs_photo_cards: boolean
-  post_done_link_video_smm?: string | null
-  post_done_link_video_maker?: string | null
-  post_done_link_text?: string | null
-  post_done_link_photogallery?: string | null
+  post_status?: string
+  tz_link?: string | null
+  is_published?: boolean
+  post_needs_mini_video_smm?: boolean
+  post_needs_video?: boolean
+  post_needs_cover_photo?: boolean
+  post_needs_photo_cards?: boolean
+  post_needs_photogallery?: boolean
+  post_needs_mini_gallery?: boolean
+  post_needs_text?: boolean
+  post_done_link_mini_video_smm?: string | null
+  post_done_link_video?: string | null
   post_done_link_cover_photo?: string | null
   post_done_link_photo_cards?: string | null
+  post_done_link_photogallery?: string | null
+  post_done_link_mini_gallery?: string | null
+  post_done_link_text?: string | null
+  post_feedback_mini_video_smm?: string | null
+  post_feedback_video?: string | null
+  post_feedback_cover_photo?: string | null
+  post_feedback_photo_cards?: string | null
+  post_feedback_photogallery?: string | null
+  post_feedback_mini_gallery?: string | null
+  post_feedback_text?: string | null
   responsible_person_id?: number | null
+  approved_by_id?: number | null
   post_date?: Date | string | null
   post_deadline: Date | string
-  post_type: string
 }
 
 export type PostUpdateManyMutationInput = {
   post_title?: Prisma.StringFieldUpdateOperationsInput | string
   post_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  post_needs_video_smm?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_needs_video_maker?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_needs_text?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_needs_photogallery?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_status?: Prisma.StringFieldUpdateOperationsInput | string
+  tz_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  is_published?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_mini_video_smm?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_video?: Prisma.BoolFieldUpdateOperationsInput | boolean
   post_needs_cover_photo?: Prisma.BoolFieldUpdateOperationsInput | boolean
   post_needs_photo_cards?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_done_link_video_smm?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  post_done_link_video_maker?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  post_done_link_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  post_done_link_photogallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_needs_photogallery?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_mini_gallery?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_text?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_done_link_mini_video_smm?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_video?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   post_done_link_cover_photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   post_done_link_photo_cards?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_photogallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_mini_gallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_mini_video_smm?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_video?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_cover_photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_photo_cards?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_photogallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_mini_gallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   post_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   post_deadline?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  post_type?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type PostUncheckedUpdateManyInput = {
   post_id?: Prisma.IntFieldUpdateOperationsInput | number
   post_title?: Prisma.StringFieldUpdateOperationsInput | string
   post_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  post_needs_video_smm?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_needs_video_maker?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_needs_text?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_needs_photogallery?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_status?: Prisma.StringFieldUpdateOperationsInput | string
+  tz_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  is_published?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_mini_video_smm?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_video?: Prisma.BoolFieldUpdateOperationsInput | boolean
   post_needs_cover_photo?: Prisma.BoolFieldUpdateOperationsInput | boolean
   post_needs_photo_cards?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_done_link_video_smm?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  post_done_link_video_maker?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  post_done_link_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  post_done_link_photogallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_needs_photogallery?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_mini_gallery?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_text?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_done_link_mini_video_smm?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_video?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   post_done_link_cover_photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   post_done_link_photo_cards?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_photogallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_mini_gallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_mini_video_smm?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_video?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_cover_photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_photo_cards?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_photogallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_mini_gallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   responsible_person_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  approved_by_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   post_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   post_deadline?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  post_type?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type PostListRelationFilter = {
@@ -596,80 +837,123 @@ export type PostOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
+export type PostScalarRelationFilter = {
+  is?: Prisma.PostWhereInput
+  isNot?: Prisma.PostWhereInput
+}
+
 export type PostCountOrderByAggregateInput = {
   post_id?: Prisma.SortOrder
   post_title?: Prisma.SortOrder
   post_description?: Prisma.SortOrder
-  post_needs_video_smm?: Prisma.SortOrder
-  post_needs_video_maker?: Prisma.SortOrder
-  post_needs_text?: Prisma.SortOrder
-  post_needs_photogallery?: Prisma.SortOrder
+  post_status?: Prisma.SortOrder
+  tz_link?: Prisma.SortOrder
+  is_published?: Prisma.SortOrder
+  post_needs_mini_video_smm?: Prisma.SortOrder
+  post_needs_video?: Prisma.SortOrder
   post_needs_cover_photo?: Prisma.SortOrder
   post_needs_photo_cards?: Prisma.SortOrder
-  post_done_link_video_smm?: Prisma.SortOrder
-  post_done_link_video_maker?: Prisma.SortOrder
-  post_done_link_text?: Prisma.SortOrder
-  post_done_link_photogallery?: Prisma.SortOrder
+  post_needs_photogallery?: Prisma.SortOrder
+  post_needs_mini_gallery?: Prisma.SortOrder
+  post_needs_text?: Prisma.SortOrder
+  post_done_link_mini_video_smm?: Prisma.SortOrder
+  post_done_link_video?: Prisma.SortOrder
   post_done_link_cover_photo?: Prisma.SortOrder
   post_done_link_photo_cards?: Prisma.SortOrder
+  post_done_link_photogallery?: Prisma.SortOrder
+  post_done_link_mini_gallery?: Prisma.SortOrder
+  post_done_link_text?: Prisma.SortOrder
+  post_feedback_mini_video_smm?: Prisma.SortOrder
+  post_feedback_video?: Prisma.SortOrder
+  post_feedback_cover_photo?: Prisma.SortOrder
+  post_feedback_photo_cards?: Prisma.SortOrder
+  post_feedback_photogallery?: Prisma.SortOrder
+  post_feedback_mini_gallery?: Prisma.SortOrder
+  post_feedback_text?: Prisma.SortOrder
   responsible_person_id?: Prisma.SortOrder
+  approved_by_id?: Prisma.SortOrder
   post_date?: Prisma.SortOrder
   post_deadline?: Prisma.SortOrder
-  post_type?: Prisma.SortOrder
 }
 
 export type PostAvgOrderByAggregateInput = {
   post_id?: Prisma.SortOrder
   responsible_person_id?: Prisma.SortOrder
+  approved_by_id?: Prisma.SortOrder
 }
 
 export type PostMaxOrderByAggregateInput = {
   post_id?: Prisma.SortOrder
   post_title?: Prisma.SortOrder
   post_description?: Prisma.SortOrder
-  post_needs_video_smm?: Prisma.SortOrder
-  post_needs_video_maker?: Prisma.SortOrder
-  post_needs_text?: Prisma.SortOrder
-  post_needs_photogallery?: Prisma.SortOrder
+  post_status?: Prisma.SortOrder
+  tz_link?: Prisma.SortOrder
+  is_published?: Prisma.SortOrder
+  post_needs_mini_video_smm?: Prisma.SortOrder
+  post_needs_video?: Prisma.SortOrder
   post_needs_cover_photo?: Prisma.SortOrder
   post_needs_photo_cards?: Prisma.SortOrder
-  post_done_link_video_smm?: Prisma.SortOrder
-  post_done_link_video_maker?: Prisma.SortOrder
-  post_done_link_text?: Prisma.SortOrder
-  post_done_link_photogallery?: Prisma.SortOrder
+  post_needs_photogallery?: Prisma.SortOrder
+  post_needs_mini_gallery?: Prisma.SortOrder
+  post_needs_text?: Prisma.SortOrder
+  post_done_link_mini_video_smm?: Prisma.SortOrder
+  post_done_link_video?: Prisma.SortOrder
   post_done_link_cover_photo?: Prisma.SortOrder
   post_done_link_photo_cards?: Prisma.SortOrder
+  post_done_link_photogallery?: Prisma.SortOrder
+  post_done_link_mini_gallery?: Prisma.SortOrder
+  post_done_link_text?: Prisma.SortOrder
+  post_feedback_mini_video_smm?: Prisma.SortOrder
+  post_feedback_video?: Prisma.SortOrder
+  post_feedback_cover_photo?: Prisma.SortOrder
+  post_feedback_photo_cards?: Prisma.SortOrder
+  post_feedback_photogallery?: Prisma.SortOrder
+  post_feedback_mini_gallery?: Prisma.SortOrder
+  post_feedback_text?: Prisma.SortOrder
   responsible_person_id?: Prisma.SortOrder
+  approved_by_id?: Prisma.SortOrder
   post_date?: Prisma.SortOrder
   post_deadline?: Prisma.SortOrder
-  post_type?: Prisma.SortOrder
 }
 
 export type PostMinOrderByAggregateInput = {
   post_id?: Prisma.SortOrder
   post_title?: Prisma.SortOrder
   post_description?: Prisma.SortOrder
-  post_needs_video_smm?: Prisma.SortOrder
-  post_needs_video_maker?: Prisma.SortOrder
-  post_needs_text?: Prisma.SortOrder
-  post_needs_photogallery?: Prisma.SortOrder
+  post_status?: Prisma.SortOrder
+  tz_link?: Prisma.SortOrder
+  is_published?: Prisma.SortOrder
+  post_needs_mini_video_smm?: Prisma.SortOrder
+  post_needs_video?: Prisma.SortOrder
   post_needs_cover_photo?: Prisma.SortOrder
   post_needs_photo_cards?: Prisma.SortOrder
-  post_done_link_video_smm?: Prisma.SortOrder
-  post_done_link_video_maker?: Prisma.SortOrder
-  post_done_link_text?: Prisma.SortOrder
-  post_done_link_photogallery?: Prisma.SortOrder
+  post_needs_photogallery?: Prisma.SortOrder
+  post_needs_mini_gallery?: Prisma.SortOrder
+  post_needs_text?: Prisma.SortOrder
+  post_done_link_mini_video_smm?: Prisma.SortOrder
+  post_done_link_video?: Prisma.SortOrder
   post_done_link_cover_photo?: Prisma.SortOrder
   post_done_link_photo_cards?: Prisma.SortOrder
+  post_done_link_photogallery?: Prisma.SortOrder
+  post_done_link_mini_gallery?: Prisma.SortOrder
+  post_done_link_text?: Prisma.SortOrder
+  post_feedback_mini_video_smm?: Prisma.SortOrder
+  post_feedback_video?: Prisma.SortOrder
+  post_feedback_cover_photo?: Prisma.SortOrder
+  post_feedback_photo_cards?: Prisma.SortOrder
+  post_feedback_photogallery?: Prisma.SortOrder
+  post_feedback_mini_gallery?: Prisma.SortOrder
+  post_feedback_text?: Prisma.SortOrder
   responsible_person_id?: Prisma.SortOrder
+  approved_by_id?: Prisma.SortOrder
   post_date?: Prisma.SortOrder
   post_deadline?: Prisma.SortOrder
-  post_type?: Prisma.SortOrder
 }
 
 export type PostSumOrderByAggregateInput = {
   post_id?: Prisma.SortOrder
   responsible_person_id?: Prisma.SortOrder
+  approved_by_id?: Prisma.SortOrder
 }
 
 export type PostCreateNestedManyWithoutUserInput = {
@@ -679,10 +963,24 @@ export type PostCreateNestedManyWithoutUserInput = {
   connect?: Prisma.PostWhereUniqueInput | Prisma.PostWhereUniqueInput[]
 }
 
+export type PostCreateNestedManyWithoutApproved_byInput = {
+  create?: Prisma.XOR<Prisma.PostCreateWithoutApproved_byInput, Prisma.PostUncheckedCreateWithoutApproved_byInput> | Prisma.PostCreateWithoutApproved_byInput[] | Prisma.PostUncheckedCreateWithoutApproved_byInput[]
+  connectOrCreate?: Prisma.PostCreateOrConnectWithoutApproved_byInput | Prisma.PostCreateOrConnectWithoutApproved_byInput[]
+  createMany?: Prisma.PostCreateManyApproved_byInputEnvelope
+  connect?: Prisma.PostWhereUniqueInput | Prisma.PostWhereUniqueInput[]
+}
+
 export type PostUncheckedCreateNestedManyWithoutUserInput = {
   create?: Prisma.XOR<Prisma.PostCreateWithoutUserInput, Prisma.PostUncheckedCreateWithoutUserInput> | Prisma.PostCreateWithoutUserInput[] | Prisma.PostUncheckedCreateWithoutUserInput[]
   connectOrCreate?: Prisma.PostCreateOrConnectWithoutUserInput | Prisma.PostCreateOrConnectWithoutUserInput[]
   createMany?: Prisma.PostCreateManyUserInputEnvelope
+  connect?: Prisma.PostWhereUniqueInput | Prisma.PostWhereUniqueInput[]
+}
+
+export type PostUncheckedCreateNestedManyWithoutApproved_byInput = {
+  create?: Prisma.XOR<Prisma.PostCreateWithoutApproved_byInput, Prisma.PostUncheckedCreateWithoutApproved_byInput> | Prisma.PostCreateWithoutApproved_byInput[] | Prisma.PostUncheckedCreateWithoutApproved_byInput[]
+  connectOrCreate?: Prisma.PostCreateOrConnectWithoutApproved_byInput | Prisma.PostCreateOrConnectWithoutApproved_byInput[]
+  createMany?: Prisma.PostCreateManyApproved_byInputEnvelope
   connect?: Prisma.PostWhereUniqueInput | Prisma.PostWhereUniqueInput[]
 }
 
@@ -700,6 +998,20 @@ export type PostUpdateManyWithoutUserNestedInput = {
   deleteMany?: Prisma.PostScalarWhereInput | Prisma.PostScalarWhereInput[]
 }
 
+export type PostUpdateManyWithoutApproved_byNestedInput = {
+  create?: Prisma.XOR<Prisma.PostCreateWithoutApproved_byInput, Prisma.PostUncheckedCreateWithoutApproved_byInput> | Prisma.PostCreateWithoutApproved_byInput[] | Prisma.PostUncheckedCreateWithoutApproved_byInput[]
+  connectOrCreate?: Prisma.PostCreateOrConnectWithoutApproved_byInput | Prisma.PostCreateOrConnectWithoutApproved_byInput[]
+  upsert?: Prisma.PostUpsertWithWhereUniqueWithoutApproved_byInput | Prisma.PostUpsertWithWhereUniqueWithoutApproved_byInput[]
+  createMany?: Prisma.PostCreateManyApproved_byInputEnvelope
+  set?: Prisma.PostWhereUniqueInput | Prisma.PostWhereUniqueInput[]
+  disconnect?: Prisma.PostWhereUniqueInput | Prisma.PostWhereUniqueInput[]
+  delete?: Prisma.PostWhereUniqueInput | Prisma.PostWhereUniqueInput[]
+  connect?: Prisma.PostWhereUniqueInput | Prisma.PostWhereUniqueInput[]
+  update?: Prisma.PostUpdateWithWhereUniqueWithoutApproved_byInput | Prisma.PostUpdateWithWhereUniqueWithoutApproved_byInput[]
+  updateMany?: Prisma.PostUpdateManyWithWhereWithoutApproved_byInput | Prisma.PostUpdateManyWithWhereWithoutApproved_byInput[]
+  deleteMany?: Prisma.PostScalarWhereInput | Prisma.PostScalarWhereInput[]
+}
+
 export type PostUncheckedUpdateManyWithoutUserNestedInput = {
   create?: Prisma.XOR<Prisma.PostCreateWithoutUserInput, Prisma.PostUncheckedCreateWithoutUserInput> | Prisma.PostCreateWithoutUserInput[] | Prisma.PostUncheckedCreateWithoutUserInput[]
   connectOrCreate?: Prisma.PostCreateOrConnectWithoutUserInput | Prisma.PostCreateOrConnectWithoutUserInput[]
@@ -714,16 +1026,36 @@ export type PostUncheckedUpdateManyWithoutUserNestedInput = {
   deleteMany?: Prisma.PostScalarWhereInput | Prisma.PostScalarWhereInput[]
 }
 
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
+export type PostUncheckedUpdateManyWithoutApproved_byNestedInput = {
+  create?: Prisma.XOR<Prisma.PostCreateWithoutApproved_byInput, Prisma.PostUncheckedCreateWithoutApproved_byInput> | Prisma.PostCreateWithoutApproved_byInput[] | Prisma.PostUncheckedCreateWithoutApproved_byInput[]
+  connectOrCreate?: Prisma.PostCreateOrConnectWithoutApproved_byInput | Prisma.PostCreateOrConnectWithoutApproved_byInput[]
+  upsert?: Prisma.PostUpsertWithWhereUniqueWithoutApproved_byInput | Prisma.PostUpsertWithWhereUniqueWithoutApproved_byInput[]
+  createMany?: Prisma.PostCreateManyApproved_byInputEnvelope
+  set?: Prisma.PostWhereUniqueInput | Prisma.PostWhereUniqueInput[]
+  disconnect?: Prisma.PostWhereUniqueInput | Prisma.PostWhereUniqueInput[]
+  delete?: Prisma.PostWhereUniqueInput | Prisma.PostWhereUniqueInput[]
+  connect?: Prisma.PostWhereUniqueInput | Prisma.PostWhereUniqueInput[]
+  update?: Prisma.PostUpdateWithWhereUniqueWithoutApproved_byInput | Prisma.PostUpdateWithWhereUniqueWithoutApproved_byInput[]
+  updateMany?: Prisma.PostUpdateManyWithWhereWithoutApproved_byInput | Prisma.PostUpdateManyWithWhereWithoutApproved_byInput[]
+  deleteMany?: Prisma.PostScalarWhereInput | Prisma.PostScalarWhereInput[]
+}
+
+export type PostCreateNestedOneWithoutTagsInput = {
+  create?: Prisma.XOR<Prisma.PostCreateWithoutTagsInput, Prisma.PostUncheckedCreateWithoutTagsInput>
+  connectOrCreate?: Prisma.PostCreateOrConnectWithoutTagsInput
+  connect?: Prisma.PostWhereUniqueInput
+}
+
+export type PostUpdateOneRequiredWithoutTagsNestedInput = {
+  create?: Prisma.XOR<Prisma.PostCreateWithoutTagsInput, Prisma.PostUncheckedCreateWithoutTagsInput>
+  connectOrCreate?: Prisma.PostCreateOrConnectWithoutTagsInput
+  upsert?: Prisma.PostUpsertWithoutTagsInput
+  connect?: Prisma.PostWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PostUpdateToOneWithWhereWithoutTagsInput, Prisma.PostUpdateWithoutTagsInput>, Prisma.PostUncheckedUpdateWithoutTagsInput>
 }
 
 export type NullableDateTimeFieldUpdateOperationsInput = {
   set?: Date | string | null
-}
-
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string
 }
 
 export type NullableIntFieldUpdateOperationsInput = {
@@ -737,42 +1069,68 @@ export type NullableIntFieldUpdateOperationsInput = {
 export type PostCreateWithoutUserInput = {
   post_title: string
   post_description?: string | null
-  post_needs_video_smm: boolean
-  post_needs_video_maker: boolean
-  post_needs_text: boolean
-  post_needs_photogallery: boolean
-  post_needs_cover_photo: boolean
-  post_needs_photo_cards: boolean
-  post_done_link_video_smm?: string | null
-  post_done_link_video_maker?: string | null
-  post_done_link_text?: string | null
-  post_done_link_photogallery?: string | null
+  post_status?: string
+  tz_link?: string | null
+  is_published?: boolean
+  post_needs_mini_video_smm?: boolean
+  post_needs_video?: boolean
+  post_needs_cover_photo?: boolean
+  post_needs_photo_cards?: boolean
+  post_needs_photogallery?: boolean
+  post_needs_mini_gallery?: boolean
+  post_needs_text?: boolean
+  post_done_link_mini_video_smm?: string | null
+  post_done_link_video?: string | null
   post_done_link_cover_photo?: string | null
   post_done_link_photo_cards?: string | null
+  post_done_link_photogallery?: string | null
+  post_done_link_mini_gallery?: string | null
+  post_done_link_text?: string | null
+  post_feedback_mini_video_smm?: string | null
+  post_feedback_video?: string | null
+  post_feedback_cover_photo?: string | null
+  post_feedback_photo_cards?: string | null
+  post_feedback_photogallery?: string | null
+  post_feedback_mini_gallery?: string | null
+  post_feedback_text?: string | null
   post_date?: Date | string | null
   post_deadline: Date | string
-  post_type: string
+  approved_by?: Prisma.UserCreateNestedOneWithoutApproved_postsInput
+  tags?: Prisma.PostTagCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutUserInput = {
   post_id?: number
   post_title: string
   post_description?: string | null
-  post_needs_video_smm: boolean
-  post_needs_video_maker: boolean
-  post_needs_text: boolean
-  post_needs_photogallery: boolean
-  post_needs_cover_photo: boolean
-  post_needs_photo_cards: boolean
-  post_done_link_video_smm?: string | null
-  post_done_link_video_maker?: string | null
-  post_done_link_text?: string | null
-  post_done_link_photogallery?: string | null
+  post_status?: string
+  tz_link?: string | null
+  is_published?: boolean
+  post_needs_mini_video_smm?: boolean
+  post_needs_video?: boolean
+  post_needs_cover_photo?: boolean
+  post_needs_photo_cards?: boolean
+  post_needs_photogallery?: boolean
+  post_needs_mini_gallery?: boolean
+  post_needs_text?: boolean
+  post_done_link_mini_video_smm?: string | null
+  post_done_link_video?: string | null
   post_done_link_cover_photo?: string | null
   post_done_link_photo_cards?: string | null
+  post_done_link_photogallery?: string | null
+  post_done_link_mini_gallery?: string | null
+  post_done_link_text?: string | null
+  post_feedback_mini_video_smm?: string | null
+  post_feedback_video?: string | null
+  post_feedback_cover_photo?: string | null
+  post_feedback_photo_cards?: string | null
+  post_feedback_photogallery?: string | null
+  post_feedback_mini_gallery?: string | null
+  post_feedback_text?: string | null
+  approved_by_id?: number | null
   post_date?: Date | string | null
   post_deadline: Date | string
-  post_type: string
+  tags?: Prisma.PostTagUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutUserInput = {
@@ -782,6 +1140,83 @@ export type PostCreateOrConnectWithoutUserInput = {
 
 export type PostCreateManyUserInputEnvelope = {
   data: Prisma.PostCreateManyUserInput | Prisma.PostCreateManyUserInput[]
+  skipDuplicates?: boolean
+}
+
+export type PostCreateWithoutApproved_byInput = {
+  post_title: string
+  post_description?: string | null
+  post_status?: string
+  tz_link?: string | null
+  is_published?: boolean
+  post_needs_mini_video_smm?: boolean
+  post_needs_video?: boolean
+  post_needs_cover_photo?: boolean
+  post_needs_photo_cards?: boolean
+  post_needs_photogallery?: boolean
+  post_needs_mini_gallery?: boolean
+  post_needs_text?: boolean
+  post_done_link_mini_video_smm?: string | null
+  post_done_link_video?: string | null
+  post_done_link_cover_photo?: string | null
+  post_done_link_photo_cards?: string | null
+  post_done_link_photogallery?: string | null
+  post_done_link_mini_gallery?: string | null
+  post_done_link_text?: string | null
+  post_feedback_mini_video_smm?: string | null
+  post_feedback_video?: string | null
+  post_feedback_cover_photo?: string | null
+  post_feedback_photo_cards?: string | null
+  post_feedback_photogallery?: string | null
+  post_feedback_mini_gallery?: string | null
+  post_feedback_text?: string | null
+  post_date?: Date | string | null
+  post_deadline: Date | string
+  user?: Prisma.UserCreateNestedOneWithoutPostsInput
+  tags?: Prisma.PostTagCreateNestedManyWithoutPostInput
+}
+
+export type PostUncheckedCreateWithoutApproved_byInput = {
+  post_id?: number
+  post_title: string
+  post_description?: string | null
+  post_status?: string
+  tz_link?: string | null
+  is_published?: boolean
+  post_needs_mini_video_smm?: boolean
+  post_needs_video?: boolean
+  post_needs_cover_photo?: boolean
+  post_needs_photo_cards?: boolean
+  post_needs_photogallery?: boolean
+  post_needs_mini_gallery?: boolean
+  post_needs_text?: boolean
+  post_done_link_mini_video_smm?: string | null
+  post_done_link_video?: string | null
+  post_done_link_cover_photo?: string | null
+  post_done_link_photo_cards?: string | null
+  post_done_link_photogallery?: string | null
+  post_done_link_mini_gallery?: string | null
+  post_done_link_text?: string | null
+  post_feedback_mini_video_smm?: string | null
+  post_feedback_video?: string | null
+  post_feedback_cover_photo?: string | null
+  post_feedback_photo_cards?: string | null
+  post_feedback_photogallery?: string | null
+  post_feedback_mini_gallery?: string | null
+  post_feedback_text?: string | null
+  responsible_person_id?: number | null
+  post_date?: Date | string | null
+  post_deadline: Date | string
+  tags?: Prisma.PostTagUncheckedCreateNestedManyWithoutPostInput
+}
+
+export type PostCreateOrConnectWithoutApproved_byInput = {
+  where: Prisma.PostWhereUniqueInput
+  create: Prisma.XOR<Prisma.PostCreateWithoutApproved_byInput, Prisma.PostUncheckedCreateWithoutApproved_byInput>
+}
+
+export type PostCreateManyApproved_byInputEnvelope = {
+  data: Prisma.PostCreateManyApproved_byInput | Prisma.PostCreateManyApproved_byInput[]
   skipDuplicates?: boolean
 }
 
@@ -808,236 +1243,698 @@ export type PostScalarWhereInput = {
   post_id?: Prisma.IntFilter<"Post"> | number
   post_title?: Prisma.StringFilter<"Post"> | string
   post_description?: Prisma.StringNullableFilter<"Post"> | string | null
-  post_needs_video_smm?: Prisma.BoolFilter<"Post"> | boolean
-  post_needs_video_maker?: Prisma.BoolFilter<"Post"> | boolean
-  post_needs_text?: Prisma.BoolFilter<"Post"> | boolean
-  post_needs_photogallery?: Prisma.BoolFilter<"Post"> | boolean
+  post_status?: Prisma.StringFilter<"Post"> | string
+  tz_link?: Prisma.StringNullableFilter<"Post"> | string | null
+  is_published?: Prisma.BoolFilter<"Post"> | boolean
+  post_needs_mini_video_smm?: Prisma.BoolFilter<"Post"> | boolean
+  post_needs_video?: Prisma.BoolFilter<"Post"> | boolean
   post_needs_cover_photo?: Prisma.BoolFilter<"Post"> | boolean
   post_needs_photo_cards?: Prisma.BoolFilter<"Post"> | boolean
-  post_done_link_video_smm?: Prisma.StringNullableFilter<"Post"> | string | null
-  post_done_link_video_maker?: Prisma.StringNullableFilter<"Post"> | string | null
-  post_done_link_text?: Prisma.StringNullableFilter<"Post"> | string | null
-  post_done_link_photogallery?: Prisma.StringNullableFilter<"Post"> | string | null
+  post_needs_photogallery?: Prisma.BoolFilter<"Post"> | boolean
+  post_needs_mini_gallery?: Prisma.BoolFilter<"Post"> | boolean
+  post_needs_text?: Prisma.BoolFilter<"Post"> | boolean
+  post_done_link_mini_video_smm?: Prisma.StringNullableFilter<"Post"> | string | null
+  post_done_link_video?: Prisma.StringNullableFilter<"Post"> | string | null
   post_done_link_cover_photo?: Prisma.StringNullableFilter<"Post"> | string | null
   post_done_link_photo_cards?: Prisma.StringNullableFilter<"Post"> | string | null
+  post_done_link_photogallery?: Prisma.StringNullableFilter<"Post"> | string | null
+  post_done_link_mini_gallery?: Prisma.StringNullableFilter<"Post"> | string | null
+  post_done_link_text?: Prisma.StringNullableFilter<"Post"> | string | null
+  post_feedback_mini_video_smm?: Prisma.StringNullableFilter<"Post"> | string | null
+  post_feedback_video?: Prisma.StringNullableFilter<"Post"> | string | null
+  post_feedback_cover_photo?: Prisma.StringNullableFilter<"Post"> | string | null
+  post_feedback_photo_cards?: Prisma.StringNullableFilter<"Post"> | string | null
+  post_feedback_photogallery?: Prisma.StringNullableFilter<"Post"> | string | null
+  post_feedback_mini_gallery?: Prisma.StringNullableFilter<"Post"> | string | null
+  post_feedback_text?: Prisma.StringNullableFilter<"Post"> | string | null
   responsible_person_id?: Prisma.IntNullableFilter<"Post"> | number | null
+  approved_by_id?: Prisma.IntNullableFilter<"Post"> | number | null
   post_date?: Prisma.DateTimeNullableFilter<"Post"> | Date | string | null
   post_deadline?: Prisma.DateTimeFilter<"Post"> | Date | string
-  post_type?: Prisma.StringFilter<"Post"> | string
+}
+
+export type PostUpsertWithWhereUniqueWithoutApproved_byInput = {
+  where: Prisma.PostWhereUniqueInput
+  update: Prisma.XOR<Prisma.PostUpdateWithoutApproved_byInput, Prisma.PostUncheckedUpdateWithoutApproved_byInput>
+  create: Prisma.XOR<Prisma.PostCreateWithoutApproved_byInput, Prisma.PostUncheckedCreateWithoutApproved_byInput>
+}
+
+export type PostUpdateWithWhereUniqueWithoutApproved_byInput = {
+  where: Prisma.PostWhereUniqueInput
+  data: Prisma.XOR<Prisma.PostUpdateWithoutApproved_byInput, Prisma.PostUncheckedUpdateWithoutApproved_byInput>
+}
+
+export type PostUpdateManyWithWhereWithoutApproved_byInput = {
+  where: Prisma.PostScalarWhereInput
+  data: Prisma.XOR<Prisma.PostUpdateManyMutationInput, Prisma.PostUncheckedUpdateManyWithoutApproved_byInput>
+}
+
+export type PostCreateWithoutTagsInput = {
+  post_title: string
+  post_description?: string | null
+  post_status?: string
+  tz_link?: string | null
+  is_published?: boolean
+  post_needs_mini_video_smm?: boolean
+  post_needs_video?: boolean
+  post_needs_cover_photo?: boolean
+  post_needs_photo_cards?: boolean
+  post_needs_photogallery?: boolean
+  post_needs_mini_gallery?: boolean
+  post_needs_text?: boolean
+  post_done_link_mini_video_smm?: string | null
+  post_done_link_video?: string | null
+  post_done_link_cover_photo?: string | null
+  post_done_link_photo_cards?: string | null
+  post_done_link_photogallery?: string | null
+  post_done_link_mini_gallery?: string | null
+  post_done_link_text?: string | null
+  post_feedback_mini_video_smm?: string | null
+  post_feedback_video?: string | null
+  post_feedback_cover_photo?: string | null
+  post_feedback_photo_cards?: string | null
+  post_feedback_photogallery?: string | null
+  post_feedback_mini_gallery?: string | null
+  post_feedback_text?: string | null
+  post_date?: Date | string | null
+  post_deadline: Date | string
+  user?: Prisma.UserCreateNestedOneWithoutPostsInput
+  approved_by?: Prisma.UserCreateNestedOneWithoutApproved_postsInput
+}
+
+export type PostUncheckedCreateWithoutTagsInput = {
+  post_id?: number
+  post_title: string
+  post_description?: string | null
+  post_status?: string
+  tz_link?: string | null
+  is_published?: boolean
+  post_needs_mini_video_smm?: boolean
+  post_needs_video?: boolean
+  post_needs_cover_photo?: boolean
+  post_needs_photo_cards?: boolean
+  post_needs_photogallery?: boolean
+  post_needs_mini_gallery?: boolean
+  post_needs_text?: boolean
+  post_done_link_mini_video_smm?: string | null
+  post_done_link_video?: string | null
+  post_done_link_cover_photo?: string | null
+  post_done_link_photo_cards?: string | null
+  post_done_link_photogallery?: string | null
+  post_done_link_mini_gallery?: string | null
+  post_done_link_text?: string | null
+  post_feedback_mini_video_smm?: string | null
+  post_feedback_video?: string | null
+  post_feedback_cover_photo?: string | null
+  post_feedback_photo_cards?: string | null
+  post_feedback_photogallery?: string | null
+  post_feedback_mini_gallery?: string | null
+  post_feedback_text?: string | null
+  responsible_person_id?: number | null
+  approved_by_id?: number | null
+  post_date?: Date | string | null
+  post_deadline: Date | string
+}
+
+export type PostCreateOrConnectWithoutTagsInput = {
+  where: Prisma.PostWhereUniqueInput
+  create: Prisma.XOR<Prisma.PostCreateWithoutTagsInput, Prisma.PostUncheckedCreateWithoutTagsInput>
+}
+
+export type PostUpsertWithoutTagsInput = {
+  update: Prisma.XOR<Prisma.PostUpdateWithoutTagsInput, Prisma.PostUncheckedUpdateWithoutTagsInput>
+  create: Prisma.XOR<Prisma.PostCreateWithoutTagsInput, Prisma.PostUncheckedCreateWithoutTagsInput>
+  where?: Prisma.PostWhereInput
+}
+
+export type PostUpdateToOneWithWhereWithoutTagsInput = {
+  where?: Prisma.PostWhereInput
+  data: Prisma.XOR<Prisma.PostUpdateWithoutTagsInput, Prisma.PostUncheckedUpdateWithoutTagsInput>
+}
+
+export type PostUpdateWithoutTagsInput = {
+  post_title?: Prisma.StringFieldUpdateOperationsInput | string
+  post_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_status?: Prisma.StringFieldUpdateOperationsInput | string
+  tz_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  is_published?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_mini_video_smm?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_video?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_cover_photo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_photo_cards?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_photogallery?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_mini_gallery?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_text?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_done_link_mini_video_smm?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_video?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_cover_photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_photo_cards?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_photogallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_mini_gallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_mini_video_smm?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_video?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_cover_photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_photo_cards?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_photogallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_mini_gallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  post_deadline?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneWithoutPostsNestedInput
+  approved_by?: Prisma.UserUpdateOneWithoutApproved_postsNestedInput
+}
+
+export type PostUncheckedUpdateWithoutTagsInput = {
+  post_id?: Prisma.IntFieldUpdateOperationsInput | number
+  post_title?: Prisma.StringFieldUpdateOperationsInput | string
+  post_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_status?: Prisma.StringFieldUpdateOperationsInput | string
+  tz_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  is_published?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_mini_video_smm?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_video?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_cover_photo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_photo_cards?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_photogallery?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_mini_gallery?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_text?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_done_link_mini_video_smm?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_video?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_cover_photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_photo_cards?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_photogallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_mini_gallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_mini_video_smm?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_video?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_cover_photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_photo_cards?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_photogallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_mini_gallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  responsible_person_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  approved_by_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  post_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  post_deadline?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type PostCreateManyUserInput = {
   post_id?: number
   post_title: string
   post_description?: string | null
-  post_needs_video_smm: boolean
-  post_needs_video_maker: boolean
-  post_needs_text: boolean
-  post_needs_photogallery: boolean
-  post_needs_cover_photo: boolean
-  post_needs_photo_cards: boolean
-  post_done_link_video_smm?: string | null
-  post_done_link_video_maker?: string | null
-  post_done_link_text?: string | null
-  post_done_link_photogallery?: string | null
+  post_status?: string
+  tz_link?: string | null
+  is_published?: boolean
+  post_needs_mini_video_smm?: boolean
+  post_needs_video?: boolean
+  post_needs_cover_photo?: boolean
+  post_needs_photo_cards?: boolean
+  post_needs_photogallery?: boolean
+  post_needs_mini_gallery?: boolean
+  post_needs_text?: boolean
+  post_done_link_mini_video_smm?: string | null
+  post_done_link_video?: string | null
   post_done_link_cover_photo?: string | null
   post_done_link_photo_cards?: string | null
+  post_done_link_photogallery?: string | null
+  post_done_link_mini_gallery?: string | null
+  post_done_link_text?: string | null
+  post_feedback_mini_video_smm?: string | null
+  post_feedback_video?: string | null
+  post_feedback_cover_photo?: string | null
+  post_feedback_photo_cards?: string | null
+  post_feedback_photogallery?: string | null
+  post_feedback_mini_gallery?: string | null
+  post_feedback_text?: string | null
+  approved_by_id?: number | null
   post_date?: Date | string | null
   post_deadline: Date | string
-  post_type: string
+}
+
+export type PostCreateManyApproved_byInput = {
+  post_id?: number
+  post_title: string
+  post_description?: string | null
+  post_status?: string
+  tz_link?: string | null
+  is_published?: boolean
+  post_needs_mini_video_smm?: boolean
+  post_needs_video?: boolean
+  post_needs_cover_photo?: boolean
+  post_needs_photo_cards?: boolean
+  post_needs_photogallery?: boolean
+  post_needs_mini_gallery?: boolean
+  post_needs_text?: boolean
+  post_done_link_mini_video_smm?: string | null
+  post_done_link_video?: string | null
+  post_done_link_cover_photo?: string | null
+  post_done_link_photo_cards?: string | null
+  post_done_link_photogallery?: string | null
+  post_done_link_mini_gallery?: string | null
+  post_done_link_text?: string | null
+  post_feedback_mini_video_smm?: string | null
+  post_feedback_video?: string | null
+  post_feedback_cover_photo?: string | null
+  post_feedback_photo_cards?: string | null
+  post_feedback_photogallery?: string | null
+  post_feedback_mini_gallery?: string | null
+  post_feedback_text?: string | null
+  responsible_person_id?: number | null
+  post_date?: Date | string | null
+  post_deadline: Date | string
 }
 
 export type PostUpdateWithoutUserInput = {
   post_title?: Prisma.StringFieldUpdateOperationsInput | string
   post_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  post_needs_video_smm?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_needs_video_maker?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_needs_text?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_needs_photogallery?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_status?: Prisma.StringFieldUpdateOperationsInput | string
+  tz_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  is_published?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_mini_video_smm?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_video?: Prisma.BoolFieldUpdateOperationsInput | boolean
   post_needs_cover_photo?: Prisma.BoolFieldUpdateOperationsInput | boolean
   post_needs_photo_cards?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_done_link_video_smm?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  post_done_link_video_maker?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  post_done_link_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  post_done_link_photogallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_needs_photogallery?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_mini_gallery?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_text?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_done_link_mini_video_smm?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_video?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   post_done_link_cover_photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   post_done_link_photo_cards?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_photogallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_mini_gallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_mini_video_smm?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_video?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_cover_photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_photo_cards?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_photogallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_mini_gallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   post_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   post_deadline?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  post_type?: Prisma.StringFieldUpdateOperationsInput | string
+  approved_by?: Prisma.UserUpdateOneWithoutApproved_postsNestedInput
+  tags?: Prisma.PostTagUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutUserInput = {
   post_id?: Prisma.IntFieldUpdateOperationsInput | number
   post_title?: Prisma.StringFieldUpdateOperationsInput | string
   post_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  post_needs_video_smm?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_needs_video_maker?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_needs_text?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_needs_photogallery?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_status?: Prisma.StringFieldUpdateOperationsInput | string
+  tz_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  is_published?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_mini_video_smm?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_video?: Prisma.BoolFieldUpdateOperationsInput | boolean
   post_needs_cover_photo?: Prisma.BoolFieldUpdateOperationsInput | boolean
   post_needs_photo_cards?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_done_link_video_smm?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  post_done_link_video_maker?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  post_done_link_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  post_done_link_photogallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_needs_photogallery?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_mini_gallery?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_text?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_done_link_mini_video_smm?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_video?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   post_done_link_cover_photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   post_done_link_photo_cards?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_photogallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_mini_gallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_mini_video_smm?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_video?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_cover_photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_photo_cards?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_photogallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_mini_gallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approved_by_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   post_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   post_deadline?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  post_type?: Prisma.StringFieldUpdateOperationsInput | string
+  tags?: Prisma.PostTagUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateManyWithoutUserInput = {
   post_id?: Prisma.IntFieldUpdateOperationsInput | number
   post_title?: Prisma.StringFieldUpdateOperationsInput | string
   post_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  post_needs_video_smm?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_needs_video_maker?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_needs_text?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_needs_photogallery?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_status?: Prisma.StringFieldUpdateOperationsInput | string
+  tz_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  is_published?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_mini_video_smm?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_video?: Prisma.BoolFieldUpdateOperationsInput | boolean
   post_needs_cover_photo?: Prisma.BoolFieldUpdateOperationsInput | boolean
   post_needs_photo_cards?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_done_link_video_smm?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  post_done_link_video_maker?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  post_done_link_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  post_done_link_photogallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_needs_photogallery?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_mini_gallery?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_text?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_done_link_mini_video_smm?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_video?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   post_done_link_cover_photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   post_done_link_photo_cards?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_photogallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_mini_gallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_mini_video_smm?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_video?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_cover_photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_photo_cards?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_photogallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_mini_gallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approved_by_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   post_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   post_deadline?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  post_type?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
+export type PostUpdateWithoutApproved_byInput = {
+  post_title?: Prisma.StringFieldUpdateOperationsInput | string
+  post_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_status?: Prisma.StringFieldUpdateOperationsInput | string
+  tz_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  is_published?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_mini_video_smm?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_video?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_cover_photo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_photo_cards?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_photogallery?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_mini_gallery?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_text?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_done_link_mini_video_smm?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_video?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_cover_photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_photo_cards?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_photogallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_mini_gallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_mini_video_smm?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_video?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_cover_photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_photo_cards?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_photogallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_mini_gallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  post_deadline?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneWithoutPostsNestedInput
+  tags?: Prisma.PostTagUpdateManyWithoutPostNestedInput
+}
+
+export type PostUncheckedUpdateWithoutApproved_byInput = {
+  post_id?: Prisma.IntFieldUpdateOperationsInput | number
+  post_title?: Prisma.StringFieldUpdateOperationsInput | string
+  post_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_status?: Prisma.StringFieldUpdateOperationsInput | string
+  tz_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  is_published?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_mini_video_smm?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_video?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_cover_photo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_photo_cards?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_photogallery?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_mini_gallery?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_text?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_done_link_mini_video_smm?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_video?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_cover_photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_photo_cards?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_photogallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_mini_gallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_mini_video_smm?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_video?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_cover_photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_photo_cards?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_photogallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_mini_gallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  responsible_person_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  post_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  post_deadline?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  tags?: Prisma.PostTagUncheckedUpdateManyWithoutPostNestedInput
+}
+
+export type PostUncheckedUpdateManyWithoutApproved_byInput = {
+  post_id?: Prisma.IntFieldUpdateOperationsInput | number
+  post_title?: Prisma.StringFieldUpdateOperationsInput | string
+  post_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_status?: Prisma.StringFieldUpdateOperationsInput | string
+  tz_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  is_published?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_mini_video_smm?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_video?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_cover_photo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_photo_cards?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_photogallery?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_mini_gallery?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_needs_text?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  post_done_link_mini_video_smm?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_video?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_cover_photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_photo_cards?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_photogallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_mini_gallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_done_link_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_mini_video_smm?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_video?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_cover_photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_photo_cards?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_photogallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_mini_gallery?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  post_feedback_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  responsible_person_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  post_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  post_deadline?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+
+/**
+ * Count Type PostCountOutputType
+ */
+
+export type PostCountOutputType = {
+  tags: number
+}
+
+export type PostCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  tags?: boolean | PostCountOutputTypeCountTagsArgs
+}
+
+/**
+ * PostCountOutputType without action
+ */
+export type PostCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PostCountOutputType
+   */
+  select?: Prisma.PostCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * PostCountOutputType without action
+ */
+export type PostCountOutputTypeCountTagsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PostTagWhereInput
+}
 
 
 export type PostSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   post_id?: boolean
   post_title?: boolean
   post_description?: boolean
-  post_needs_video_smm?: boolean
-  post_needs_video_maker?: boolean
-  post_needs_text?: boolean
-  post_needs_photogallery?: boolean
+  post_status?: boolean
+  tz_link?: boolean
+  is_published?: boolean
+  post_needs_mini_video_smm?: boolean
+  post_needs_video?: boolean
   post_needs_cover_photo?: boolean
   post_needs_photo_cards?: boolean
-  post_done_link_video_smm?: boolean
-  post_done_link_video_maker?: boolean
-  post_done_link_text?: boolean
-  post_done_link_photogallery?: boolean
+  post_needs_photogallery?: boolean
+  post_needs_mini_gallery?: boolean
+  post_needs_text?: boolean
+  post_done_link_mini_video_smm?: boolean
+  post_done_link_video?: boolean
   post_done_link_cover_photo?: boolean
   post_done_link_photo_cards?: boolean
+  post_done_link_photogallery?: boolean
+  post_done_link_mini_gallery?: boolean
+  post_done_link_text?: boolean
+  post_feedback_mini_video_smm?: boolean
+  post_feedback_video?: boolean
+  post_feedback_cover_photo?: boolean
+  post_feedback_photo_cards?: boolean
+  post_feedback_photogallery?: boolean
+  post_feedback_mini_gallery?: boolean
+  post_feedback_text?: boolean
   responsible_person_id?: boolean
+  approved_by_id?: boolean
   post_date?: boolean
   post_deadline?: boolean
-  post_type?: boolean
   user?: boolean | Prisma.Post$userArgs<ExtArgs>
+  approved_by?: boolean | Prisma.Post$approved_byArgs<ExtArgs>
+  tags?: boolean | Prisma.Post$tagsArgs<ExtArgs>
+  _count?: boolean | Prisma.PostCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["post"]>
 
 export type PostSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   post_id?: boolean
   post_title?: boolean
   post_description?: boolean
-  post_needs_video_smm?: boolean
-  post_needs_video_maker?: boolean
-  post_needs_text?: boolean
-  post_needs_photogallery?: boolean
+  post_status?: boolean
+  tz_link?: boolean
+  is_published?: boolean
+  post_needs_mini_video_smm?: boolean
+  post_needs_video?: boolean
   post_needs_cover_photo?: boolean
   post_needs_photo_cards?: boolean
-  post_done_link_video_smm?: boolean
-  post_done_link_video_maker?: boolean
-  post_done_link_text?: boolean
-  post_done_link_photogallery?: boolean
+  post_needs_photogallery?: boolean
+  post_needs_mini_gallery?: boolean
+  post_needs_text?: boolean
+  post_done_link_mini_video_smm?: boolean
+  post_done_link_video?: boolean
   post_done_link_cover_photo?: boolean
   post_done_link_photo_cards?: boolean
+  post_done_link_photogallery?: boolean
+  post_done_link_mini_gallery?: boolean
+  post_done_link_text?: boolean
+  post_feedback_mini_video_smm?: boolean
+  post_feedback_video?: boolean
+  post_feedback_cover_photo?: boolean
+  post_feedback_photo_cards?: boolean
+  post_feedback_photogallery?: boolean
+  post_feedback_mini_gallery?: boolean
+  post_feedback_text?: boolean
   responsible_person_id?: boolean
+  approved_by_id?: boolean
   post_date?: boolean
   post_deadline?: boolean
-  post_type?: boolean
   user?: boolean | Prisma.Post$userArgs<ExtArgs>
+  approved_by?: boolean | Prisma.Post$approved_byArgs<ExtArgs>
 }, ExtArgs["result"]["post"]>
 
 export type PostSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   post_id?: boolean
   post_title?: boolean
   post_description?: boolean
-  post_needs_video_smm?: boolean
-  post_needs_video_maker?: boolean
-  post_needs_text?: boolean
-  post_needs_photogallery?: boolean
+  post_status?: boolean
+  tz_link?: boolean
+  is_published?: boolean
+  post_needs_mini_video_smm?: boolean
+  post_needs_video?: boolean
   post_needs_cover_photo?: boolean
   post_needs_photo_cards?: boolean
-  post_done_link_video_smm?: boolean
-  post_done_link_video_maker?: boolean
-  post_done_link_text?: boolean
-  post_done_link_photogallery?: boolean
+  post_needs_photogallery?: boolean
+  post_needs_mini_gallery?: boolean
+  post_needs_text?: boolean
+  post_done_link_mini_video_smm?: boolean
+  post_done_link_video?: boolean
   post_done_link_cover_photo?: boolean
   post_done_link_photo_cards?: boolean
+  post_done_link_photogallery?: boolean
+  post_done_link_mini_gallery?: boolean
+  post_done_link_text?: boolean
+  post_feedback_mini_video_smm?: boolean
+  post_feedback_video?: boolean
+  post_feedback_cover_photo?: boolean
+  post_feedback_photo_cards?: boolean
+  post_feedback_photogallery?: boolean
+  post_feedback_mini_gallery?: boolean
+  post_feedback_text?: boolean
   responsible_person_id?: boolean
+  approved_by_id?: boolean
   post_date?: boolean
   post_deadline?: boolean
-  post_type?: boolean
   user?: boolean | Prisma.Post$userArgs<ExtArgs>
+  approved_by?: boolean | Prisma.Post$approved_byArgs<ExtArgs>
 }, ExtArgs["result"]["post"]>
 
 export type PostSelectScalar = {
   post_id?: boolean
   post_title?: boolean
   post_description?: boolean
-  post_needs_video_smm?: boolean
-  post_needs_video_maker?: boolean
-  post_needs_text?: boolean
-  post_needs_photogallery?: boolean
+  post_status?: boolean
+  tz_link?: boolean
+  is_published?: boolean
+  post_needs_mini_video_smm?: boolean
+  post_needs_video?: boolean
   post_needs_cover_photo?: boolean
   post_needs_photo_cards?: boolean
-  post_done_link_video_smm?: boolean
-  post_done_link_video_maker?: boolean
-  post_done_link_text?: boolean
-  post_done_link_photogallery?: boolean
+  post_needs_photogallery?: boolean
+  post_needs_mini_gallery?: boolean
+  post_needs_text?: boolean
+  post_done_link_mini_video_smm?: boolean
+  post_done_link_video?: boolean
   post_done_link_cover_photo?: boolean
   post_done_link_photo_cards?: boolean
+  post_done_link_photogallery?: boolean
+  post_done_link_mini_gallery?: boolean
+  post_done_link_text?: boolean
+  post_feedback_mini_video_smm?: boolean
+  post_feedback_video?: boolean
+  post_feedback_cover_photo?: boolean
+  post_feedback_photo_cards?: boolean
+  post_feedback_photogallery?: boolean
+  post_feedback_mini_gallery?: boolean
+  post_feedback_text?: boolean
   responsible_person_id?: boolean
+  approved_by_id?: boolean
   post_date?: boolean
   post_deadline?: boolean
-  post_type?: boolean
 }
 
-export type PostOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"post_id" | "post_title" | "post_description" | "post_needs_video_smm" | "post_needs_video_maker" | "post_needs_text" | "post_needs_photogallery" | "post_needs_cover_photo" | "post_needs_photo_cards" | "post_done_link_video_smm" | "post_done_link_video_maker" | "post_done_link_text" | "post_done_link_photogallery" | "post_done_link_cover_photo" | "post_done_link_photo_cards" | "responsible_person_id" | "post_date" | "post_deadline" | "post_type", ExtArgs["result"]["post"]>
+export type PostOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"post_id" | "post_title" | "post_description" | "post_status" | "tz_link" | "is_published" | "post_needs_mini_video_smm" | "post_needs_video" | "post_needs_cover_photo" | "post_needs_photo_cards" | "post_needs_photogallery" | "post_needs_mini_gallery" | "post_needs_text" | "post_done_link_mini_video_smm" | "post_done_link_video" | "post_done_link_cover_photo" | "post_done_link_photo_cards" | "post_done_link_photogallery" | "post_done_link_mini_gallery" | "post_done_link_text" | "post_feedback_mini_video_smm" | "post_feedback_video" | "post_feedback_cover_photo" | "post_feedback_photo_cards" | "post_feedback_photogallery" | "post_feedback_mini_gallery" | "post_feedback_text" | "responsible_person_id" | "approved_by_id" | "post_date" | "post_deadline", ExtArgs["result"]["post"]>
 export type PostInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.Post$userArgs<ExtArgs>
+  approved_by?: boolean | Prisma.Post$approved_byArgs<ExtArgs>
+  tags?: boolean | Prisma.Post$tagsArgs<ExtArgs>
+  _count?: boolean | Prisma.PostCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type PostIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.Post$userArgs<ExtArgs>
+  approved_by?: boolean | Prisma.Post$approved_byArgs<ExtArgs>
 }
 export type PostIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.Post$userArgs<ExtArgs>
+  approved_by?: boolean | Prisma.Post$approved_byArgs<ExtArgs>
 }
 
 export type $PostPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Post"
   objects: {
     user: Prisma.$UserPayload<ExtArgs> | null
+    approved_by: Prisma.$UserPayload<ExtArgs> | null
+    tags: Prisma.$PostTagPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     post_id: number
     post_title: string
     post_description: string | null
-    post_needs_video_smm: boolean
-    post_needs_video_maker: boolean
-    post_needs_text: boolean
-    post_needs_photogallery: boolean
+    post_status: string
+    tz_link: string | null
+    is_published: boolean
+    post_needs_mini_video_smm: boolean
+    post_needs_video: boolean
     post_needs_cover_photo: boolean
     post_needs_photo_cards: boolean
-    post_done_link_video_smm: string | null
-    post_done_link_video_maker: string | null
-    post_done_link_text: string | null
-    post_done_link_photogallery: string | null
+    post_needs_photogallery: boolean
+    post_needs_mini_gallery: boolean
+    post_needs_text: boolean
+    post_done_link_mini_video_smm: string | null
+    post_done_link_video: string | null
     post_done_link_cover_photo: string | null
     post_done_link_photo_cards: string | null
+    post_done_link_photogallery: string | null
+    post_done_link_mini_gallery: string | null
+    post_done_link_text: string | null
+    post_feedback_mini_video_smm: string | null
+    post_feedback_video: string | null
+    post_feedback_cover_photo: string | null
+    post_feedback_photo_cards: string | null
+    post_feedback_photogallery: string | null
+    post_feedback_mini_gallery: string | null
+    post_feedback_text: string | null
     responsible_person_id: number | null
+    approved_by_id: number | null
     post_date: Date | null
     post_deadline: Date
-    post_type: string
   }, ExtArgs["result"]["post"]>
   composites: {}
 }
@@ -1433,6 +2330,8 @@ readonly fields: PostFieldRefs;
 export interface Prisma__PostClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   user<T extends Prisma.Post$userArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Post$userArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  approved_by<T extends Prisma.Post$approved_byArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Post$approved_byArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  tags<T extends Prisma.Post$tagsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Post$tagsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PostTagPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1465,22 +2364,34 @@ export interface PostFieldRefs {
   readonly post_id: Prisma.FieldRef<"Post", 'Int'>
   readonly post_title: Prisma.FieldRef<"Post", 'String'>
   readonly post_description: Prisma.FieldRef<"Post", 'String'>
-  readonly post_needs_video_smm: Prisma.FieldRef<"Post", 'Boolean'>
-  readonly post_needs_video_maker: Prisma.FieldRef<"Post", 'Boolean'>
-  readonly post_needs_text: Prisma.FieldRef<"Post", 'Boolean'>
-  readonly post_needs_photogallery: Prisma.FieldRef<"Post", 'Boolean'>
+  readonly post_status: Prisma.FieldRef<"Post", 'String'>
+  readonly tz_link: Prisma.FieldRef<"Post", 'String'>
+  readonly is_published: Prisma.FieldRef<"Post", 'Boolean'>
+  readonly post_needs_mini_video_smm: Prisma.FieldRef<"Post", 'Boolean'>
+  readonly post_needs_video: Prisma.FieldRef<"Post", 'Boolean'>
   readonly post_needs_cover_photo: Prisma.FieldRef<"Post", 'Boolean'>
   readonly post_needs_photo_cards: Prisma.FieldRef<"Post", 'Boolean'>
-  readonly post_done_link_video_smm: Prisma.FieldRef<"Post", 'String'>
-  readonly post_done_link_video_maker: Prisma.FieldRef<"Post", 'String'>
-  readonly post_done_link_text: Prisma.FieldRef<"Post", 'String'>
-  readonly post_done_link_photogallery: Prisma.FieldRef<"Post", 'String'>
+  readonly post_needs_photogallery: Prisma.FieldRef<"Post", 'Boolean'>
+  readonly post_needs_mini_gallery: Prisma.FieldRef<"Post", 'Boolean'>
+  readonly post_needs_text: Prisma.FieldRef<"Post", 'Boolean'>
+  readonly post_done_link_mini_video_smm: Prisma.FieldRef<"Post", 'String'>
+  readonly post_done_link_video: Prisma.FieldRef<"Post", 'String'>
   readonly post_done_link_cover_photo: Prisma.FieldRef<"Post", 'String'>
   readonly post_done_link_photo_cards: Prisma.FieldRef<"Post", 'String'>
+  readonly post_done_link_photogallery: Prisma.FieldRef<"Post", 'String'>
+  readonly post_done_link_mini_gallery: Prisma.FieldRef<"Post", 'String'>
+  readonly post_done_link_text: Prisma.FieldRef<"Post", 'String'>
+  readonly post_feedback_mini_video_smm: Prisma.FieldRef<"Post", 'String'>
+  readonly post_feedback_video: Prisma.FieldRef<"Post", 'String'>
+  readonly post_feedback_cover_photo: Prisma.FieldRef<"Post", 'String'>
+  readonly post_feedback_photo_cards: Prisma.FieldRef<"Post", 'String'>
+  readonly post_feedback_photogallery: Prisma.FieldRef<"Post", 'String'>
+  readonly post_feedback_mini_gallery: Prisma.FieldRef<"Post", 'String'>
+  readonly post_feedback_text: Prisma.FieldRef<"Post", 'String'>
   readonly responsible_person_id: Prisma.FieldRef<"Post", 'Int'>
+  readonly approved_by_id: Prisma.FieldRef<"Post", 'Int'>
   readonly post_date: Prisma.FieldRef<"Post", 'DateTime'>
   readonly post_deadline: Prisma.FieldRef<"Post", 'DateTime'>
-  readonly post_type: Prisma.FieldRef<"Post", 'String'>
 }
     
 
@@ -1893,6 +2804,49 @@ export type Post$userArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs 
    */
   include?: Prisma.UserInclude<ExtArgs> | null
   where?: Prisma.UserWhereInput
+}
+
+/**
+ * Post.approved_by
+ */
+export type Post$approved_byArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the User
+   */
+  select?: Prisma.UserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the User
+   */
+  omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  where?: Prisma.UserWhereInput
+}
+
+/**
+ * Post.tags
+ */
+export type Post$tagsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PostTag
+   */
+  select?: Prisma.PostTagSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PostTag
+   */
+  omit?: Prisma.PostTagOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PostTagInclude<ExtArgs> | null
+  where?: Prisma.PostTagWhereInput
+  orderBy?: Prisma.PostTagOrderByWithRelationInput | Prisma.PostTagOrderByWithRelationInput[]
+  cursor?: Prisma.PostTagWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PostTagScalarFieldEnum | Prisma.PostTagScalarFieldEnum[]
 }
 
 /**

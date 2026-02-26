@@ -1,56 +1,50 @@
-# TODO - Role-based Post Filtering
+# Post-Add Modal Update Tasks
 
-## Progress:
-- [x] 1. Extend auth.d.ts to include user roles in session
-- [x] 2. Update NextAuth route to include roles in JWT and session
-- [x] 3. Create new API route for filtered posts (src/app/api/posts/route.ts)
-- [x] 4. Update search route with role-based filtering
-- [x] 5. Update main page to support filterByRole parameter
-- [x] 6. Update SortPopup with interactive dropdown for role filtering
-- [x] 7. Fix Next.js 15+ Promise issue with searchParams
+## Files to Edit:
+- [x] `src/components/shared/modals/post-add.tsx` - Add missing fields and fix field names
+- [x] `src/app/api/posts/create/route.ts` - Fix field names to match Prisma schema
+- [x] `src/components/shared/services/posts.ts` - Update PostCreationData type
+- [x] `src/components/shared/post-edit-form.tsx` - Add feedback_comment field and update schema
+- [x] `src/components/shared/choose-post-form.tsx` - Display feedback_comment and update schema
+- [x] `src/app/api/posts/update/[id]/route.ts` - Fix field names and add feedback_comment
 
-## Summary
 
-Реализована фильтрация постов по ролям пользователя через SortPopup:
+## Changes for post-add.tsx:
+- [x] Add state for `needsMiniGallery` checkbox
+- [x] Add state for `tzLink` field
+- [x] Update field names to match Prisma schema
+- [x] Add UI for mini gallery checkbox
+- [x] Add UI for tz_link input
+- [x] Update handleSubmit and handleClose functions
 
-### Логика работы:
-- **По умолчанию** - все пользователи видят все посты
-- **При нажатии на SortPopup** - можно включить фильтр "По моим ролям"
 
-### Роли и фильтры (когда включен фильтр):
-- **admin_role** - видит все посты (только если нет других специфических ролей)
-- **coordinator_role** - видит все посты (только если нет других специфических ролей)
-- **videomaker_role** - видит посты с `post_needs_video_maker = true`
-- **photographer_role** - видит посты с `post_needs_photogallery = true`
-- **designer_role** - видит посты с `post_needs_cover_photo = true` ИЛИ `post_needs_photo_cards = true`
-- **SMM_role** - видит посты с `post_needs_video_smm = true` ИЛИ `post_needs_text = true`
+## Changes for create/route.ts:
+- [x] Fix field names: `post_needs_video_smm` → `post_needs_mini_video_smm`
+- [x] Fix field names: `post_needs_video_maker` → `post_needs_video`
+- [x] Add handling for `post_needs_mini_gallery` and `tz_link`
 
-### Приоритет ролей:
-Специфические роли (designer, videomaker, photographer, SMM) имеют приоритет над admin/coordinator. Если у пользователя есть designer_role И coordinator_role, при включенном фильтре он увидит только посты для дизайнера.
 
-### Измененные файлы:
-1. `src/lib/auth.d.ts` - расширены типы сессии и JWT
-2. `src/lib/auth-config.ts` - создана конфигурация NextAuth с ролями
-3. `src/app/api/auth/[...nextauth]/route.ts` - упрощен, использует authOptions
-4. `src/app/api/posts/route.ts` - API endpoint с поддержкой параметра `filterByRole`
-5. `src/app/api/posts/search/route.ts` - обновлен с фильтрацией по ролям
-6. `src/app/(root)/page.tsx` - поддержка параметра `filterByRole` в URL (с await для Next.js 15+)
-7. `src/components/shared/sort-popup.tsx` - интерактивный dropdown с опциями "Все посты" / "По моим ролям"
-8. `src/components/shared/top-bar.tsx` - добавлен Suspense для SortPopup
+## Changes for posts.ts:
+- [x] Update PostCreationData type with correct field names
+- [x] Add exclusions for fields with defaults: post_status, is_published, feedback_comment, approved_by_id
 
-### Как использовать:
-1. Откройте главную страницу - видны все посты
-2. Нажмите на "Фильтр: Все" в верхней панели
-3. Выберите "По моим ролям" из выпадающего меню
-4. Страница перезагрузится с фильтрацией по вашим ролям (URL: `?filterByRole=true`)
-5. Чтобы вернуться ко всем постам - снова нажмите и выберите "Все посты"
 
-### Отладка:
-В консоли сервера выводятся отладочные сообщения:
-- `User roles from session: {...}` - показывает роли текущего пользователя
-- `Built where clause: {...}` - показывает SQL-условие для фильтрации
+## Changes for post-edit-form.tsx:
+- [x] Add state for `needsMiniGallery` checkbox
+- [x] Add state for `tzLink` field
+- [x] Add state for `feedbackComment` field
+- [x] Update field names to match Prisma schema
+- [x] Add UI for feedback_comment textarea
+- [x] Update handleSubmit to include new fields
 
-### Возможные проблемы:
-- Если роли не применяются - проверьте что они сохранены в сессии (консоль)
-- Если фильтр не работает - проверьте что `filterByRole=true` есть в URL
-- Для Next.js 15+ используется `await searchParams` (Promise)
+
+## Changes for choose-post-form.tsx:
+- [x] Add display for `tz_link`
+- [x] Add display for `feedback_comment` (highlighted in yellow block)
+- [x] Add check for `post_needs_mini_gallery` in works status
+- [x] Update field names to match Prisma schema
+
+
+## Changes for update API route:
+- [x] Fix field names to match Prisma schema
+- [x] Add handling for `post_needs_mini_gallery`, `tz_link`, `feedback_comment`

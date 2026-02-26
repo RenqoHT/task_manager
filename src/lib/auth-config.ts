@@ -36,7 +36,6 @@ export const authOptions: NextAuthOptions = {
             admin_role: user.admin_role,
             SMM_role: user.SMM_role,
             designer_role: user.designer_role,
-            videomaker_role: user.videomaker_role,
             photographer_role: user.photographer_role,
             coordinator_role: user.coordinator_role,
           };
@@ -56,7 +55,6 @@ export const authOptions: NextAuthOptions = {
         token.admin_role = (user as any).admin_role;
         token.SMM_role = (user as any).SMM_role;
         token.designer_role = (user as any).designer_role;
-        token.videomaker_role = (user as any).videomaker_role;
         token.photographer_role = (user as any).photographer_role;
         token.coordinator_role = (user as any).coordinator_role;
       }
@@ -71,7 +69,6 @@ export const authOptions: NextAuthOptions = {
         session.user.admin_role = token.admin_role;
         session.user.SMM_role = token.SMM_role;
         session.user.designer_role = token.designer_role;
-        session.user.videomaker_role = token.videomaker_role;
         session.user.photographer_role = token.photographer_role;
         session.user.coordinator_role = token.coordinator_role;
       }

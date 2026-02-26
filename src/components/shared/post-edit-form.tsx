@@ -25,30 +25,29 @@ export const PostEditForm: React.FC<Props> = ({ post, className, onSave, onCance
     const [error, setError] = useState('');
     const [title, setTitle] = useState(post.post_title);
     const [description, setDescription] = useState(post.post_description || '');
-    const [needsVideoSmm, setNeedsVideoSmm] = useState(post.post_needs_video_smm);
-    const [needsVideoMaker, setNeedsVideoMaker] = useState(post.post_needs_video_maker);
-    const [needsText, setNeedsText] = useState(post.post_needs_text);
+    const [needsMiniVideoSmm, setNeedsMiniVideoSmm] = useState(post.post_needs_mini_video_smm);
+    const [needsVideo, setNeedsVideo] = useState(post.post_needs_video);
     const [needsPhotogallery, setNeedsPhotogallery] = useState(post.post_needs_photogallery);
     const [needsCoverPhoto, setNeedsCoverPhoto] = useState(post.post_needs_cover_photo);
     const [needsPhotoCards, setNeedsPhotoCards] = useState(post.post_needs_photo_cards);
-    const [doneLinkVideoSmm, setDoneLinkVideoSmm] = useState(post.post_done_link_video_smm || '');
-    const [doneLinkVideoMaker, setDoneLinkVideoMaker] = useState(post.post_done_link_video_maker || '');
+    const [needsMiniGallery, setNeedsMiniGallery] = useState(post.post_needs_mini_gallery);
+    const [doneLinkMiniVideoSmm, setDoneLinkMiniVideoSmm] = useState(post.post_done_link_mini_video_smm || '');
+    const [doneLinkVideo, setDoneLinkVideo] = useState(post.post_done_link_video || '');
     const [doneLinkText, setDoneLinkText] = useState(post.post_done_link_text || '');
     const [doneLinkPhotogallery, setDoneLinkPhotogallery] = useState(post.post_done_link_photogallery || '');
     const [doneLinkCoverPhoto, setDoneLinkCoverPhoto] = useState(post.post_done_link_cover_photo || '');
     const [doneLinkPhotoCards, setDoneLinkPhotoCards] = useState(post.post_done_link_photo_cards || '');
+    const [doneLinkMiniGallery, setDoneLinkMiniGallery] = useState(post.post_done_link_mini_gallery || '');
     const [responsiblePersonId, setResponsiblePersonId] = useState<number | null>(post.responsible_person_id);
+    const [tzLink, setTzLink] = useState(post.tz_link || '');
     const [deadline, setDeadline] = useState(() => {
-        // Преобразуем дату в формат YYYY-MM-DDTHH:mm для datetime-local
         if (post.post_deadline) {
             const date = new Date(post.post_deadline);
             return date.toISOString().slice(0, 16);
         }
         return '';
     });
-    const [type, setType] = useState(post.post_type);
 
-    // Загрузка пользователей при монтировании
     useEffect(() => {
         const fetchUsers = async () => {
             try {
@@ -77,27 +76,26 @@ export const PostEditForm: React.FC<Props> = ({ post, className, onSave, onCance
             const updatedPost: PostUpdateData = {
                 post_title: title,
                 post_description: description,
-                post_needs_video_smm: needsVideoSmm,
-                post_needs_video_maker: needsVideoMaker,
-                post_needs_text: needsText,
+                post_needs_mini_video_smm: needsMiniVideoSmm,
+                post_needs_video: needsVideo,
                 post_needs_photogallery: needsPhotogallery,
                 post_needs_cover_photo: needsCoverPhoto,
                 post_needs_photo_cards: needsPhotoCards,
-                post_done_link_video_smm: doneLinkVideoSmm || null,
-                post_done_link_video_maker: doneLinkVideoMaker || null,
+                post_needs_mini_gallery: needsMiniGallery,
+                post_done_link_mini_video_smm: doneLinkMiniVideoSmm || null,
+                post_done_link_video: doneLinkVideo || null,
                 post_done_link_text: doneLinkText || null,
                 post_done_link_photogallery: doneLinkPhotogallery || null,
                 post_done_link_cover_photo: doneLinkCoverPhoto || null,
                 post_done_link_photo_cards: doneLinkPhotoCards || null,
+                post_done_link_mini_gallery: doneLinkMiniGallery || null,
                 responsible_person_id: responsiblePersonId,
                 post_deadline: new Date(deadline),
-                post_type: type,
+                tz_link: tzLink || null,
             };
 
-            // Отправляем запрос на обновление поста
             const response = await Api.posts.update(post.post_id, updatedPost);
 
-            // Вызываем колбэк с обновленным постом
             if (onSave) {
                 onSave(response);
             }
@@ -131,18 +129,6 @@ export const PostEditForm: React.FC<Props> = ({ post, className, onSave, onCance
                 </div>
 
                 <div>
-                    <label htmlFor="type" className="block text-sm font-medium text-gray-700 mb-1">
-                        Тип поста *
-                    </label>
-                    <Input
-                        id="type"
-                        value={type}
-                        onChange={(e) => setType(e.target.value)}
-                        required
-                    />
-                </div>
-
-                <div>
                     <label htmlFor="deadline" className="block text-sm font-medium text-gray-700 mb-1">
                         Крайний срок *
                     </label>
@@ -166,6 +152,18 @@ export const PostEditForm: React.FC<Props> = ({ post, className, onSave, onCance
                         placeholder="Поиск пользователя..."
                     />
                 </div>
+
+                <div>
+                    <label htmlFor="tzLink" className="block text-sm font-medium text-gray-700 mb-1">
+                        Ссылка на ТЗ
+                    </label>
+                    <Input
+                        id="tzLink"
+                        value={tzLink}
+                        onChange={(e) => setTzLink(e.target.value)}
+                        placeholder="Введите ссылку на ТЗ"
+                    />
+                </div>
             </div>
 
             <div>
@@ -187,39 +185,26 @@ export const PostEditForm: React.FC<Props> = ({ post, className, onSave, onCance
                     <div className="flex items-center">
                         <input
                             type="checkbox"
-                            id="needsVideoSmm"
-                            checked={needsVideoSmm}
-                            onChange={(e) => setNeedsVideoSmm(e.target.checked)}
+                            id="needsMiniVideoSmm"
+                            checked={needsMiniVideoSmm}
+                            onChange={(e) => setNeedsMiniVideoSmm(e.target.checked)}
                             className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
                         />
-                        <label htmlFor="needsVideoSmm" className="ml-2 block text-sm text-gray-700">
-                            Видео SMM
+                        <label htmlFor="needsMiniVideoSmm" className="ml-2 block text-sm text-gray-700">
+                            Мини-видео SMM
                         </label>
                     </div>
 
                     <div className="flex items-center">
                         <input
                             type="checkbox"
-                            id="needsVideoMaker"
-                            checked={needsVideoMaker}
-                            onChange={(e) => setNeedsVideoMaker(e.target.checked)}
+                            id="needsVideo"
+                            checked={needsVideo}
+                            onChange={(e) => setNeedsVideo(e.target.checked)}
                             className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
                         />
-                        <label htmlFor="needsVideoMaker" className="ml-2 block text-sm text-gray-700">
-                            Видео-мейкер
-                        </label>
-                    </div>
-
-                    <div className="flex items-center">
-                        <input
-                            type="checkbox"
-                            id="needsText"
-                            checked={needsText}
-                            onChange={(e) => setNeedsText(e.target.checked)}
-                            className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
-                        />
-                        <label htmlFor="needsText" className="ml-2 block text-sm text-gray-700">
-                            Текст
+                        <label htmlFor="needsVideo" className="ml-2 block text-sm text-gray-700">
+                            Видео
                         </label>
                     </div>
 
@@ -259,6 +244,19 @@ export const PostEditForm: React.FC<Props> = ({ post, className, onSave, onCance
                         />
                         <label htmlFor="needsPhotoCards" className="ml-2 block text-sm text-gray-700">
                             Фотокарточки
+                        </label>
+                    </div>
+
+                    <div className="flex items-center">
+                        <input
+                            type="checkbox"
+                            id="needsMiniGallery"
+                            checked={needsMiniGallery}
+                            onChange={(e) => setNeedsMiniGallery(e.target.checked)}
+                            className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
+                        />
+                        <label htmlFor="needsMiniGallery" className="ml-2 block text-sm text-gray-700">
+                            Мини-галерея
                         </label>
                     </div>
                 </div>

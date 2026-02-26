@@ -23,6 +23,31 @@ export * from './enums';
  */
 export type User = Prisma.UserModel
 /**
+ * Model Tag
+ * 
+ */
+export type Tag = Prisma.TagModel
+/**
+ * Model PostTag
+ * 
+ */
+export type PostTag = Prisma.PostTagModel
+/**
+ * Model TaskTag
+ * 
+ */
+export type TaskTag = Prisma.TaskTagModel
+/**
+ * Model Task
+ * 
+ */
+export type Task = Prisma.TaskModel
+/**
+ * Model TaskAssignee
+ * 
+ */
+export type TaskAssignee = Prisma.TaskAssigneeModel
+/**
  * Model Post
  * 
  */

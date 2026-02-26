@@ -41,9 +41,8 @@ export type UserMinAggregateOutputType = {
   admin_role: boolean | null
   SMM_role: boolean | null
   designer_role: boolean | null
-  videomaker_role: boolean | null
-  photographer_role: boolean | null
   coordinator_role: boolean | null
+  photographer_role: boolean | null
 }
 
 export type UserMaxAggregateOutputType = {
@@ -53,9 +52,8 @@ export type UserMaxAggregateOutputType = {
   admin_role: boolean | null
   SMM_role: boolean | null
   designer_role: boolean | null
-  videomaker_role: boolean | null
-  photographer_role: boolean | null
   coordinator_role: boolean | null
+  photographer_role: boolean | null
 }
 
 export type UserCountAggregateOutputType = {
@@ -65,9 +63,8 @@ export type UserCountAggregateOutputType = {
   admin_role: number
   SMM_role: number
   designer_role: number
-  videomaker_role: number
-  photographer_role: number
   coordinator_role: number
+  photographer_role: number
   _all: number
 }
 
@@ -87,9 +84,8 @@ export type UserMinAggregateInputType = {
   admin_role?: true
   SMM_role?: true
   designer_role?: true
-  videomaker_role?: true
-  photographer_role?: true
   coordinator_role?: true
+  photographer_role?: true
 }
 
 export type UserMaxAggregateInputType = {
@@ -99,9 +95,8 @@ export type UserMaxAggregateInputType = {
   admin_role?: true
   SMM_role?: true
   designer_role?: true
-  videomaker_role?: true
-  photographer_role?: true
   coordinator_role?: true
+  photographer_role?: true
 }
 
 export type UserCountAggregateInputType = {
@@ -111,9 +106,8 @@ export type UserCountAggregateInputType = {
   admin_role?: true
   SMM_role?: true
   designer_role?: true
-  videomaker_role?: true
-  photographer_role?: true
   coordinator_role?: true
+  photographer_role?: true
   _all?: true
 }
 
@@ -210,9 +204,8 @@ export type UserGroupByOutputType = {
   admin_role: boolean
   SMM_role: boolean
   designer_role: boolean
-  videomaker_role: boolean
-  photographer_role: boolean
   coordinator_role: boolean
+  photographer_role: boolean
   _count: UserCountAggregateOutputType | null
   _avg: UserAvgAggregateOutputType | null
   _sum: UserSumAggregateOutputType | null
@@ -245,10 +238,12 @@ export type UserWhereInput = {
   admin_role?: Prisma.BoolFilter<"User"> | boolean
   SMM_role?: Prisma.BoolFilter<"User"> | boolean
   designer_role?: Prisma.BoolFilter<"User"> | boolean
-  videomaker_role?: Prisma.BoolFilter<"User"> | boolean
-  photographer_role?: Prisma.BoolFilter<"User"> | boolean
   coordinator_role?: Prisma.BoolFilter<"User"> | boolean
+  photographer_role?: Prisma.BoolFilter<"User"> | boolean
   posts?: Prisma.PostListRelationFilter
+  approved_posts?: Prisma.PostListRelationFilter
+  created_tasks?: Prisma.TaskListRelationFilter
+  assigned_tasks?: Prisma.TaskAssigneeListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -258,10 +253,12 @@ export type UserOrderByWithRelationInput = {
   admin_role?: Prisma.SortOrder
   SMM_role?: Prisma.SortOrder
   designer_role?: Prisma.SortOrder
-  videomaker_role?: Prisma.SortOrder
-  photographer_role?: Prisma.SortOrder
   coordinator_role?: Prisma.SortOrder
+  photographer_role?: Prisma.SortOrder
   posts?: Prisma.PostOrderByRelationAggregateInput
+  approved_posts?: Prisma.PostOrderByRelationAggregateInput
+  created_tasks?: Prisma.TaskOrderByRelationAggregateInput
+  assigned_tasks?: Prisma.TaskAssigneeOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -274,10 +271,12 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   admin_role?: Prisma.BoolFilter<"User"> | boolean
   SMM_role?: Prisma.BoolFilter<"User"> | boolean
   designer_role?: Prisma.BoolFilter<"User"> | boolean
-  videomaker_role?: Prisma.BoolFilter<"User"> | boolean
-  photographer_role?: Prisma.BoolFilter<"User"> | boolean
   coordinator_role?: Prisma.BoolFilter<"User"> | boolean
+  photographer_role?: Prisma.BoolFilter<"User"> | boolean
   posts?: Prisma.PostListRelationFilter
+  approved_posts?: Prisma.PostListRelationFilter
+  created_tasks?: Prisma.TaskListRelationFilter
+  assigned_tasks?: Prisma.TaskAssigneeListRelationFilter
 }, "user_id" | "user_login">
 
 export type UserOrderByWithAggregationInput = {
@@ -287,9 +286,8 @@ export type UserOrderByWithAggregationInput = {
   admin_role?: Prisma.SortOrder
   SMM_role?: Prisma.SortOrder
   designer_role?: Prisma.SortOrder
-  videomaker_role?: Prisma.SortOrder
-  photographer_role?: Prisma.SortOrder
   coordinator_role?: Prisma.SortOrder
+  photographer_role?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
   _avg?: Prisma.UserAvgOrderByAggregateInput
   _max?: Prisma.UserMaxOrderByAggregateInput
@@ -307,34 +305,37 @@ export type UserScalarWhereWithAggregatesInput = {
   admin_role?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
   SMM_role?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
   designer_role?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
-  videomaker_role?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
-  photographer_role?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
   coordinator_role?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
+  photographer_role?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
 }
 
 export type UserCreateInput = {
   user_login: string
   user_password: string
-  admin_role: boolean
-  SMM_role: boolean
-  designer_role: boolean
-  videomaker_role: boolean
-  photographer_role: boolean
-  coordinator_role: boolean
+  admin_role?: boolean
+  SMM_role?: boolean
+  designer_role?: boolean
+  coordinator_role?: boolean
+  photographer_role?: boolean
   posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  approved_posts?: Prisma.PostCreateNestedManyWithoutApproved_byInput
+  created_tasks?: Prisma.TaskCreateNestedManyWithoutCreated_byInput
+  assigned_tasks?: Prisma.TaskAssigneeCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
   user_id?: number
   user_login: string
   user_password: string
-  admin_role: boolean
-  SMM_role: boolean
-  designer_role: boolean
-  videomaker_role: boolean
-  photographer_role: boolean
-  coordinator_role: boolean
+  admin_role?: boolean
+  SMM_role?: boolean
+  designer_role?: boolean
+  coordinator_role?: boolean
+  photographer_role?: boolean
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  approved_posts?: Prisma.PostUncheckedCreateNestedManyWithoutApproved_byInput
+  created_tasks?: Prisma.TaskUncheckedCreateNestedManyWithoutCreated_byInput
+  assigned_tasks?: Prisma.TaskAssigneeUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -343,10 +344,12 @@ export type UserUpdateInput = {
   admin_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
   SMM_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
   designer_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  videomaker_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  photographer_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
   coordinator_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  photographer_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
   posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  approved_posts?: Prisma.PostUpdateManyWithoutApproved_byNestedInput
+  created_tasks?: Prisma.TaskUpdateManyWithoutCreated_byNestedInput
+  assigned_tasks?: Prisma.TaskAssigneeUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -356,22 +359,23 @@ export type UserUncheckedUpdateInput = {
   admin_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
   SMM_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
   designer_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  videomaker_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  photographer_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
   coordinator_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  photographer_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
   posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  approved_posts?: Prisma.PostUncheckedUpdateManyWithoutApproved_byNestedInput
+  created_tasks?: Prisma.TaskUncheckedUpdateManyWithoutCreated_byNestedInput
+  assigned_tasks?: Prisma.TaskAssigneeUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
   user_id?: number
   user_login: string
   user_password: string
-  admin_role: boolean
-  SMM_role: boolean
-  designer_role: boolean
-  videomaker_role: boolean
-  photographer_role: boolean
-  coordinator_role: boolean
+  admin_role?: boolean
+  SMM_role?: boolean
+  designer_role?: boolean
+  coordinator_role?: boolean
+  photographer_role?: boolean
 }
 
 export type UserUpdateManyMutationInput = {
@@ -380,9 +384,8 @@ export type UserUpdateManyMutationInput = {
   admin_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
   SMM_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
   designer_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  videomaker_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  photographer_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
   coordinator_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  photographer_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type UserUncheckedUpdateManyInput = {
@@ -392,9 +395,8 @@ export type UserUncheckedUpdateManyInput = {
   admin_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
   SMM_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
   designer_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  videomaker_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  photographer_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
   coordinator_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  photographer_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type UserCountOrderByAggregateInput = {
@@ -404,9 +406,8 @@ export type UserCountOrderByAggregateInput = {
   admin_role?: Prisma.SortOrder
   SMM_role?: Prisma.SortOrder
   designer_role?: Prisma.SortOrder
-  videomaker_role?: Prisma.SortOrder
-  photographer_role?: Prisma.SortOrder
   coordinator_role?: Prisma.SortOrder
+  photographer_role?: Prisma.SortOrder
 }
 
 export type UserAvgOrderByAggregateInput = {
@@ -420,9 +421,8 @@ export type UserMaxOrderByAggregateInput = {
   admin_role?: Prisma.SortOrder
   SMM_role?: Prisma.SortOrder
   designer_role?: Prisma.SortOrder
-  videomaker_role?: Prisma.SortOrder
-  photographer_role?: Prisma.SortOrder
   coordinator_role?: Prisma.SortOrder
+  photographer_role?: Prisma.SortOrder
 }
 
 export type UserMinOrderByAggregateInput = {
@@ -432,13 +432,17 @@ export type UserMinOrderByAggregateInput = {
   admin_role?: Prisma.SortOrder
   SMM_role?: Prisma.SortOrder
   designer_role?: Prisma.SortOrder
-  videomaker_role?: Prisma.SortOrder
-  photographer_role?: Prisma.SortOrder
   coordinator_role?: Prisma.SortOrder
+  photographer_role?: Prisma.SortOrder
 }
 
 export type UserSumOrderByAggregateInput = {
   user_id?: Prisma.SortOrder
+}
+
+export type UserScalarRelationFilter = {
+  is?: Prisma.UserWhereInput
+  isNot?: Prisma.UserWhereInput
 }
 
 export type UserNullableScalarRelationFilter = {
@@ -462,9 +466,43 @@ export type IntFieldUpdateOperationsInput = {
   divide?: number
 }
 
+export type UserCreateNestedOneWithoutCreated_tasksInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCreated_tasksInput, Prisma.UserUncheckedCreateWithoutCreated_tasksInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCreated_tasksInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutCreated_tasksNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCreated_tasksInput, Prisma.UserUncheckedCreateWithoutCreated_tasksInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCreated_tasksInput
+  upsert?: Prisma.UserUpsertWithoutCreated_tasksInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCreated_tasksInput, Prisma.UserUpdateWithoutCreated_tasksInput>, Prisma.UserUncheckedUpdateWithoutCreated_tasksInput>
+}
+
+export type UserCreateNestedOneWithoutAssigned_tasksInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAssigned_tasksInput, Prisma.UserUncheckedCreateWithoutAssigned_tasksInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAssigned_tasksInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutAssigned_tasksNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAssigned_tasksInput, Prisma.UserUncheckedCreateWithoutAssigned_tasksInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAssigned_tasksInput
+  upsert?: Prisma.UserUpsertWithoutAssigned_tasksInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAssigned_tasksInput, Prisma.UserUpdateWithoutAssigned_tasksInput>, Prisma.UserUncheckedUpdateWithoutAssigned_tasksInput>
+}
+
 export type UserCreateNestedOneWithoutPostsInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutPostsInput, Prisma.UserUncheckedCreateWithoutPostsInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutPostsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserCreateNestedOneWithoutApproved_postsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutApproved_postsInput, Prisma.UserUncheckedCreateWithoutApproved_postsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutApproved_postsInput
   connect?: Prisma.UserWhereUniqueInput
 }
 
@@ -478,32 +516,218 @@ export type UserUpdateOneWithoutPostsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutPostsInput, Prisma.UserUpdateWithoutPostsInput>, Prisma.UserUncheckedUpdateWithoutPostsInput>
 }
 
+export type UserUpdateOneWithoutApproved_postsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutApproved_postsInput, Prisma.UserUncheckedCreateWithoutApproved_postsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutApproved_postsInput
+  upsert?: Prisma.UserUpsertWithoutApproved_postsInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutApproved_postsInput, Prisma.UserUpdateWithoutApproved_postsInput>, Prisma.UserUncheckedUpdateWithoutApproved_postsInput>
+}
+
+export type UserCreateWithoutCreated_tasksInput = {
+  user_login: string
+  user_password: string
+  admin_role?: boolean
+  SMM_role?: boolean
+  designer_role?: boolean
+  coordinator_role?: boolean
+  photographer_role?: boolean
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  approved_posts?: Prisma.PostCreateNestedManyWithoutApproved_byInput
+  assigned_tasks?: Prisma.TaskAssigneeCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutCreated_tasksInput = {
+  user_id?: number
+  user_login: string
+  user_password: string
+  admin_role?: boolean
+  SMM_role?: boolean
+  designer_role?: boolean
+  coordinator_role?: boolean
+  photographer_role?: boolean
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  approved_posts?: Prisma.PostUncheckedCreateNestedManyWithoutApproved_byInput
+  assigned_tasks?: Prisma.TaskAssigneeUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutCreated_tasksInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutCreated_tasksInput, Prisma.UserUncheckedCreateWithoutCreated_tasksInput>
+}
+
+export type UserUpsertWithoutCreated_tasksInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutCreated_tasksInput, Prisma.UserUncheckedUpdateWithoutCreated_tasksInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutCreated_tasksInput, Prisma.UserUncheckedCreateWithoutCreated_tasksInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutCreated_tasksInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutCreated_tasksInput, Prisma.UserUncheckedUpdateWithoutCreated_tasksInput>
+}
+
+export type UserUpdateWithoutCreated_tasksInput = {
+  user_login?: Prisma.StringFieldUpdateOperationsInput | string
+  user_password?: Prisma.StringFieldUpdateOperationsInput | string
+  admin_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  SMM_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  designer_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  coordinator_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  photographer_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  approved_posts?: Prisma.PostUpdateManyWithoutApproved_byNestedInput
+  assigned_tasks?: Prisma.TaskAssigneeUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutCreated_tasksInput = {
+  user_id?: Prisma.IntFieldUpdateOperationsInput | number
+  user_login?: Prisma.StringFieldUpdateOperationsInput | string
+  user_password?: Prisma.StringFieldUpdateOperationsInput | string
+  admin_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  SMM_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  designer_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  coordinator_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  photographer_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  approved_posts?: Prisma.PostUncheckedUpdateManyWithoutApproved_byNestedInput
+  assigned_tasks?: Prisma.TaskAssigneeUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutAssigned_tasksInput = {
+  user_login: string
+  user_password: string
+  admin_role?: boolean
+  SMM_role?: boolean
+  designer_role?: boolean
+  coordinator_role?: boolean
+  photographer_role?: boolean
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  approved_posts?: Prisma.PostCreateNestedManyWithoutApproved_byInput
+  created_tasks?: Prisma.TaskCreateNestedManyWithoutCreated_byInput
+}
+
+export type UserUncheckedCreateWithoutAssigned_tasksInput = {
+  user_id?: number
+  user_login: string
+  user_password: string
+  admin_role?: boolean
+  SMM_role?: boolean
+  designer_role?: boolean
+  coordinator_role?: boolean
+  photographer_role?: boolean
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  approved_posts?: Prisma.PostUncheckedCreateNestedManyWithoutApproved_byInput
+  created_tasks?: Prisma.TaskUncheckedCreateNestedManyWithoutCreated_byInput
+}
+
+export type UserCreateOrConnectWithoutAssigned_tasksInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutAssigned_tasksInput, Prisma.UserUncheckedCreateWithoutAssigned_tasksInput>
+}
+
+export type UserUpsertWithoutAssigned_tasksInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutAssigned_tasksInput, Prisma.UserUncheckedUpdateWithoutAssigned_tasksInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutAssigned_tasksInput, Prisma.UserUncheckedCreateWithoutAssigned_tasksInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutAssigned_tasksInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutAssigned_tasksInput, Prisma.UserUncheckedUpdateWithoutAssigned_tasksInput>
+}
+
+export type UserUpdateWithoutAssigned_tasksInput = {
+  user_login?: Prisma.StringFieldUpdateOperationsInput | string
+  user_password?: Prisma.StringFieldUpdateOperationsInput | string
+  admin_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  SMM_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  designer_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  coordinator_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  photographer_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  approved_posts?: Prisma.PostUpdateManyWithoutApproved_byNestedInput
+  created_tasks?: Prisma.TaskUpdateManyWithoutCreated_byNestedInput
+}
+
+export type UserUncheckedUpdateWithoutAssigned_tasksInput = {
+  user_id?: Prisma.IntFieldUpdateOperationsInput | number
+  user_login?: Prisma.StringFieldUpdateOperationsInput | string
+  user_password?: Prisma.StringFieldUpdateOperationsInput | string
+  admin_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  SMM_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  designer_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  coordinator_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  photographer_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  approved_posts?: Prisma.PostUncheckedUpdateManyWithoutApproved_byNestedInput
+  created_tasks?: Prisma.TaskUncheckedUpdateManyWithoutCreated_byNestedInput
+}
+
 export type UserCreateWithoutPostsInput = {
   user_login: string
   user_password: string
-  admin_role: boolean
-  SMM_role: boolean
-  designer_role: boolean
-  videomaker_role: boolean
-  photographer_role: boolean
-  coordinator_role: boolean
+  admin_role?: boolean
+  SMM_role?: boolean
+  designer_role?: boolean
+  coordinator_role?: boolean
+  photographer_role?: boolean
+  approved_posts?: Prisma.PostCreateNestedManyWithoutApproved_byInput
+  created_tasks?: Prisma.TaskCreateNestedManyWithoutCreated_byInput
+  assigned_tasks?: Prisma.TaskAssigneeCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutPostsInput = {
   user_id?: number
   user_login: string
   user_password: string
-  admin_role: boolean
-  SMM_role: boolean
-  designer_role: boolean
-  videomaker_role: boolean
-  photographer_role: boolean
-  coordinator_role: boolean
+  admin_role?: boolean
+  SMM_role?: boolean
+  designer_role?: boolean
+  coordinator_role?: boolean
+  photographer_role?: boolean
+  approved_posts?: Prisma.PostUncheckedCreateNestedManyWithoutApproved_byInput
+  created_tasks?: Prisma.TaskUncheckedCreateNestedManyWithoutCreated_byInput
+  assigned_tasks?: Prisma.TaskAssigneeUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutPostsInput = {
   where: Prisma.UserWhereUniqueInput
   create: Prisma.XOR<Prisma.UserCreateWithoutPostsInput, Prisma.UserUncheckedCreateWithoutPostsInput>
+}
+
+export type UserCreateWithoutApproved_postsInput = {
+  user_login: string
+  user_password: string
+  admin_role?: boolean
+  SMM_role?: boolean
+  designer_role?: boolean
+  coordinator_role?: boolean
+  photographer_role?: boolean
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  created_tasks?: Prisma.TaskCreateNestedManyWithoutCreated_byInput
+  assigned_tasks?: Prisma.TaskAssigneeCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutApproved_postsInput = {
+  user_id?: number
+  user_login: string
+  user_password: string
+  admin_role?: boolean
+  SMM_role?: boolean
+  designer_role?: boolean
+  coordinator_role?: boolean
+  photographer_role?: boolean
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  created_tasks?: Prisma.TaskUncheckedCreateNestedManyWithoutCreated_byInput
+  assigned_tasks?: Prisma.TaskAssigneeUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutApproved_postsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutApproved_postsInput, Prisma.UserUncheckedCreateWithoutApproved_postsInput>
 }
 
 export type UserUpsertWithoutPostsInput = {
@@ -523,9 +747,11 @@ export type UserUpdateWithoutPostsInput = {
   admin_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
   SMM_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
   designer_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  videomaker_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  photographer_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
   coordinator_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  photographer_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  approved_posts?: Prisma.PostUpdateManyWithoutApproved_byNestedInput
+  created_tasks?: Prisma.TaskUpdateManyWithoutCreated_byNestedInput
+  assigned_tasks?: Prisma.TaskAssigneeUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPostsInput = {
@@ -535,9 +761,49 @@ export type UserUncheckedUpdateWithoutPostsInput = {
   admin_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
   SMM_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
   designer_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  videomaker_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  photographer_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
   coordinator_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  photographer_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  approved_posts?: Prisma.PostUncheckedUpdateManyWithoutApproved_byNestedInput
+  created_tasks?: Prisma.TaskUncheckedUpdateManyWithoutCreated_byNestedInput
+  assigned_tasks?: Prisma.TaskAssigneeUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserUpsertWithoutApproved_postsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutApproved_postsInput, Prisma.UserUncheckedUpdateWithoutApproved_postsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutApproved_postsInput, Prisma.UserUncheckedCreateWithoutApproved_postsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutApproved_postsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutApproved_postsInput, Prisma.UserUncheckedUpdateWithoutApproved_postsInput>
+}
+
+export type UserUpdateWithoutApproved_postsInput = {
+  user_login?: Prisma.StringFieldUpdateOperationsInput | string
+  user_password?: Prisma.StringFieldUpdateOperationsInput | string
+  admin_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  SMM_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  designer_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  coordinator_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  photographer_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  created_tasks?: Prisma.TaskUpdateManyWithoutCreated_byNestedInput
+  assigned_tasks?: Prisma.TaskAssigneeUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutApproved_postsInput = {
+  user_id?: Prisma.IntFieldUpdateOperationsInput | number
+  user_login?: Prisma.StringFieldUpdateOperationsInput | string
+  user_password?: Prisma.StringFieldUpdateOperationsInput | string
+  admin_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  SMM_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  designer_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  coordinator_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  photographer_role?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  created_tasks?: Prisma.TaskUncheckedUpdateManyWithoutCreated_byNestedInput
+  assigned_tasks?: Prisma.TaskAssigneeUncheckedUpdateManyWithoutUserNestedInput
 }
 
 
@@ -547,10 +813,16 @@ export type UserUncheckedUpdateWithoutPostsInput = {
 
 export type UserCountOutputType = {
   posts: number
+  approved_posts: number
+  created_tasks: number
+  assigned_tasks: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   posts?: boolean | UserCountOutputTypeCountPostsArgs
+  approved_posts?: boolean | UserCountOutputTypeCountApproved_postsArgs
+  created_tasks?: boolean | UserCountOutputTypeCountCreated_tasksArgs
+  assigned_tasks?: boolean | UserCountOutputTypeCountAssigned_tasksArgs
 }
 
 /**
@@ -570,6 +842,27 @@ export type UserCountOutputTypeCountPostsArgs<ExtArgs extends runtime.Types.Exte
   where?: Prisma.PostWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountApproved_postsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PostWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountCreated_tasksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TaskWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountAssigned_tasksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TaskAssigneeWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   user_id?: boolean
@@ -578,10 +871,12 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   admin_role?: boolean
   SMM_role?: boolean
   designer_role?: boolean
-  videomaker_role?: boolean
-  photographer_role?: boolean
   coordinator_role?: boolean
+  photographer_role?: boolean
   posts?: boolean | Prisma.User$postsArgs<ExtArgs>
+  approved_posts?: boolean | Prisma.User$approved_postsArgs<ExtArgs>
+  created_tasks?: boolean | Prisma.User$created_tasksArgs<ExtArgs>
+  assigned_tasks?: boolean | Prisma.User$assigned_tasksArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -592,9 +887,8 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   admin_role?: boolean
   SMM_role?: boolean
   designer_role?: boolean
-  videomaker_role?: boolean
-  photographer_role?: boolean
   coordinator_role?: boolean
+  photographer_role?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -604,9 +898,8 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   admin_role?: boolean
   SMM_role?: boolean
   designer_role?: boolean
-  videomaker_role?: boolean
-  photographer_role?: boolean
   coordinator_role?: boolean
+  photographer_role?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectScalar = {
@@ -616,14 +909,16 @@ export type UserSelectScalar = {
   admin_role?: boolean
   SMM_role?: boolean
   designer_role?: boolean
-  videomaker_role?: boolean
-  photographer_role?: boolean
   coordinator_role?: boolean
+  photographer_role?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"user_id" | "user_login" | "user_password" | "admin_role" | "SMM_role" | "designer_role" | "videomaker_role" | "photographer_role" | "coordinator_role", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"user_id" | "user_login" | "user_password" | "admin_role" | "SMM_role" | "designer_role" | "coordinator_role" | "photographer_role", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   posts?: boolean | Prisma.User$postsArgs<ExtArgs>
+  approved_posts?: boolean | Prisma.User$approved_postsArgs<ExtArgs>
+  created_tasks?: boolean | Prisma.User$created_tasksArgs<ExtArgs>
+  assigned_tasks?: boolean | Prisma.User$assigned_tasksArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -633,6 +928,9 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   name: "User"
   objects: {
     posts: Prisma.$PostPayload<ExtArgs>[]
+    approved_posts: Prisma.$PostPayload<ExtArgs>[]
+    created_tasks: Prisma.$TaskPayload<ExtArgs>[]
+    assigned_tasks: Prisma.$TaskAssigneePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     user_id: number
@@ -641,9 +939,8 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     admin_role: boolean
     SMM_role: boolean
     designer_role: boolean
-    videomaker_role: boolean
-    photographer_role: boolean
     coordinator_role: boolean
+    photographer_role: boolean
   }, ExtArgs["result"]["user"]>
   composites: {}
 }
@@ -1039,6 +1336,9 @@ readonly fields: UserFieldRefs;
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   posts<T extends Prisma.User$postsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$postsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  approved_posts<T extends Prisma.User$approved_postsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$approved_postsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  created_tasks<T extends Prisma.User$created_tasksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$created_tasksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TaskPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  assigned_tasks<T extends Prisma.User$assigned_tasksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$assigned_tasksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TaskAssigneePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1074,9 +1374,8 @@ export interface UserFieldRefs {
   readonly admin_role: Prisma.FieldRef<"User", 'Boolean'>
   readonly SMM_role: Prisma.FieldRef<"User", 'Boolean'>
   readonly designer_role: Prisma.FieldRef<"User", 'Boolean'>
-  readonly videomaker_role: Prisma.FieldRef<"User", 'Boolean'>
-  readonly photographer_role: Prisma.FieldRef<"User", 'Boolean'>
   readonly coordinator_role: Prisma.FieldRef<"User", 'Boolean'>
+  readonly photographer_role: Prisma.FieldRef<"User", 'Boolean'>
 }
     
 
@@ -1486,6 +1785,78 @@ export type User$postsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
   take?: number
   skip?: number
   distinct?: Prisma.PostScalarFieldEnum | Prisma.PostScalarFieldEnum[]
+}
+
+/**
+ * User.approved_posts
+ */
+export type User$approved_postsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Post
+   */
+  select?: Prisma.PostSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Post
+   */
+  omit?: Prisma.PostOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PostInclude<ExtArgs> | null
+  where?: Prisma.PostWhereInput
+  orderBy?: Prisma.PostOrderByWithRelationInput | Prisma.PostOrderByWithRelationInput[]
+  cursor?: Prisma.PostWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PostScalarFieldEnum | Prisma.PostScalarFieldEnum[]
+}
+
+/**
+ * User.created_tasks
+ */
+export type User$created_tasksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Task
+   */
+  select?: Prisma.TaskSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Task
+   */
+  omit?: Prisma.TaskOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TaskInclude<ExtArgs> | null
+  where?: Prisma.TaskWhereInput
+  orderBy?: Prisma.TaskOrderByWithRelationInput | Prisma.TaskOrderByWithRelationInput[]
+  cursor?: Prisma.TaskWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TaskScalarFieldEnum | Prisma.TaskScalarFieldEnum[]
+}
+
+/**
+ * User.assigned_tasks
+ */
+export type User$assigned_tasksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the TaskAssignee
+   */
+  select?: Prisma.TaskAssigneeSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the TaskAssignee
+   */
+  omit?: Prisma.TaskAssigneeOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TaskAssigneeInclude<ExtArgs> | null
+  where?: Prisma.TaskAssigneeWhereInput
+  orderBy?: Prisma.TaskAssigneeOrderByWithRelationInput | Prisma.TaskAssigneeOrderByWithRelationInput[]
+  cursor?: Prisma.TaskAssigneeWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TaskAssigneeScalarFieldEnum | Prisma.TaskAssigneeScalarFieldEnum[]
 }
 
 /**

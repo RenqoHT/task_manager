@@ -52,6 +52,11 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   User: 'User',
+  Tag: 'Tag',
+  PostTag: 'PostTag',
+  TaskTag: 'TaskTag',
+  Task: 'Task',
+  TaskAssignee: 'TaskAssignee',
   Post: 'Post'
 } as const
 
@@ -78,34 +83,98 @@ export const UserScalarFieldEnum = {
   admin_role: 'admin_role',
   SMM_role: 'SMM_role',
   designer_role: 'designer_role',
-  videomaker_role: 'videomaker_role',
-  photographer_role: 'photographer_role',
-  coordinator_role: 'coordinator_role'
+  coordinator_role: 'coordinator_role',
+  photographer_role: 'photographer_role'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+export const TagScalarFieldEnum = {
+  tag_id: 'tag_id',
+  name: 'name',
+  color: 'color',
+  created_at: 'created_at'
+} as const
+
+export type TagScalarFieldEnum = (typeof TagScalarFieldEnum)[keyof typeof TagScalarFieldEnum]
+
+
+export const PostTagScalarFieldEnum = {
+  post_tag_id: 'post_tag_id',
+  post_id: 'post_id',
+  tag_id: 'tag_id'
+} as const
+
+export type PostTagScalarFieldEnum = (typeof PostTagScalarFieldEnum)[keyof typeof PostTagScalarFieldEnum]
+
+
+export const TaskTagScalarFieldEnum = {
+  task_tag_id: 'task_tag_id',
+  task_id: 'task_id',
+  tag_id: 'tag_id'
+} as const
+
+export type TaskTagScalarFieldEnum = (typeof TaskTagScalarFieldEnum)[keyof typeof TaskTagScalarFieldEnum]
+
+
+export const TaskScalarFieldEnum = {
+  task_id: 'task_id',
+  title: 'title',
+  description: 'description',
+  created_by_id: 'created_by_id',
+  start_time: 'start_time',
+  end_time: 'end_time',
+  all_day: 'all_day',
+  priority: 'priority',
+  post_status: 'post_status',
+  completed_task: 'completed_task'
+} as const
+
+export type TaskScalarFieldEnum = (typeof TaskScalarFieldEnum)[keyof typeof TaskScalarFieldEnum]
+
+
+export const TaskAssigneeScalarFieldEnum = {
+  task_assignee_id: 'task_assignee_id',
+  task_id: 'task_id',
+  user_id: 'user_id'
+} as const
+
+export type TaskAssigneeScalarFieldEnum = (typeof TaskAssigneeScalarFieldEnum)[keyof typeof TaskAssigneeScalarFieldEnum]
 
 
 export const PostScalarFieldEnum = {
   post_id: 'post_id',
   post_title: 'post_title',
   post_description: 'post_description',
-  post_needs_video_smm: 'post_needs_video_smm',
-  post_needs_video_maker: 'post_needs_video_maker',
-  post_needs_text: 'post_needs_text',
-  post_needs_photogallery: 'post_needs_photogallery',
+  post_status: 'post_status',
+  tz_link: 'tz_link',
+  is_published: 'is_published',
+  post_needs_mini_video_smm: 'post_needs_mini_video_smm',
+  post_needs_video: 'post_needs_video',
   post_needs_cover_photo: 'post_needs_cover_photo',
   post_needs_photo_cards: 'post_needs_photo_cards',
-  post_done_link_video_smm: 'post_done_link_video_smm',
-  post_done_link_video_maker: 'post_done_link_video_maker',
-  post_done_link_text: 'post_done_link_text',
-  post_done_link_photogallery: 'post_done_link_photogallery',
+  post_needs_photogallery: 'post_needs_photogallery',
+  post_needs_mini_gallery: 'post_needs_mini_gallery',
+  post_needs_text: 'post_needs_text',
+  post_done_link_mini_video_smm: 'post_done_link_mini_video_smm',
+  post_done_link_video: 'post_done_link_video',
   post_done_link_cover_photo: 'post_done_link_cover_photo',
   post_done_link_photo_cards: 'post_done_link_photo_cards',
+  post_done_link_photogallery: 'post_done_link_photogallery',
+  post_done_link_mini_gallery: 'post_done_link_mini_gallery',
+  post_done_link_text: 'post_done_link_text',
+  post_feedback_mini_video_smm: 'post_feedback_mini_video_smm',
+  post_feedback_video: 'post_feedback_video',
+  post_feedback_cover_photo: 'post_feedback_cover_photo',
+  post_feedback_photo_cards: 'post_feedback_photo_cards',
+  post_feedback_photogallery: 'post_feedback_photogallery',
+  post_feedback_mini_gallery: 'post_feedback_mini_gallery',
+  post_feedback_text: 'post_feedback_text',
   responsible_person_id: 'responsible_person_id',
+  approved_by_id: 'approved_by_id',
   post_date: 'post_date',
-  post_deadline: 'post_deadline',
-  post_type: 'post_type'
+  post_deadline: 'post_deadline'
 } as const
 
 export type PostScalarFieldEnum = (typeof PostScalarFieldEnum)[keyof typeof PostScalarFieldEnum]

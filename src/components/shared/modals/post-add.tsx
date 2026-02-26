@@ -37,16 +37,16 @@ export const PostAdd: React.FC<Props> = ({ className, open, onOpenChange }) => {
 
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [needsVideoSmm, setNeedsVideoSmm] = useState(false);
-    const [needsVideoMaker, setNeedsVideoMaker] = useState(false);
-    const [needsText, setNeedsText] = useState(false);
+    const [needsMiniVideoSmm, setNeedsMiniVideoSmm] = useState(false);
+    const [needsVideo, setNeedsVideo] = useState(false);
+    const [needsText, setNeedsText] = useState(true);
     const [needsPhotogallery, setNeedsPhotogallery] = useState(false);
     const [needsCoverPhoto, setNeedsCoverPhoto] = useState(false);
     const [needsPhotoCards, setNeedsPhotoCards] = useState(false);
+    const [needsMiniGallery, setNeedsMiniGallery] = useState(false);
     const [responsiblePersonId, setResponsiblePersonId] = useState<number | null>(null);
-    const [showTypeDropdown, setShowTypeDropdown] = useState(false);
     const [deadline, setDeadline] = useState('');
-    const [type, setType] = useState('');
+    const [tzLink, setTzLink] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
 
@@ -76,15 +76,16 @@ export const PostAdd: React.FC<Props> = ({ className, open, onOpenChange }) => {
             const postData: PostCreationData = {
                 post_title: title,
                 post_description: description || null,
-                post_needs_video_smm: needsVideoSmm,
-                post_needs_video_maker: needsVideoMaker,
+                post_needs_mini_video_smm: needsMiniVideoSmm,
+                post_needs_video: needsVideo,
                 post_needs_text: needsText,
                 post_needs_photogallery: needsPhotogallery,
                 post_needs_cover_photo: needsCoverPhoto,
                 post_needs_photo_cards: needsPhotoCards,
+                post_needs_mini_gallery: needsMiniGallery,
+                tz_link: tzLink || null,
                 responsible_person_id: responsiblePersonId,
                 post_deadline: deadlineDate,
-                post_type: type,
             };
 
             await Api.posts.create(postData);
@@ -106,15 +107,16 @@ export const PostAdd: React.FC<Props> = ({ className, open, onOpenChange }) => {
         onOpenChange(false);
         setTitle('');
         setDescription('');
-        setNeedsVideoSmm(false);
-        setNeedsVideoMaker(false);
-        setNeedsText(false);
+        setNeedsMiniVideoSmm(false);
+        setNeedsVideo(false);
+        setNeedsText(true);
         setNeedsPhotogallery(false);
         setNeedsCoverPhoto(false);
         setNeedsPhotoCards(false);
+        setNeedsMiniGallery(false);
         setResponsiblePersonId(null);
         setDeadline('');
-        setType('');
+        setTzLink('');
         setError('');
     };
 
@@ -164,19 +166,6 @@ export const PostAdd: React.FC<Props> = ({ className, open, onOpenChange }) => {
                         </div>
 
                         <div>
-                            <label htmlFor="type" className="block text-sm font-medium text-gray-700 mb-1">
-                                Тип поста *
-                            </label>
-                            <Input
-                                id="type"
-                                value={type}
-                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setType(e.target.value)}
-                                placeholder="Введите тип поста"
-                                required
-                            />
-                        </div>
-
-                        <div>
                             <label htmlFor="deadline" className="block text-sm font-medium text-gray-700 mb-1">
                                 Крайний срок *
                             </label>
@@ -186,6 +175,18 @@ export const PostAdd: React.FC<Props> = ({ className, open, onOpenChange }) => {
                                 value={deadline}
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDeadline(e.target.value)}
                                 required
+                            />
+                        </div>
+
+                        <div>
+                            <label htmlFor="tzLink" className="block text-sm font-medium text-gray-700 mb-1">
+                                Ссылка на ТЗ
+                            </label>
+                            <Input
+                                id="tzLink"
+                                value={tzLink}
+                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTzLink(e.target.value)}
+                                placeholder="Введите ссылку на техническое задание"
                             />
                         </div>
 
@@ -207,39 +208,26 @@ export const PostAdd: React.FC<Props> = ({ className, open, onOpenChange }) => {
                             <div className="flex items-center">
                                 <input
                                     type="checkbox"
-                                    id="needsVideoSmm"
-                                    checked={needsVideoSmm}
-                                    onChange={(e) => setNeedsVideoSmm(e.target.checked)}
+                                    id="needsMiniVideoSmm"
+                                    checked={needsMiniVideoSmm}
+                                    onChange={(e) => setNeedsMiniVideoSmm(e.target.checked)}
                                     className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
                                 />
-                                <label htmlFor="needsVideoSmm" className="ml-2 block text-sm text-gray-700">
-                                    Видео SMM
+                                <label htmlFor="needsMiniVideoSmm" className="ml-2 block text-sm text-gray-700">
+                                    Мини-видео SMM
                                 </label>
                             </div>
 
                             <div className="flex items-center">
                                 <input
                                     type="checkbox"
-                                    id="needsVideoMaker"
-                                    checked={needsVideoMaker}
-                                    onChange={(e) => setNeedsVideoMaker(e.target.checked)}
+                                    id="needsVideo"
+                                    checked={needsVideo}
+                                    onChange={(e) => setNeedsVideo(e.target.checked)}
                                     className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
                                 />
-                                <label htmlFor="needsVideoMaker" className="ml-2 block text-sm text-gray-700">
-                                    Видео-мейкер
-                                </label>
-                            </div>
-
-                            <div className="flex items-center">
-                                <input
-                                    type="checkbox"
-                                    id="needsText"
-                                    checked={needsText}
-                                    onChange={(e) => setNeedsText(e.target.checked)}
-                                    className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
-                                />
-                                <label htmlFor="needsText" className="ml-2 block text-sm text-gray-700">
-                                    Текст
+                                <label htmlFor="needsVideo" className="ml-2 block text-sm text-gray-700">
+                                    Видео
                                 </label>
                             </div>
 
@@ -279,6 +267,19 @@ export const PostAdd: React.FC<Props> = ({ className, open, onOpenChange }) => {
                                 />
                                 <label htmlFor="needsPhotoCards" className="ml-2 block text-sm text-gray-700">
                                     Фотокарточки
+                                </label>
+                            </div>
+
+                            <div className="flex items-center">
+                                <input
+                                    type="checkbox"
+                                    id="needsMiniGallery"
+                                    checked={needsMiniGallery}
+                                    onChange={(e) => setNeedsMiniGallery(e.target.checked)}
+                                    className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
+                                />
+                                <label htmlFor="needsMiniGallery" className="ml-2 block text-sm text-gray-700">
+                                    Мини-галерея
                                 </label>
                             </div>
                         </div>

@@ -22,12 +22,13 @@ export const AttachLinksModal: React.FC<Props> = ({
     onLinksUpdated
 }) => {
     const [links, setLinks] = useState({
-        videoSmm: post.post_done_link_video_smm || '',
-        videoMaker: post.post_done_link_video_maker || '',
+        miniVideoSmm: post.post_done_link_mini_video_smm || '',
+        video: post.post_done_link_video || '',
         text: post.post_done_link_text || '',
         photogallery: post.post_done_link_photogallery || '',
         coverPhoto: post.post_done_link_cover_photo || '',
-        photoCards: post.post_done_link_photo_cards || ''
+        photoCards: post.post_done_link_photo_cards || '',
+        miniGallery: post.post_done_link_mini_gallery || ''
     });
     
     const [loading, setLoading] = useState(false);
@@ -46,14 +47,14 @@ export const AttachLinksModal: React.FC<Props> = ({
         setError('');
 
         try {
-            // Обновляем пост с новыми ссылками
             const updatedPost = await Api.posts.update(post.post_id, {
-                post_done_link_video_smm: links.videoSmm || null,
-                post_done_link_video_maker: links.videoMaker || null,
+                post_done_link_mini_video_smm: links.miniVideoSmm || null,
+                post_done_link_video: links.video || null,
                 post_done_link_text: links.text || null,
                 post_done_link_photogallery: links.photogallery || null,
                 post_done_link_cover_photo: links.coverPhoto || null,
-                post_done_link_photo_cards: links.photoCards || null
+                post_done_link_photo_cards: links.photoCards || null,
+                post_done_link_mini_gallery: links.miniGallery || null
             });
 
             if (onLinksUpdated) {
@@ -91,30 +92,30 @@ export const AttachLinksModal: React.FC<Props> = ({
                             </div>
                         )}
 
-                        {post.post_needs_video_smm && (
+                        {post.post_needs_mini_video_smm && (
                             <div>
-                                <label htmlFor="videoSmm" className="block text-sm font-medium text-gray-700 mb-1">
-                                    Ссылка на видео SMM
+                                <label htmlFor="miniVideoSmm" className="block text-sm font-medium text-gray-700 mb-1">
+                                    Ссылка на мини-видео SMM
                                 </label>
                                 <Input
-                                    id="videoSmm"
-                                    value={links.videoSmm}
-                                    onChange={(e) => handleChange('videoSmm', e.target.value)}
-                                    placeholder="https://example.com/video-smm"
+                                    id="miniVideoSmm"
+                                    value={links.miniVideoSmm}
+                                    onChange={(e) => handleChange('miniVideoSmm', e.target.value)}
+                                    placeholder="https://example.com/mini-video-smm"
                                 />
                             </div>
                         )}
 
-                        {post.post_needs_video_maker && (
+                        {post.post_needs_video && (
                             <div>
-                                <label htmlFor="videoMaker" className="block text-sm font-medium text-gray-700 mb-1">
-                                    Ссылка на видео-мейкер
+                                <label htmlFor="video" className="block text-sm font-medium text-gray-700 mb-1">
+                                    Ссылка на видео
                                 </label>
                                 <Input
-                                    id="videoMaker"
-                                    value={links.videoMaker}
-                                    onChange={(e) => handleChange('videoMaker', e.target.value)}
-                                    placeholder="https://example.com/video-maker"
+                                    id="video"
+                                    value={links.video}
+                                    onChange={(e) => handleChange('video', e.target.value)}
+                                    placeholder="https://example.com/video"
                                 />
                             </div>
                         )}
@@ -171,6 +172,20 @@ export const AttachLinksModal: React.FC<Props> = ({
                                     value={links.photoCards}
                                     onChange={(e) => handleChange('photoCards', e.target.value)}
                                     placeholder="https://example.com/photo-cards"
+                                />
+                            </div>
+                        )}
+
+                        {post.post_needs_mini_gallery && (
+                            <div>
+                                <label htmlFor="miniGallery" className="block text-sm font-medium text-gray-700 mb-1">
+                                    Ссылка на мини-галерею
+                                </label>
+                                <Input
+                                    id="miniGallery"
+                                    value={links.miniGallery}
+                                    onChange={(e) => handleChange('miniGallery', e.target.value)}
+                                    placeholder="https://example.com/mini-gallery"
                                 />
                             </div>
                         )}

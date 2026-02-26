@@ -7,7 +7,6 @@ declare module "next-auth" {
       admin_role?: boolean | null;
       SMM_role?: boolean | null;
       designer_role?: boolean | null;
-      videomaker_role?: boolean | null;
       photographer_role?: boolean | null;
       coordinator_role?: boolean | null;
     } & DefaultSession["user"];
@@ -19,7 +18,6 @@ declare module "next-auth/jwt" {
     admin_role?: boolean | null;
     SMM_role?: boolean | null;
     designer_role?: boolean | null;
-    videomaker_role?: boolean | null;
     photographer_role?: boolean | null;
     coordinator_role?: boolean | null;
   }
