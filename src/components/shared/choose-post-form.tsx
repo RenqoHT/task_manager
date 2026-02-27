@@ -16,13 +16,14 @@ interface ExtendedPost extends Post {
 interface Props {
     post: ExtendedPost;
     onClose?: () => void;
+    onEdit?: (post: ExtendedPost) => void; // <-- новый колбэк
     className?: string;
 }
 
-export const ChoosePostForm: React.FC<Props> = ({ post: initialPost, onClose, className }) => {
+export const ChoosePostForm: React.FC<Props> = ({ post: initialPost, onClose, onEdit, className }) => {
     const [post, setPost] = useState<ExtendedPost>(initialPost);
-    
-    // Обновляем локальное состояние когда меняется initialPost
+    const router = useRouter();
+
     useEffect(() => {
         setPost(initialPost);
     }, [initialPost]);
@@ -40,52 +41,46 @@ export const ChoosePostForm: React.FC<Props> = ({ post: initialPost, onClose, cl
 
     const finalPostStatus = post.post_status || 'В работе';
 
-    const router = useRouter();
-    const handleEdit = () => {
-        window.dispatchEvent(new CustomEvent('openEditPostModal', { detail: post }));
-    };
-
+    // ── Редактирование ──────────────────────────────────────
     const [showEditModal, setShowEditModal] = useState(false);
     const [postForEdit, setPostForEdit] = useState<ExtendedPost | null>(null);
-    const [showAttachLinksModal, setShowAttachLinksModal] = useState(false);
 
-    useEffect(() => {
-        const handleOpenEditModal = (event: Event) => {
-            const customEvent = event as CustomEvent<ExtendedPost>;
-            setPostForEdit(customEvent.detail);
+    const handleEdit = () => {
+        if (onEdit) {
+            // Родитель (модалка) сам займётся открытием PostEditModal
+            onEdit(post);
+        } else {
+            // Автономный режим (без модалки) — открываем прямо здесь
+            setPostForEdit(post);
             setShowEditModal(true);
-        };
+        }
+    };
 
-        window.addEventListener('openEditPostModal', handleOpenEditModal);
+    const handleSave = (updatedPost: ExtendedPost) => {
+        setPost(prev => ({ ...prev, ...updatedPost }));
+        router.refresh();
+    };
 
-        return () => {
-            window.removeEventListener('openEditPostModal', handleOpenEditModal);
-        };
-    }, []);
+    // ── Прикрепление ссылок ─────────────────────────────────
+    const [showAttachLinksModal, setShowAttachLinksModal] = useState(false);
 
     const handleAttachLinks = () => {
         setShowAttachLinksModal(true);
     };
 
     const handleLinksUpdate = (updatedPost: Post) => {
-        // Обновляем локальное состояние поста
         setPost(prev => ({ ...prev, ...updatedPost }));
         router.refresh();
     };
 
-    const handleSave = (updatedPost: ExtendedPost) => {
-        router.refresh();
-    };
-
+    // ── Удаление ────────────────────────────────────────────
     const handleDelete = async () => {
         if (confirm('Вы уверены, что хотите удалить этот пост?')) {
             try {
                 await deletePost(post.post_id);
                 if (onClose) {
-                    // В модальном окне - закрываем модалку
                     onClose();
                 } else {
-                    // На отдельной странице - редирект на главную
                     router.push('/');
                 }
                 setTimeout(() => {
@@ -101,34 +96,23 @@ export const ChoosePostForm: React.FC<Props> = ({ post: initialPost, onClose, cl
     return (
         <div className={cn("p-6 space-y-6", className)}>
             <div className="flex justify-end space-x-3">
-                <Button
-                    variant="outline"
-                    onClick={handleAttachLinks}
-                    className="mb-4"
-                >
+                <Button variant="outline" onClick={handleAttachLinks} className="mb-4">
                     Прикрепить ссылки
                 </Button>
                 <CanEditPost>
-                    <Button
-                        variant="outline"
-                        onClick={handleEdit}
-                        className="mb-4"
-                    >
+                    <Button variant="outline" onClick={handleEdit} className="mb-4">
                         Редактировать
                     </Button>
                 </CanEditPost>
                 <CanDeletePost>
-                    <Button
-                        variant="destructive"
-                        onClick={handleDelete}
-                        className="mb-4"
-                    >
+                    <Button variant="destructive" onClick={handleDelete} className="mb-4">
                         Удалить
                     </Button>
                 </CanDeletePost>
             </div>
 
-            {postForEdit && (
+            {/* Модалка редактирования — только в автономном режиме (без onEdit) */}
+            {!onEdit && postForEdit && (
                 <PostEditModal
                     post={postForEdit}
                     open={showEditModal}
@@ -146,9 +130,7 @@ export const ChoosePostForm: React.FC<Props> = ({ post: initialPost, onClose, cl
 
             <div className="space-y-4">
                 <h3 className="text-lg font-semibold text-gray-800 border-b pb-2">Основная информация</h3>
-
                 <div className="grid grid-cols-2 gap-4">
-                
                     <div>
                         <p className="text-sm text-gray-500">Статус</p>
                         <p className={`font-medium ${
@@ -159,17 +141,14 @@ export const ChoosePostForm: React.FC<Props> = ({ post: initialPost, onClose, cl
                             {finalPostStatus}
                         </p>
                     </div>
-                    
                     <div>
                         <p className="text-sm text-gray-500">Дата создания</p>
                         <p className="font-medium">{formatDate(post.post_date)}</p>
                     </div>
-                    
                     <div>
                         <p className="text-sm text-gray-500">Крайний срок</p>
                         <p className="font-medium">{formatDate(post.post_deadline)}</p>
                     </div>
-                    
                     {post.responsible_person_id && (
                         <div>
                             <p className="text-sm text-gray-500">Ответственный</p>
@@ -178,13 +157,12 @@ export const ChoosePostForm: React.FC<Props> = ({ post: initialPost, onClose, cl
                             </p>
                         </div>
                     )}
-
                     {post.tz_link && (
                         <div>
                             <p className="text-sm text-gray-500">Ссылка на ТЗ</p>
-                            <a 
+                            <a
                                 href={post.tz_link.startsWith('http') ? post.tz_link : `https://${post.tz_link}`}
-                                target="_blank" 
+                                target="_blank"
                                 rel="noopener noreferrer"
                                 className="font-medium text-blue-600 hover:text-blue-800 hover:underline break-all"
                             >
@@ -193,7 +171,6 @@ export const ChoosePostForm: React.FC<Props> = ({ post: initialPost, onClose, cl
                         </div>
                     )}
                 </div>
-                
                 {post.post_description && (
                     <div>
                         <p className="text-sm text-gray-500">Описание</p>
@@ -203,10 +180,9 @@ export const ChoosePostForm: React.FC<Props> = ({ post: initialPost, onClose, cl
                     </div>
                 )}
             </div>
-            
+
             <div className="space-y-4">
                 <h3 className="text-lg font-semibold text-gray-800 border-b pb-4">Требуемые работы</h3>
-
                 <div className="grid grid-cols-2 md:grid-cols-2 gap-4">
                     {post.post_needs_mini_video_smm && (
                         <div className="flex items-center">
@@ -216,7 +192,6 @@ export const ChoosePostForm: React.FC<Props> = ({ post: initialPost, onClose, cl
                             </span>
                         </div>
                     )}
-
                     {post.post_needs_video && (
                         <div className="flex items-center">
                             <span className="mr-2 text-gray-500">Видео:</span>
@@ -225,7 +200,6 @@ export const ChoosePostForm: React.FC<Props> = ({ post: initialPost, onClose, cl
                             </span>
                         </div>
                     )}
-
                     {post.post_needs_text && (
                         <div className="flex items-center">
                             <span className="mr-2 text-gray-500">Текст:</span>
@@ -234,7 +208,6 @@ export const ChoosePostForm: React.FC<Props> = ({ post: initialPost, onClose, cl
                             </span>
                         </div>
                     )}
-
                     {post.post_needs_photogallery && (
                         <div className="flex items-center">
                             <span className="mr-2 text-gray-500">Фотогалерея:</span>
@@ -243,7 +216,6 @@ export const ChoosePostForm: React.FC<Props> = ({ post: initialPost, onClose, cl
                             </span>
                         </div>
                     )}
-
                     {post.post_needs_cover_photo && (
                         <div className="flex items-center">
                             <span className="mr-2 text-gray-500">Обложка:</span>
@@ -252,7 +224,6 @@ export const ChoosePostForm: React.FC<Props> = ({ post: initialPost, onClose, cl
                             </span>
                         </div>
                     )}
-
                     {post.post_needs_photo_cards && (
                         <div className="flex items-center">
                             <span className="mr-2 text-gray-500">Фотокарточки:</span>
@@ -261,7 +232,6 @@ export const ChoosePostForm: React.FC<Props> = ({ post: initialPost, onClose, cl
                             </span>
                         </div>
                     )}
-
                     {post.post_needs_mini_gallery && (
                         <div className="flex items-center">
                             <span className="mr-2 text-gray-500">Мини-галерея:</span>
