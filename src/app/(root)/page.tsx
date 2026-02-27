@@ -45,8 +45,6 @@ interface HomeProps {
 export default async function Home({ searchParams }: HomeProps) {
     const session = await getServerSession(authOptions);
     
-    const canDelete = session?.user?.admin_role === true || session?.user?.SMM_role === true;
-    
     const params = await searchParams;
     
     const filterByRole = params?.filterByRole === 'true';
@@ -87,7 +85,7 @@ export default async function Home({ searchParams }: HomeProps) {
             <TopBar/>
 
             <Container className="mt-5 mb-5">
-                <HomeContent posts={posts} canDelete={canDelete} />
+                <HomeContent posts={posts} />
                 <AddPostButton />
             </Container>
         </>

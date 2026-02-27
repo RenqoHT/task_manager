@@ -11,10 +11,10 @@ interface ExtendedPost extends Post {
 
 interface Props {
     posts: ExtendedPost[];
-    canDelete?: boolean;
 }
 
-export const HomeContent: React.FC<Props> = ({ posts, canDelete }) => {
+export const HomeContent: React.FC<Props> = ({ posts }) => {
+
     const [selectedPost, setSelectedPost] = useState<ExtendedPost | null>(null);
 
     const handlePostClick = (post: ExtendedPost) => {
@@ -36,10 +36,10 @@ export const HomeContent: React.FC<Props> = ({ posts, canDelete }) => {
             {selectedPost && (
                 <ChoosePostModal 
                     post={selectedPost} 
-                    canDelete={canDelete}
                     onClose={handleCloseModal}
                 />
             )}
+
         </>
     );
 };

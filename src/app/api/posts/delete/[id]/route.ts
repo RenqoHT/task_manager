@@ -2,6 +2,7 @@ import { prisma } from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth-config";
+import { checkUserPermissions } from "@/lib/permissions";
 
 export async function DELETE(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
@@ -11,12 +12,21 @@ export async function DELETE(req: NextRequest, { params }: { params: Promise<{ i
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    // Проверка ролей: только admin или SMM могут удалять посты
-    const canDelete = session.user.admin_role === true || session.user.SMM_role === true;
-    
-    if (!canDelete) {
-      return NextResponse.json({ error: "Forbidden: Insufficient permissions" }, { status: 403 });
+    const permissions = checkUserPermissions({
+      admin_role: session.user.admin_role,
+      SMM_role: session.user.SMM_role,
+      designer_role: session.user.designer_role,
+      photographer_role: session.user.photographer_role,
+      coordinator_role: session.user.coordinator_role,
+    });
+
+    if (!permissions.canDeletePost) {
+      return NextResponse.json(
+        { error: "У вас нет прав для удаления постов" },
+        { status: 403 }
+      );
     }
+
 
     const { id } = await params;
 

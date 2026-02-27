@@ -13,12 +13,11 @@ interface ExtendedPost extends Post {
 
 interface Props {
     post: ExtendedPost;
-    canDelete?: boolean;
     onClose?: () => void;
     className?: string;
 }
 
-export const ChoosePostModal: React.FC<Props> = ({ className, post, canDelete, onClose }) => {
+export const ChoosePostModal: React.FC<Props> = ({ className, post, onClose }) => {
     const handleOpenChange = (open: boolean) => {
         if (!open && onClose) {
             onClose();
@@ -38,7 +37,7 @@ export const ChoosePostModal: React.FC<Props> = ({ className, post, canDelete, o
                             {post.post_title || 'Без заголовка'}
                         </DialogTitle>
                     </DialogHeader>
-                    <ChoosePostForm post={post} canDelete={canDelete} />
+                    <ChoosePostForm post={post} />
                 </DialogContent>
             </Dialog>
         </>

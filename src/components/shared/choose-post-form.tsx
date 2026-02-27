@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { AttachLinksModal, PostEditModal } from './modals';
 import { deletePost } from './services/posts';
+import { CanEditPost, CanDeletePost } from './permission-gate';
 
 interface ExtendedPost extends Post {
     user?: User | null;
@@ -14,12 +15,18 @@ interface ExtendedPost extends Post {
 
 interface Props {
     post: ExtendedPost;
-    canDelete?: boolean;
     onClose?: () => void;
     className?: string;
 }
 
-export const ChoosePostForm: React.FC<Props> = ({ post, canDelete, onClose, className }) => {
+export const ChoosePostForm: React.FC<Props> = ({ post: initialPost, onClose, className }) => {
+    const [post, setPost] = useState<ExtendedPost>(initialPost);
+    
+    // Обновляем локальное состояние когда меняется initialPost
+    useEffect(() => {
+        setPost(initialPost);
+    }, [initialPost]);
+
     const formatDate = (date: Date | null) => {
         if (!date) return 'Не указана';
         return new Date(date).toLocaleDateString('ru-RU', {
@@ -61,6 +68,8 @@ export const ChoosePostForm: React.FC<Props> = ({ post, canDelete, onClose, clas
     };
 
     const handleLinksUpdate = (updatedPost: Post) => {
+        // Обновляем локальное состояние поста
+        setPost(prev => ({ ...prev, ...updatedPost }));
         router.refresh();
     };
 
@@ -99,14 +108,16 @@ export const ChoosePostForm: React.FC<Props> = ({ post, canDelete, onClose, clas
                 >
                     Прикрепить ссылки
                 </Button>
-                <Button
-                    variant="outline"
-                    onClick={handleEdit}
-                    className="mb-4"
-                >
-                    Редактировать
-                </Button>
-                {canDelete && (
+                <CanEditPost>
+                    <Button
+                        variant="outline"
+                        onClick={handleEdit}
+                        className="mb-4"
+                    >
+                        Редактировать
+                    </Button>
+                </CanEditPost>
+                <CanDeletePost>
                     <Button
                         variant="destructive"
                         onClick={handleDelete}
@@ -114,7 +125,7 @@ export const ChoosePostForm: React.FC<Props> = ({ post, canDelete, onClose, clas
                     >
                         Удалить
                     </Button>
-                )}
+                </CanDeletePost>
             </div>
 
             {postForEdit && (

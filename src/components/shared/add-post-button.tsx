@@ -4,12 +4,13 @@ import { PostAdd } from "@/components/shared/modals/post-add";
 import { Button } from "@/components/ui";
 import { Plus } from "lucide-react";
 import { useState } from "react";
+import { CanCreatePost } from "./permission-gate";
 
 export const AddPostButton = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
-        <>
+        <CanCreatePost>
             <Button 
                 variant={"outline"} 
                 className="fixed bottom-20 right-20 size-20 rounded-4xl border-6"
@@ -23,6 +24,6 @@ export const AddPostButton = () => {
                 open={isModalOpen} 
                 onOpenChange={setIsModalOpen} 
             />
-        </>
+        </CanCreatePost>
     );
 };
