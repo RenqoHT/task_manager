@@ -4,6 +4,7 @@ import { Post } from '@/generated/prisma/client';
 import { cn } from '@/lib/utils';
 import { Search } from 'lucide-react';
 import React from 'react';
+import { useRouter } from 'next/navigation'; // 1. Импортируем хук
 import { useClickAway, useDebounce } from 'react-use';
 import { Api } from './services/api-client';
 
@@ -12,6 +13,7 @@ interface Props {
 }
 
 export const SearchInput: React.FC<Props> = ({ className }) => {
+    const router = useRouter(); // 2. Инициализируем роутер
     const [searchQuery, setSearchQuery] = React.useState('');
     const [focused, setFocused] = React.useState(false);
     const [posts, setPosts] = React.useState<Post[]>([]);
@@ -19,6 +21,8 @@ export const SearchInput: React.FC<Props> = ({ className }) => {
 
     useClickAway(ref, () => {
         setFocused(false);
+        setPosts([]);
+        setSearchQuery('');
     });
 
     useDebounce(
@@ -38,10 +42,7 @@ export const SearchInput: React.FC<Props> = ({ className }) => {
         setFocused(false);
         setSearchQuery('');
         setPosts([]);
-        
-        // Прямой переход на страницу поста, минуя модальное окно
-        // window.location для избежания активации параллельного маршрута
-        window.location.href = `/post/${postId}`;
+        router.push(`/post/${postId}`); 
     };
 
     return (
@@ -56,7 +57,12 @@ export const SearchInput: React.FC<Props> = ({ className }) => {
                     className="rounded-2xl outline-none w-full bg-gray-100 pl-11"
                     type="text"
                     placeholder="Найти пост..."
-                    onFocus={() => setFocused(true)}
+                    onFocus={() => {
+                        setFocused(true);
+                        // if (searchQuery.trim()) {
+                            Api.posts.search(searchQuery).then(setPosts).catch(console.error);
+                        // }
+                    }}
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                 />
@@ -67,8 +73,7 @@ export const SearchInput: React.FC<Props> = ({ className }) => {
                             'absolute w-full bg-white rounded-xl py-2 top-14 shadow-md transition-all duration-200 invisible opacity-0 z-30',
                             focused && 'visible opacity-100 top-12',
                         )}>
-                        {
-                        posts.map((post) => (
+                        {posts.map((post) => (
                             <div
                                 key={post.post_id}
                                 className="flex items-center gap-3 w-full px-3 py-2 hover:bg-primary/10 cursor-pointer"

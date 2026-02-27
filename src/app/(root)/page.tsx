@@ -1,4 +1,4 @@
-import { Container, PostGroupList, TopBar, AddPostButton } from "@/components/shared";
+import { Container, HomeContent, TopBar, AddPostButton } from "@/components/shared";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth-config";
 import { prisma } from "@/lib/prisma";
@@ -14,6 +14,7 @@ function buildPostsWhereClause(userRoles: {
 
   if (userRoles.photographer_role === true) {
     conditions.push({ post_needs_photogallery: true });
+    conditions.push({ post_needs_video: true });
   }
 
   if (userRoles.designer_role === true) {
@@ -24,7 +25,6 @@ function buildPostsWhereClause(userRoles: {
   if (userRoles.SMM_role === true) {
     conditions.push({ post_needs_mini_video_smm: true });
     conditions.push({ post_needs_mini_gallery: true });
-    conditions.push({ post_needs_text: true });
   }
 
   if (conditions.length > 0) {
@@ -44,6 +44,8 @@ interface HomeProps {
 
 export default async function Home({ searchParams }: HomeProps) {
     const session = await getServerSession(authOptions);
+    
+    const canDelete = session?.user?.admin_role === true || session?.user?.SMM_role === true;
     
     const params = await searchParams;
     
@@ -85,7 +87,7 @@ export default async function Home({ searchParams }: HomeProps) {
             <TopBar/>
 
             <Container className="mt-5 mb-5">
-                <PostGroupList items={posts}/>
+                <HomeContent posts={posts} canDelete={canDelete} />
                 <AddPostButton />
             </Container>
         </>

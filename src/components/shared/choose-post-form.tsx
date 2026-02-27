@@ -15,10 +15,11 @@ interface ExtendedPost extends Post {
 interface Props {
     post: ExtendedPost;
     canDelete?: boolean;
+    onClose?: () => void;
     className?: string;
 }
 
-export const ChoosePostForm: React.FC<Props> = ({ post, canDelete, className }) => {
+export const ChoosePostForm: React.FC<Props> = ({ post, canDelete, onClose, className }) => {
     const formatDate = (date: Date | null) => {
         if (!date) return 'Не указана';
         return new Date(date).toLocaleDateString('ru-RU', {
@@ -71,7 +72,13 @@ export const ChoosePostForm: React.FC<Props> = ({ post, canDelete, className }) 
         if (confirm('Вы уверены, что хотите удалить этот пост?')) {
             try {
                 await deletePost(post.post_id);
-                router.back();
+                if (onClose) {
+                    // В модальном окне - закрываем модалку
+                    onClose();
+                } else {
+                    // На отдельной странице - редирект на главную
+                    router.push('/');
+                }
                 setTimeout(() => {
                     router.refresh();
                 }, 100);

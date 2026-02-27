@@ -1,5 +1,4 @@
 import { User } from '@/generated/prisma/client';
-import Link from 'next/link';
 import React from 'react';
 import { Title } from './title';
 import { Button } from '../ui';
@@ -30,12 +29,14 @@ interface Props {
     post_status: string;
 
     className?: string;
+    onClick?: () => void;
 }
 
 export const PostCard: React.FC<Props> = ({ 
     className, 
     title, 
     id, 
+    onClick,
     desc, 
     post_deadline,
     post_status,
@@ -60,9 +61,8 @@ export const PostCard: React.FC<Props> = ({
     };
 
     return (
-        <div className={className}>
-            <Link href={`/post/${id}`}>
-                <div className="bg-[#bfbec7] text-white rounded-2xl overflow-hidden">
+        <div className={className} onClick={onClick}>
+            <div className="bg-[#bfbec7] text-white rounded-2xl overflow-hidden cursor-pointer">
                     {/* Верхняя строка: статус + дата + метки */}
                     <div className="flex items-center justify-between px-4 pt-3 pb-1 text-xs text-gray-400">
                         <div className="flex items-center gap-2">
@@ -120,7 +120,6 @@ export const PostCard: React.FC<Props> = ({
                         </Button>
                     </div>
                 </div>
-            </Link>
         </div>
     );
 };

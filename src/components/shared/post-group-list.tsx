@@ -4,9 +4,10 @@ import { PostCard } from './post-card';
 interface Props {
     className?: string;
     items: any[];
+    onPostClick?: (post: any) => void;
 }
 
-export const PostGroupList: React.FC<Props> = ({ className, items }) => {
+export const PostGroupList: React.FC<Props> = ({ className, items, onPostClick }) => {
     // Сортируем массив по дате (новые сверху) и кешируем результат
     const sortedItems = useMemo(() => {
         // Создаем копию через [...items], чтобы не мутировать пропсы
@@ -27,6 +28,7 @@ export const PostGroupList: React.FC<Props> = ({ className, items }) => {
                         id={post.post_id}
                         title={post.post_title}
                         desc={post.post_description}
+                        onClick={() => onPostClick?.(post)}
                         post_needs_mini_video_smm={post.post_needs_mini_video_smm}
                         post_needs_video={post.post_needs_video}
                         post_needs_text={post.post_needs_text}
