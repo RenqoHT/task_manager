@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { AttachLinksModal, PostEditModal } from './modals';
+import { deletePost } from './services/posts';
 
 interface ExtendedPost extends Post {
     user?: User | null;
@@ -13,10 +14,11 @@ interface ExtendedPost extends Post {
 
 interface Props {
     post: ExtendedPost;
+    canDelete?: boolean;
     className?: string;
 }
 
-export const ChoosePostForm: React.FC<Props> = ({ post, className }) => {
+export const ChoosePostForm: React.FC<Props> = ({ post, canDelete, className }) => {
     const formatDate = (date: Date | null) => {
         if (!date) return 'Не указана';
         return new Date(date).toLocaleDateString('ru-RU', {
@@ -28,7 +30,6 @@ export const ChoosePostForm: React.FC<Props> = ({ post, className }) => {
         });
     };
 
-    // Статус берется из БД (post_status)
     const finalPostStatus = post.post_status || 'В работе';
 
     const router = useRouter();
@@ -66,6 +67,21 @@ export const ChoosePostForm: React.FC<Props> = ({ post, className }) => {
         router.refresh();
     };
 
+    const handleDelete = async () => {
+        if (confirm('Вы уверены, что хотите удалить этот пост?')) {
+            try {
+                await deletePost(post.post_id);
+                router.back();
+                setTimeout(() => {
+                    router.refresh();
+                }, 100);
+            } catch (error) {
+                console.error('Ошибка при удалении поста:', error);
+                alert('Не удалось удалить пост');
+            }
+        }
+    };
+
     return (
         <div className={cn("p-6 space-y-6", className)}>
             <div className="flex justify-end space-x-3">
@@ -83,6 +99,15 @@ export const ChoosePostForm: React.FC<Props> = ({ post, className }) => {
                 >
                     Редактировать
                 </Button>
+                {canDelete && (
+                    <Button
+                        variant="destructive"
+                        onClick={handleDelete}
+                        className="mb-4"
+                    >
+                        Удалить
+                    </Button>
+                )}
             </div>
 
             {postForEdit && (

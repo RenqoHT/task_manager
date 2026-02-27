@@ -42,3 +42,7 @@ export const create = async (postData: PostCreationData): Promise<Post> => {
 export const update = async (id: number, postData: PostUpdateData): Promise<Post> => {
   return (await axiosInstance.put<Post>(`${ApiRoutes.UPDATE_POST}/${id}`, postData)).data;
 };
+
+export const deletePost = async (id: number): Promise<{ message: string }> => {
+  return (await axiosInstance.delete<{ message: string }>(`${ApiRoutes.DELETE_POST}/${id}`)).data;
+};

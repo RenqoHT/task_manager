@@ -15,10 +15,11 @@ interface ExtendedPost extends Post {
 
 interface Props {
     post: ExtendedPost;
+    canDelete?: boolean;
     className?: string;
 }
 
-export const ChoosePostModal: React.FC<Props> = ({ className, post }) => {
+export const ChoosePostModal: React.FC<Props> = ({ className, post, canDelete }) => {
     const router = useRouter();
 
     return (
@@ -34,7 +35,7 @@ export const ChoosePostModal: React.FC<Props> = ({ className, post }) => {
                             {post.post_title || 'Без заголовка'}
                         </DialogTitle>
                     </DialogHeader>
-                    <ChoosePostForm post={post} />
+                    <ChoosePostForm post={post} canDelete={canDelete} />
                 </DialogContent>
             </Dialog>
         </>
