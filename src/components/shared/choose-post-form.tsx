@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { Post, User } from '@/generated/prisma/client';
+import { Post, User, Tag, PostTag } from '@/generated/prisma/client';
 import { cn } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
@@ -9,8 +9,13 @@ import { AttachLinksModal, PostEditModal } from './modals';
 import { deletePost } from './services/posts';
 import { CanEditPost, CanDeletePost } from './permission-gate';
 
+interface PostTagWithTag extends PostTag {
+    tag: Tag;
+}
+
 interface ExtendedPost extends Post {
     user?: User | null;
+    tags?: PostTagWithTag[];
 }
 
 interface Props {
@@ -176,6 +181,22 @@ export const ChoosePostForm: React.FC<Props> = ({ post: initialPost, onClose, on
                         <p className="text-sm text-gray-500">Описание</p>
                         <div className='rounded-md max-h-[200px] max-w-[445px] overflow-auto'>
                             <p className="max-w-[400px] break-words font-medium mt-1 whitespace-pre-line">{post.post_description}</p>
+                        </div>
+                    </div>
+                )}
+                {post.tags && post.tags.length > 0 && (
+                    <div>
+                        <p className="text-sm text-gray-500 mb-2">Тэги</p>
+                        <div className="flex flex-wrap gap-2">
+                            {post.tags.map((postTag, index) => (
+                                <span
+                                    key={`${postTag.tag_id}-${index}`}
+                                    className="inline-flex items-center px-2 py-1 rounded text-xs font-medium text-white"
+                                    style={{ backgroundColor: postTag.tag.color }}
+                                >
+                                    {postTag.tag.name}
+                                </span>
+                            ))}
                         </div>
                     </div>
                 )}

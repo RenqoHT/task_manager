@@ -31,9 +31,13 @@ export type PostCreationData = Omit<Post,
   'post_feedback_cover_photo' |
   'post_feedback_photo_cards' |
   'post_feedback_mini_gallery'
->;
+> & {
+  tags?: { tag_id: number; name: string; color: string }[];
+};
 
-export type PostUpdateData = Partial<Omit<Post, 'post_id' | 'post_date'>>;
+export type PostUpdateData = Partial<Omit<Post, 'post_id' | 'post_date'>> & {
+  tags?: { tag_id: number; name: string; color: string }[];
+};
 
 export const create = async (postData: PostCreationData): Promise<Post> => {
   return (await axiosInstance.post<Post>(ApiRoutes.CREATE_POST, postData)).data;

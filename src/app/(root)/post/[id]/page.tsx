@@ -9,7 +9,15 @@ export default async function PostPage({ params }: { params: { id: string } }) {
     const post = await prisma.post.findFirst({ 
         where: { post_id: Number(id) },
         include: {
-            user: true
+            user: true,
+            tags: {
+                include: {
+                    tag: true
+                },
+                orderBy: {
+                    post_tag_id: 'asc'
+                }
+            }
         }
     });
 

@@ -2,15 +2,20 @@
 
 import { Dialog, DialogContent } from '@/components/ui';
 import { DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { Post, User } from '@/generated/prisma/client';
+import { Post, User, Tag, PostTag } from '@/generated/prisma/client';
 import { cn } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { ChoosePostForm } from '../choose-post-form';
 import { PostEditModal } from './index';
 
+interface PostTagWithTag extends PostTag {
+    tag: Tag;
+}
+
 interface ExtendedPost extends Post {
     user?: User | null;
+    tags?: PostTagWithTag[];
 }
 
 interface Props {

@@ -16,3 +16,4 @@ export {
 } from "./combobox"
 
 export { UserSelect } from './user-select'
+export { TagSelect } from './tag-select'

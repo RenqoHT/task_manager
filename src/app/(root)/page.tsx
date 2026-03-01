@@ -71,12 +71,44 @@ export default async function Home({ searchParams }: HomeProps) {
             orderBy: {
                 post_date: 'desc',
             },
+            include: {
+                tags: {
+                    include: {
+                        tag: true
+                    },
+                    orderBy: {
+                        post_tag_id: 'asc'
+                    }
+                },
+                user: {
+                    select: {
+                        user_id: true,
+                        user_login: true
+                    }
+                }
+            }
         });
     } else {
         posts = await prisma.post.findMany({
             orderBy: {
                 post_date: 'desc',
             },
+            include: {
+                tags: {
+                    include: {
+                        tag: true
+                    },
+                    orderBy: {
+                        post_tag_id: 'asc'
+                    }
+                },
+                user: {
+                    select: {
+                        user_id: true,
+                        user_login: true
+                    }
+                }
+            }
         });
     }
 

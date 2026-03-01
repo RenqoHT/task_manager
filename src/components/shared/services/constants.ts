@@ -3,5 +3,7 @@ export enum ApiRoutes {
   CREATE_POST = 'posts/create',
   UPDATE_POST = 'posts/update',
   DELETE_POST = 'posts/delete',
-  GET_USERS = 'users'
+  GET_USERS = 'users',
+  GET_TAGS = 'tags',
+  SEARCH_TAGS = 'tags/search'
 }

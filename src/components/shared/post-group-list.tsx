@@ -46,6 +46,7 @@ export const PostGroupList: React.FC<Props> = ({ className, items, onPostClick }
                         post_date={post.post_date}
                         post_deadline={post.post_deadline}
                         post_status={post.post_status}
+                        tags={post.tags}
                     />
                 ))}
             </div>

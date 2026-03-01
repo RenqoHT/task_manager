@@ -1,7 +1,11 @@
-import { User } from '@/generated/prisma/client';
+import { User, Tag, PostTag } from '@/generated/prisma/client';
 import React from 'react';
 import { Title } from './title';
 import { Button } from '../ui';
+
+interface PostTagWithTag extends PostTag {
+    tag: Tag;
+}
 
 interface Props {
     id: number;
@@ -28,6 +32,8 @@ interface Props {
     post_deadline: Date;
     post_status: string;
 
+    tags?: PostTagWithTag[];
+
     className?: string;
     onClick?: () => void;
 }
@@ -53,7 +59,8 @@ export const PostCard: React.FC<Props> = ({
     post_done_link_photogallery,
     post_done_link_cover_photo,
     post_done_link_photo_cards,
-    post_done_link_mini_gallery
+    post_done_link_mini_gallery,
+    tags
 }) => {
     // Статус берется из БД
     const getStatusColor = () => {
@@ -102,6 +109,26 @@ export const PostCard: React.FC<Props> = ({
                             size="md"
                             className="font-bold leading-tight mb-1.5"
                         />
+
+                        {/* Тэги */}
+                        {tags && tags.length > 0 && (
+                            <div className="flex flex-wrap gap-1.5 mb-2">
+                                {tags.slice(0, 3).map((postTag, index) => (
+                                    <span
+                                        key={`${postTag.tag_id}-${index}`}
+                                        className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium text-white"
+                                        style={{ backgroundColor: postTag.tag.color }}
+                                    >
+                                        {postTag.tag.name}
+                                    </span>
+                                ))}
+                                {tags.length > 3 && (
+                                    <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-gray-500 text-white">
+                                        +{tags.length - 3}
+                                    </span>
+                                )}
+                            </div>
+                        )}
 
                         {/* Короткое описание (если есть) */}
                         {desc && (

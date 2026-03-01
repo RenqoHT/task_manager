@@ -1,14 +1,19 @@
 'use client';
 
-import { Button, Input, UserSelect } from '@/components/ui';
-import { Post, User } from '@/generated/prisma/client';
+import { Button, Input, UserSelect, TagSelect } from '@/components/ui';
+import { Post, User, Tag, PostTag } from '@/generated/prisma/client';
 import { cn } from '@/lib/utils';
 import React, { useState, useEffect } from 'react';
 import { Api } from './services/api-client';
 import { PostUpdateData } from './services/posts';
 
+interface PostTagWithTag extends PostTag {
+    tag: Tag;
+}
+
 interface ExtendedPost extends Post {
     user?: User | null;
+    tags?: PostTagWithTag[];
 }
 
 interface Props {
@@ -40,6 +45,7 @@ export const PostEditForm: React.FC<Props> = ({ post, className, onSave, onCance
     const [doneLinkMiniGallery, setDoneLinkMiniGallery] = useState(post.post_done_link_mini_gallery || '');
     const [responsiblePersonId, setResponsiblePersonId] = useState<number | null>(post.responsible_person_id);
     const [tzLink, setTzLink] = useState(post.tz_link || '');
+    const [tags, setTags] = useState<Tag[]>(post.tags?.map(pt => pt.tag) || []);
     const [deadline, setDeadline] = useState(() => {
         if (post.post_deadline) {
             const date = new Date(post.post_deadline);
@@ -92,6 +98,11 @@ export const PostEditForm: React.FC<Props> = ({ post, className, onSave, onCance
                 responsible_person_id: responsiblePersonId,
                 post_deadline: new Date(deadline),
                 tz_link: tzLink || null,
+                tags: tags.map(tag => ({
+                    tag_id: tag.tag_id,
+                    name: tag.name,
+                    color: tag.color
+                })),
             };
 
             const response = await Api.posts.update(post.post_id, updatedPost);
@@ -164,6 +175,17 @@ export const PostEditForm: React.FC<Props> = ({ post, className, onSave, onCance
                         placeholder="Введите ссылку на ТЗ"
                     />
                 </div>
+            </div>
+
+            <div className="mt-4">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Тэги
+                </label>
+                <TagSelect
+                    value={tags}
+                    onChange={setTags}
+                    placeholder="Добавить тег..."
+                />
             </div>
 
             <div>

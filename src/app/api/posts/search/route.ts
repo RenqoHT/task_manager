@@ -14,6 +14,22 @@ export async function GET(req: NextRequest) {
             },
         },
         take: 5,
+        include: {
+            tags: {
+                include: {
+                    tag: true
+                },
+                orderBy: {
+                    post_tag_id: 'asc'
+                }
+            },
+            user: {
+                select: {
+                    user_id: true,
+                    user_login: true
+                }
+            }
+        }
     });
 
     return NextResponse.json(posts);

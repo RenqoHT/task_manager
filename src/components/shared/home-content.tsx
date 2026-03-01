@@ -3,10 +3,15 @@
 import React, { useState } from 'react';
 import { PostGroupList } from './post-group-list';
 import { ChoosePostModal } from './modals/choose-post-modal';
-import { Post, User } from '@/generated/prisma/client';
+import { Post, User, Tag, PostTag } from '@/generated/prisma/client';
+
+interface PostTagWithTag extends PostTag {
+    tag: Tag;
+}
 
 interface ExtendedPost extends Post {
     user?: User | null;
+    tags?: PostTagWithTag[];
 }
 
 interface Props {

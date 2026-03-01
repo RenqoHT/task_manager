@@ -17,7 +17,8 @@ import {
     ComboboxList,
 } from '@/components/ui';
 import { UserSelect } from '@/components/ui/user-select';
-import { User, Post } from '@/generated/prisma/client';
+import { TagSelect } from '@/components/ui/tag-select';
+import { User, Post, Tag } from '@/generated/prisma/client';
 import { cn } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
 import React, { useState, useEffect, useRef } from 'react';
@@ -47,6 +48,7 @@ export const PostAdd: React.FC<Props> = ({ className, open, onOpenChange }) => {
     const [responsiblePersonId, setResponsiblePersonId] = useState<number | null>(null);
     const [deadline, setDeadline] = useState('');
     const [tzLink, setTzLink] = useState('');
+    const [tags, setTags] = useState<Tag[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
 
@@ -86,6 +88,11 @@ export const PostAdd: React.FC<Props> = ({ className, open, onOpenChange }) => {
                 tz_link: tzLink || null,
                 responsible_person_id: responsiblePersonId,
                 post_deadline: deadlineDate,
+                tags: tags.map(tag => ({
+                    tag_id: tag.tag_id,
+                    name: tag.name,
+                    color: tag.color
+                })),
             };
 
             await Api.posts.create(postData);
@@ -117,6 +124,7 @@ export const PostAdd: React.FC<Props> = ({ className, open, onOpenChange }) => {
         setResponsiblePersonId(null);
         setDeadline('');
         setTzLink('');
+        setTags([]);
         setError('');
     };
 
@@ -199,6 +207,17 @@ export const PostAdd: React.FC<Props> = ({ className, open, onOpenChange }) => {
                                 value={responsiblePersonId}
                                 onChange={setResponsiblePersonId}
                                 placeholder="Поиск пользователя..."
+                            />
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                                Тэги
+                            </label>
+                            <TagSelect
+                                value={tags}
+                                onChange={setTags}
+                                placeholder="Добавить тег..."
                             />
                         </div>
 
